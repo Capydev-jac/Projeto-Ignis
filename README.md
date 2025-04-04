@@ -14,6 +14,6 @@
 | RF13  | Diagramas UML                     | Criar diagramas de casos de uso, classes e sequência.  | Alta | Como usuário, quero visualizar diagramas UML para entender melhor o funcionamento do sistema.      | ✅ Os diagramas devem ser criados utilizando Astah. <br> ✅ A modelagem deve seguir os requisitos validados pelo PO antes da implementação. <br> ✅ Os diagramas devem ser revisados pela equipe para garantir precisão. | 🔹 Requisitos levantados antes da modelagem UML. <br> 🔹 Softwares: Astah. |
 
 
-<h2>Burndown</h2>
+<h2 align="center">Burndown</h2>
 
-<h2>Sprint Retrospective</h2>
+<h2 align="center">Sprint Retrospective</h2>
