@@ -1,3 +1,5 @@
+<h2 align="center">Burndown</h2>
+
 <h2 align="center">📌1ª Sprint Backlog</h2>
 
 | ID    | Requisito                        | Descrição                                            | Prioridade | User Story                                                                                      | Critérios de Aceitação (DoD)                                                                                                                                           | Definição de Pronto (DoR)                                                                                               |
@@ -12,8 +14,5 @@
 | RF11  | Análise de meses de risco de fogo | Permitir visualizar os meses com maior risco de fogo. | Alta | Como usuário, quero identificar os meses mais críticos para planejar ações preventivas.           | ✅ O sistema deve identificar corretamente os meses de maior risco com base no banco de dados Queimadas. <br> ✅ As informações das análises devem ser exibidas de forma clara e acessível. | 🔹 Banco de dados validado: Queimadas. <br> 🔹 Softwares: PostgreSQL, DB Designer. |
 | RF12  | Análise de relação entre risco e área queimada | Permitir analisar se o risco de fogo está associado a áreas queimadas. | Alta | Como usuário, quero avaliar a correlação entre risco de fogo e áreas queimadas para melhorar previsões. | ✅ O sistema deve identificar corretamente a relação entre o risco e a área queimada com base nos dados filtrados do banco de dados Queimadas. <br> ✅ As informações entre o risco e a área queimada devem ser exibidas de forma clara e acessível. | 🔹 Cálculos estatísticos definidos e validados. <br> 🔹 Softwares: PostgreSQL, DB Designer. |
 | RF13  | Diagramas UML                     | Criar diagramas de casos de uso, classes e sequência.  | Alta | Como usuário, quero visualizar diagramas UML para entender melhor o funcionamento do sistema.      | ✅ Os diagramas devem ser criados utilizando Astah. <br> ✅ A modelagem deve seguir os requisitos validados pelo PO antes da implementação. <br> ✅ Os diagramas devem ser revisados pela equipe para garantir precisão. | 🔹 Requisitos levantados antes da modelagem UML. <br> 🔹 Softwares: Astah. |
-
-
-<h2 align="center">Burndown</h2>
 
 <h2 align="center">Sprint Retrospective</h2>
