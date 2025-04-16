@@ -1,0 +1,13 @@
+MC.01 Definições Matemáticas (enumerativas, recursivas, etc.) Introdução aos conceitos básicos matemáticos, incluindo definições formais de conjuntos, sequências e métodos para descrever estruturas matemáticas.
+
+MC.01 fala sobre definições formais, estruturas matemáticas, e formas de descrevê-las, o que está diretamente relacionado à modelagem de dados em banco.
+ 
+As tabelas e views construídas neste banco de dados representam conjuntos bem definidos, com elementos (linhas) que seguem regras lógicas e relacionamentos. Isso corresponde à ideia de definições enumerativas e estruturadas, que são parte da MC.01. Por exemplo:
+
+- A tabela Estados define de forma enumerativa todos os estados do Brasil.
+
+- A tabela Bioma também define um conjunto finito de biomas.
+
+- A tabela Risco associa cada ponto geográfico com dados de risco de fogo — uma estrutura matemática de registros organizados com atributos (como data, risco, geometria).
+
+As views são como consultas que derivam subconjuntos, o que exemplifica a ideia de definições por compreensão, outra forma formal de definição matemática.
