@@ -20,7 +20,8 @@
 | RF13  | Diagramas UML                     | Criar diagramas de casos de uso, classes e sequência.  | Alta | Como usuário, quero visualizar diagramas UML para entender melhor o funcionamento do sistema.      | ✅ Os diagramas devem ser criados utilizando Astah. <br> ✅ A modelagem deve seguir os requisitos validados pelo PO antes da implementação. <br> ✅ Os diagramas devem ser revisados pela equipe para garantir precisão. | 🔹 Requisitos levantados antes da modelagem UML. <br> 🔹 Softwares: Astah. |
 
 <h2 align="center">Sprint Retrospective</h2>
-Cometemos o mesmo erro de pular etapas na estruturação do projeto, desenvolvendo primeiro o código ao invés de criarmos o UML de casos de uso e a modelagem do banco de dados.  Não aplicamos corretamente os combinados que foram colocados nas Daiylis. (Melhorar o acesso o que foi combinado) para evitar retornar ao mesmo problema.<br>
+
+<br> Cometemos o mesmo erro de pular etapas na estruturação do projeto, desenvolvendo primeiro o código ao invés de criarmos o UML de casos de uso e a modelagem do banco de dados.  Não aplicamos corretamente os combinados que foram colocados nas Daiylis. (Melhorar o acesso o que foi combinado) para evitar retornar ao mesmo problema.<br>
 
 Manter mais contato com o projeto por parte de todos, uma área a ser aprimorada é a distribuição de atividades e o aproveitamento do tempo em sala de aula. Demoramos um pouco para começar a realizar as atividades do banco de dados que precisaram de algumas alterações. <br>
 
