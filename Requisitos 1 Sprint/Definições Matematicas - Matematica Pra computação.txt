@@ -2,7 +2,8 @@ MC.01 Definições Matemáticas (enumerativas, recursivas, etc.) Introdução ao
 
 MC.01 fala sobre definições formais, estruturas matemáticas, e formas de descrevê-las, o que está diretamente relacionado à modelagem de dados em banco.
  
-As tabelas e views construídas neste banco de dados representam conjuntos bem definidos, com elementos (linhas) que seguem regras lógicas e relacionamentos. Isso corresponde à ideia de definições enumerativas e estruturadas, que são parte da MC.01. Por exemplo:
+As tabelas e views construídas neste banco de dados representam conjuntos bem definidos, com elementos (linhas) que seguem regras lógicas e relacionamentos. Isso corresponde à ideia de definições enumerativas e estruturadas, que são parte da MC.01. 
+Por exemplo:
 
 - A tabela Estados define de forma enumerativa todos os estados do Brasil.
 
