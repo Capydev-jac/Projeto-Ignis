@@ -2,6 +2,7 @@
 
 <p align="center">
   <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_grafico.PNG">
+  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_pontos.PNG">
 </p>
 
 <h2 align="center">📌1ª Sprint Backlog</h2>
