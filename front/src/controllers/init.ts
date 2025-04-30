@@ -1084,6 +1084,944 @@ async function init() {
     ('2025-04-02  ', ST_SetSRID(ST_MakePoint(-52.29568, -11.05795), 4326), 51, 1, 0.06),
     ('2025-04-02  ', ST_SetSRID(ST_MakePoint(-50.4972, -20.17527), 4326), 35, 4, 0.4);
     
+    CREATE TABLE mes_fogo (
+        escopo TEXT,
+        tipo TEXT,
+        mes TEXT,
+        valor NUMERIC
+);
+    INSERT INTO mes_fogo (escopo, tipo, mes, valor) VALUES
+    
+    ('nacional', 'max', 'janeiro', 4657),
+    ('nacional', 'max', 'fevereiro', 3157),
+    ('nacional', 'max', 'março', 3383),
+    ('nacional', 'max', 'abril', 1702),
+    ('nacional', 'max', 'maio', 3578),
+    ('nacional', 'max', 'junho', 9179),
+    ('nacional', 'max', 'julho', 19364),
+    ('nacional', 'max', 'agosto', 63764),
+    ('nacional', 'max', 'setembro', 73141),
+    ('nacional', 'max', 'outubro', 28731),
+    ('nacional', 'max', 'novembro', 26424),
+    ('nacional', 'max', 'dezembro', 16924),
+
+    
+    ('nacional', 'media', 'janeiro', 546.5),
+    ('nacional', 'media', 'fevereiro', 344.5),
+    ('nacional', 'media', 'março', 417),
+    ('nacional', 'media', 'abril', 371.7),
+    ('nacional', 'media', 'maio', 653.8),
+    ('nacional', 'media', 'junho', 1302.8),
+    ('nacional', 'media', 'julho', 2565.7),
+    ('nacional', 'media', 'agosto', 7891.3),
+    ('nacional', 'media', 'setembro', 10793.8),
+    ('nacional', 'media', 'outubro', 6292),
+    ('nacional', 'media', 'novembro', 3661.8),
+    ('nacional', 'media', 'dezembro', 1879),
+
+    
+    ('nacional', 'min', 'janeiro', 6),
+    ('nacional', 'min', 'fevereiro', 8),
+    ('nacional', 'min', 'março', 2),
+    ('nacional', 'min', 'abril', 1),
+    ('nacional', 'min', 'maio', 3),
+    ('nacional', 'min', 'junho', 1),
+    ('nacional', 'min', 'julho', 4),
+    ('nacional', 'min', 'agosto', 7),
+    ('nacional', 'min', 'setembro', 7),
+    ('nacional', 'min', 'outubro', 5),
+    ('nacional', 'min', 'novembro', 2),
+    ('nacional', 'min', 'dezembro', 6);
+    
+    CREATE TABLE Foco_calor(
+        id SERIAL PRIMARY KEY,
+        data TIMESTAMP,
+        geometria GEOMETRY(POINT, 4326),
+        estado_id INTEGER,
+        bioma_id INTEGER,
+        risco_fogo DECIMAL(3, 2),
+        dia_sem_chuva INTEGER,
+        precipitacao DECIMAL(5, 2),
+        frp DECIMAL(5, 1),
+        FOREIGN KEY (estado_id) REFERENCES Estados(id_estado),
+        FOREIGN KEY (bioma_id) REFERENCES Bioma(id)
+    );
+
+    INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.2, 7, 0.0, 1719.2, ST_SetSRID(ST_MakePoint(-60.72897, 2.53022), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.45, 8, 0.1, 403.5, ST_SetSRID(ST_MakePoint(-60.58513, 2.29151), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.43, 8, 0.1, 401.9, ST_SetSRID(ST_MakePoint(-60.58642, 2.30033), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.19, 7, 0.0, 323.6, ST_SetSRID(ST_MakePoint(-60.72768, 2.5214), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.05, 6, 0.85, 249.6, ST_SetSRID(ST_MakePoint(-61.60957, 2.29996), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.2, 7, 0.0, 205.6, ST_SetSRID(ST_MakePoint(-60.72016, 2.5315), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.05, 4, 0.0, 187.0, ST_SetSRID(ST_MakePoint(-59.47889, 1.11434), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 18:38:00', 11, 1, 0.07, 2, 0.0, 181.0, ST_SetSRID(ST_MakePoint(-60.00476, 1.28022), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 18:19:00', 11, 1, 0.15, 11, 0.0, 177.4, ST_SetSRID(ST_MakePoint(-60.67663, 2.0854), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 18:17:00', 11, 1, 0.12, 8, 0.2, 177.4, ST_SetSRID(ST_MakePoint(-60.75414, 1.40547), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.07, 4, 0.0, 149.3, ST_SetSRID(ST_MakePoint(-61.56177, 4.1012), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.19, 7, 0.0, 145.1, ST_SetSRID(ST_MakePoint(-60.73777, 2.52894), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-23 19:19:00', 11, 1, 0.06, 3, 0.0, 127.9, ST_SetSRID(ST_MakePoint(-61.58919, 4.05199), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 18:19:00', 11, 1, 0.14, 10, 0.08, 122.5, ST_SetSRID(ST_MakePoint(-60.69081, 2.08327), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 18:38:00', 11, 1, 0.24, 2, 0.0, 121.4, ST_SetSRID(ST_MakePoint(-60.09711, 2.13473), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 18:17:00', 11, 1, 0.07, 2, 1.2, 120.1, ST_SetSRID(ST_MakePoint(-59.34462, 1.12624), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.13, 3, 0.0, 102.2, ST_SetSRID(ST_MakePoint(-59.86242, 0.61904), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 18:17:00', 11, 1, 0.07, 2, 1.2, 93.7, ST_SetSRID(ST_MakePoint(-59.35091, 1.12494), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.85, 8, 0.1, 90.1, ST_SetSRID(ST_MakePoint(-60.59525, 2.29905), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.1, 4, 0.0, 89.8, ST_SetSRID(ST_MakePoint(-60.24087, 2.31438), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.13, 7, 0.0, 80.5, ST_SetSRID(ST_MakePoint(-61.5493, 4.07308), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.07, 4, 0.0, 74.6, ST_SetSRID(ST_MakePoint(-61.57278, 4.07676), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.06, 4, 0.05, 71.8, ST_SetSRID(ST_MakePoint(-59.79436, 0.92426), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.48, 10, 0.0, 70.7, ST_SetSRID(ST_MakePoint(-61.58393, 3.20731), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.6, 8, 0.1, 68.0, ST_SetSRID(ST_MakePoint(-60.59395, 2.29022), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.19, 7, 0.0, 67.2, ST_SetSRID(ST_MakePoint(-60.71887, 2.52268), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 18:38:00', 11, 1, 0.06, 7, 0.0, 65.2, ST_SetSRID(ST_MakePoint(-61.81946, 2.17735), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 18:17:00', 11, 1, 0.07, 2, 1.2, 63.4, ST_SetSRID(ST_MakePoint(-59.35644, 1.12453), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.05, 4, 0.0, 62.9, ST_SetSRID(ST_MakePoint(-59.46746, 1.11601), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:19:00', 11, 1, 0.07, 4, 0.0, 59.0, ST_SetSRID(ST_MakePoint(-61.54732, 4.10341), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:17:00', 17, 3, 0.0, 2, 5.29, 80.5, ST_SetSRID(ST_MakePoint(-46.90737, -10.53438), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 17, 3, 0.01, 1, 1.66, 68.0, ST_SetSRID(ST_MakePoint(-46.90987, -11.0012), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:17:00', 17, 3, 0.0, 2, 7.22, 61.8, ST_SetSRID(ST_MakePoint(-46.84087, -10.62953), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:20:00', 21, 3, 0.01, 2, 0.35, 85.2, ST_SetSRID(ST_MakePoint(-43.40495, -5.59555), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-26 17:54:00', 22, 2, 0.92, 4, 0.71, 151.0, ST_SetSRID(ST_MakePoint(-43.14164, -8.12428), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 16:56:00', 22, 2, 0.29, 0, 0.5, 88.0, ST_SetSRID(ST_MakePoint(-43.15004, -8.13325), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-26 16:20:00', 24, 4, 0.13, -999, 0.2, 219.6, ST_SetSRID(ST_MakePoint(-35.02938, -6.4659), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-26 16:20:00', 24, 4, 0.2, -999, 0.2, 161.8, ST_SetSRID(ST_MakePoint(-35.03734, -6.46303), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-26 16:20:00', 24, 4, 0.63, -999, 0.3, 64.3, ST_SetSRID(ST_MakePoint(-34.99821, -6.45786), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:17:00', 27, 2, 1.0, 13, 0.0, 84.3, ST_SetSRID(ST_MakePoint(-36.93745, -10.04392), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 16:37:00', 28, 2, 1.0, 2, 0.0, 96.3, ST_SetSRID(ST_MakePoint(-37.87618, -11.04847), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 16:37:00', 28, 2, 1.0, 41, 0.0, 92.2, ST_SetSRID(ST_MakePoint(-37.66966, -10.04072), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 16:37:00', 28, 2, 1.0, 2, 0.0, 86.1, ST_SetSRID(ST_MakePoint(-37.88328, -11.05287), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-29 16:37:00', 28, 2, 1.0, 41, 0.0, 76.1, ST_SetSRID(ST_MakePoint(-37.63894, -10.03681), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:17:00', 28, 4, 1.0, 3, 0.0, 60.2, ST_SetSRID(ST_MakePoint(-36.8535, -10.25908), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:13:00', 29, 4, 0.49, 4, 0.0, 833.8, ST_SetSRID(ST_MakePoint(-39.85889, -17.8604), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:13:00', 29, 4, 0.47, 4, 0.0, 708.2, ST_SetSRID(ST_MakePoint(-39.85755, -17.86998), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:13:00', 29, 4, 0.48, 4, 0.0, 442.2, ST_SetSRID(ST_MakePoint(-39.86281, -17.87415), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 16:54:00', 29, 2, 1.0, 24, 0.0, 362.4, ST_SetSRID(ST_MakePoint(-41.44053, -12.47592), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:13:00', 29, 4, 0.47, 4, 0.0, 308.1, ST_SetSRID(ST_MakePoint(-39.86985, -17.86187), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-27 16:54:00', 29, 2, 1.0, 24, 0.0, 271.5, ST_SetSRID(ST_MakePoint(-41.43569, -12.47714), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:13:00', 29, 4, 0.48, 4, 0.0, 267.6, ST_SetSRID(ST_MakePoint(-39.85188, -17.87272), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:13:00', 29, 4, 0.48, 4, 0.0, 260.1, ST_SetSRID(ST_MakePoint(-39.86849, -17.87147), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 29, 3, 0.47, 4, 0.0, 172.5, ST_SetSRID(ST_MakePoint(-45.10042, -13.03359), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:17:00', 29, 3, 0.94, 24, 0.83, 169.2, ST_SetSRID(ST_MakePoint(-45.05261, -12.91847), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 29, 3, 0.47, 5, 0.0, 144.6, ST_SetSRID(ST_MakePoint(-45.22963, -13.17709), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-26 17:54:00', 29, 3, 0.34, 0, 2.18, 142.5, ST_SetSRID(ST_MakePoint(-45.41969, -12.76279), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 29, 3, 0.69, 3, 0.0, 120.4, ST_SetSRID(ST_MakePoint(-44.96906, -12.78323), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:17:00', 29, 3, 0.95, 24, 1.09, 114.7, ST_SetSRID(ST_MakePoint(-45.04555, -12.91894), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-30 17:13:00', 29, 2, 0.86, 24, 0.0, 113.7, ST_SetSRID(ST_MakePoint(-41.31011, -12.83423), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-23 17:34:00', 29, 3, 1.0, 2, 0.0, 96.2, ST_SetSRID(ST_MakePoint(-44.35582, -11.78864), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-23 17:34:00', 29, 2, 0.95, 18, 0.0, 93.2, ST_SetSRID(ST_MakePoint(-41.32851, -12.50206), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:17:00', 29, 2, 1.0, 11, 0.0, 86.2, ST_SetSRID(ST_MakePoint(-38.60224, -11.07725), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 16:56:00', 29, 2, 1.0, 22, 0.0, 85.7, ST_SetSRID(ST_MakePoint(-41.08719, -12.37387), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 29, 3, 0.98, 2, 0.0, 85.4, ST_SetSRID(ST_MakePoint(-44.37965, -12.90463), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 16:56:00', 29, 2, 1.0, 22, 0.0, 81.2, ST_SetSRID(ST_MakePoint(-42.75394, -14.20136), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 16:56:00', 29, 2, 1.0, 22, 0.0, 80.4, ST_SetSRID(ST_MakePoint(-41.09278, -12.36786), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:17:00', 29, 2, 1.0, 11, 0.0, 78.7, ST_SetSRID(ST_MakePoint(-38.21904, -9.90321), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:15:00', 29, 4, 0.4, -999, 0.0, 76.7, ST_SetSRID(ST_MakePoint(-38.98403, -13.27171), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 16:56:00', 29, 2, 1.0, 23, 0.0, 76.2, ST_SetSRID(ST_MakePoint(-42.75079, -14.1931), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:17:00', 29, 2, 1.0, 11, 0.0, 73.9, ST_SetSRID(ST_MakePoint(-38.20994, -9.90185), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 29, 3, 0.51, 5, 0.0, 73.0, ST_SetSRID(ST_MakePoint(-45.23102, -13.16753), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-26 17:54:00', 29, 3, 0.36, 1, 1.94, 72.7, ST_SetSRID(ST_MakePoint(-45.40895, -12.76109), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-28 17:34:00', 29, 2, 1.0, 27, 0.0, 69.8, ST_SetSRID(ST_MakePoint(-41.43783, -12.44625), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-31 17:54:00', 29, 3, 0.99, 3, 0.0, 64.9, ST_SetSRID(ST_MakePoint(-45.25487, -13.585), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:17:00', 29, 2, 1.0, 20, 0.0, 61.2, ST_SetSRID(ST_MakePoint(-38.54148, -9.83782), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-25 17:15:00', 29, 2, 1.0, 1, 0.0, 58.9, ST_SetSRID(ST_MakePoint(-39.85045, -12.96971), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 29, 3, 0.84, 4, 0.0, 57.8, ST_SetSRID(ST_MakePoint(-43.8364, -12.84637), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-01 16:54:00', 31, 4, 0.47, 5, 0.0, 263.3, ST_SetSRID(ST_MakePoint(-41.93121, -15.50443), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-01 16:54:00', 31, 4, 0.44, 5, 0.0, 223.0, ST_SetSRID(ST_MakePoint(-41.93456, -15.51357), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 17:15:00', 31, 4, 0.9, 19, 0.82, 85.1, ST_SetSRID(ST_MakePoint(-42.20878, -16.90784), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:32:00', 31, 3, 0.98, 6, 0.0, 71.0, ST_SetSRID(ST_MakePoint(-44.50324, -18.06392), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:11:00', 41, 4, 0.13, 0, 0.26, 83.4, ST_SetSRID(ST_MakePoint(-50.59589, -25.109), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-22 18:30:00', 41, 4, 0.04, 3, 0.0, 59.4, ST_SetSRID(ST_MakePoint(-51.19169, -26.22156), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-21 17:52:00', 42, 4, 0.12, 4, 0.0, 116.9, ST_SetSRID(ST_MakePoint(-52.9228, -26.52773), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-21 17:52:00', 42, 4, 0.13, 5, 0.0, 80.8, ST_SetSRID(ST_MakePoint(-52.92976, -26.53258), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-21 17:52:00', 42, 4, 0.03, 4, 0.0, 70.5, ST_SetSRID(ST_MakePoint(-52.90402, -26.53005), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:09:00', 42, 4, 0.16, 4, 2.78, 60.7, ST_SetSRID(ST_MakePoint(-50.95993, -27.417), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-24 18:09:00', 43, 4, 0.01, 8, 18.84, 174.1, ST_SetSRID(ST_MakePoint(-50.27584, -29.07055), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 18:49:00', 43, 5, 0.76, 8, 0.0, 154.0, ST_SetSRID(ST_MakePoint(-55.49454, -28.19617), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-20 18:49:00', 43, 5, 1.0, 11, 0.0, 139.2, ST_SetSRID(ST_MakePoint(-54.19075, -30.72665), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-21 17:49:00', 43, 5, 0.91, 12, 0.0, 68.5, ST_SetSRID(ST_MakePoint(-54.20226, -30.73272), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-21 17:54:00', 51, 3, 0.01, 0, 0.0, 62.8, ST_SetSRID(ST_MakePoint(-58.10709, -12.41037), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 51, 1, 0.0, 0, 10.58, 60.4, ST_SetSRID(ST_MakePoint(-52.8027, -13.07154), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-03-21 17:54:00', 51, 1, 0.2, 2, 0.0, 58.7, ST_SetSRID(ST_MakePoint(-57.86929, -14.95551), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:32:00', 52, 3, 0.48, 6, 0.0, 312.5, ST_SetSRID(ST_MakePoint(-47.55893, -16.3524), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:32:00', 52, 3, 0.33, 6, 0.0, 140.6, ST_SetSRID(ST_MakePoint(-47.57668, -16.35456), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 52, 3, 0.06, 0, 0.0, 97.6, ST_SetSRID(ST_MakePoint(-47.66957, -14.12348), 4326)
+    );
+INSERT INTO Foco_calor (
+        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
+    ) VALUES (
+        '2025-04-02 17:34:00', 52, 3, 0.07, 0, 0.0, 82.2, ST_SetSRID(ST_MakePoint(-47.67595, -14.12625), 4326)
+    );
+
+    CREATE TABLE Area_Queimada (
+    id SERIAL PRIMARY KEY,                         -- ID autoincrementável
+    estado_id INT REFERENCES Estados(id_estado),   -- FK para o estado (tabela Estados)
+    bioma_id INT REFERENCES Bioma(id),             -- FK para o bioma (tabela Bioma)
+   data_pas DATE NOT NULL,                         -- Data do foco
+    risco DECIMAL(3,2),                            -- Índice de risco (0.00 a 1.00)
+    frp DECIMAL(7,2),                              -- Potência radiativa do fogo (0.1 a 5000)
+    geom GEOMETRY(Point, 4326),                    -- Coordenadas do foco (WGS 84)
+    FOREIGN KEY (estado_id) REFERENCES Estados(id_estado),
+    FOREIGN KEY (bioma_id) REFERENCES Bioma(id)
+	);
+
+    INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES
+    (14, 1, '2024-02-24', 0.89, 3573.00, ST_SetSRID(ST_MakePoint(-59.96325, -9.55578), 4326)),
+    (14, 1, '2024-02-24', 0.88, 1881.00, ST_SetSRID(ST_MakePoint(-59.96143, 4.11336), 4326)),
+    (51, 1, '2024-06-11', 0.60, 1600.00, ST_SetSRID(ST_MakePoint(-57.38499, -2.26754), 4326)),
+    (51, 1, '2024-02-17', 0.00, 1531.00, ST_SetSRID(ST_MakePoint(-52.45812, -16.18356), 4326)),
+    (51, 1, '2024-06-01', 0.17, 1339.00, ST_SetSRID(ST_MakePoint(-54.8665, -3.18409), 4326)),
+    (51, 1, '2024-05-10', 0.14, 1253.00, ST_SetSRID(ST_MakePoint(-52.4932, 0.70127), 4326)),
+    (51, 1, '2024-05-11', 0.13, 1196.00, ST_SetSRID(ST_MakePoint(-52.48488, 4.26924), 4326)),
+    (51, 1, '2024-05-11', 0.14, 1196.00, ST_SetSRID(ST_MakePoint(-52.47739, 4.11399), 4326)),
+    (51, 1, '2024-05-11', 0.13, 1196.00, ST_SetSRID(ST_MakePoint(-52.48563, 4.11348), 4326)),
+    (51, 1, '2024-05-11', 0.14, 1196.00, ST_SetSRID(ST_MakePoint(-52.47812, 0.83042), 4326)),
+    (51, 1, '2024-06-11', 0.60, 1126.00, ST_SetSRID(ST_MakePoint(-57.3784, -3.35459), 4326)),
+    (51, 1, '2024-05-10', 0.14, 1111.00, ST_SetSRID(ST_MakePoint(-52.47954, -7.51545), 4326)),
+    (51, 1, '2024-06-06', 0.35, 1083.00, ST_SetSRID(ST_MakePoint(-52.17395, -9.23265), 4326)),
+    (51, 1, '2024-06-01', 0.17, 1029.00, ST_SetSRID(ST_MakePoint(-54.8665, -6.02126), 4326)),
+    (50, 6, '2024-06-15', 0.88, 1027.00, ST_SetSRID(ST_MakePoint(-57.2733, -6.0207), 4326)),
+    (14, 1, '2024-02-20', 1.00, 1008.00, ST_SetSRID(ST_MakePoint(-61.63058, -5.21128), 4326)),
+    (14, 1, '2024-02-21', 0.82, 954.00, ST_SetSRID(ST_MakePoint(-60.6552, -14.30212), 4326)),
+    (29, 2, '2024-06-19', 1.00, 913.00, ST_SetSRID(ST_MakePoint(-42.42688, -11.14986), 4326)),
+    (51, 1, '2024-05-15', 0.12, 899.00, ST_SetSRID(ST_MakePoint(-52.1758, -10.31768), 4326)),
+    (51, 1, '2024-06-08', 1.00, 898.00, ST_SetSRID(ST_MakePoint(-52.8452, -10.28601), 4326)),
+    (51, 1, '2024-06-11', 0.60, 888.00, ST_SetSRID(ST_MakePoint(-57.3784, -7.49188), 4326)),
+    (51, 1, '2024-06-07', 0.37, 887.00, ST_SetSRID(ST_MakePoint(-54.1163, -6.50409), 4326)),
+    (51, 3, '2024-06-22', 0.38, 875.00, ST_SetSRID(ST_MakePoint(-59.733, -19.58589), 4326)),
+    (13, 1, '2024-06-09', 0.21, 834.00, ST_SetSRID(ST_MakePoint(-65.94208, -15.88573), 4326)),
+    (51, 1, '2024-06-01', 0.40, 834.00, ST_SetSRID(ST_MakePoint(-53.8125, -15.57549), 4326)),
+    (50, 6, '2024-06-14', 0.78, 816.00, ST_SetSRID(ST_MakePoint(-57.35072, -12.7786), 4326)),
+    (51, 1, '2024-05-15', 0.12, 811.00, ST_SetSRID(ST_MakePoint(-52.1758, -14.61921), 4326)),
+    (51, 1, '2024-06-11', 0.60, 809.00, ST_SetSRID(ST_MakePoint(-57.3784, -14.59965), 4326)),
+    (51, 1, '2024-06-11', 0.60, 804.00, ST_SetSRID(ST_MakePoint(-57.3784, -3.225), 4326)),
+    (51, 1, '2024-06-19', 0.68, 802.00, ST_SetSRID(ST_MakePoint(-53.843, -4.2421), 4326)),
+    (14, 1, '2024-01-04', 0.61, 800.00, ST_SetSRID(ST_MakePoint(-61.8546, -5.73895), 4326)),
+    (14, 1, '2024-03-23', 0.99, 790.00, ST_SetSRID(ST_MakePoint(-61.9266, -6.59897), 4326)),
+    (51, 3, '2024-06-22', 0.38, 785.00, ST_SetSRID(ST_MakePoint(-59.733, -10.94376), 4326)),
+    (51, 1, '2024-05-31', 0.39, 774.00, ST_SetSRID(ST_MakePoint(-57.7594, -13.19837), 4326)),
+    (14, 1, '2024-01-25', 0.17, 773.00, ST_SetSRID(ST_MakePoint(-60.4118, -20.90709), 4326)),
+    (50, 6, '2024-01-25', 0.01, 770.00, ST_SetSRID(ST_MakePoint(-57.3745, -24.61046), 4326)),
+    (51, 1, '2024-06-19', 0.68, 766.00, ST_SetSRID(ST_MakePoint(-53.8636, -1.65623), 4326)),
+    (14, 1, '2024-02-21', 0.82, 745.00, ST_SetSRID(ST_MakePoint(-60.6741, -1.80193), 4326)),
+    (51, 1, '2024-06-19', 0.66, 743.00, ST_SetSRID(ST_MakePoint(-52.52882, -11.33138), 4326)),
+    (11, 1, '2024-07-12', 0.81, 743.00, ST_SetSRID(ST_MakePoint(-63.88072, -11.3313), 4326)),
+    (14, 1, '2024-02-10', 0.77, 739.00, ST_SetSRID(ST_MakePoint(-60.13742, 1.08764), 4326)),
+    (29, 2, '2024-06-26', 1.00, 730.00, ST_SetSRID(ST_MakePoint(-42.40682, 4.26101), 4326)),
+    (50, 6, '2024-06-04', 0.62, 716.00, ST_SetSRID(ST_MakePoint(-57.5009, 4.26543), 4326)),
+    (51, 1, '2024-06-08', 0.66, 714.00, ST_SetSRID(ST_MakePoint(-57.3766, 4.21007), 4326)),
+    (50, 6, '2024-07-03', 1.00, 714.00, ST_SetSRID(ST_MakePoint(-58.03885, 4.18509), 4326)),
+    (14, 1, '2024-02-24', 0.87, 713.00, ST_SetSRID(ST_MakePoint(-59.95958, 3.81194), 4326)),
+    (50, 3, '2024-06-15', 1.00, 694.00, ST_SetSRID(ST_MakePoint(-52.83632, 2.68397), 4326)),
+    (50, 3, '2024-06-15', 1.00, 693.00, ST_SetSRID(ST_MakePoint(-52.8459, 2.68254), 4326)),
+    (14, 1, '2024-02-19', 1.00, 684.00, ST_SetSRID(ST_MakePoint(-61.1418, -24.73962), 4326)),
+    (50, 6, '2024-06-24', 1.00, 674.00, ST_SetSRID(ST_MakePoint(-57.17572, -20.63966), 4326)),
+    (51, 1, '2024-06-07', 0.62, 662.00, ST_SetSRID(ST_MakePoint(-54.1182, -9.4105), 4326)),
+    (50, 6, '2024-06-22', 0.86, 658.00, ST_SetSRID(ST_MakePoint(-57.7348, -11.78028), 4326)),
+    (50, 6, '2024-06-05', 0.99, 657.00, ST_SetSRID(ST_MakePoint(-57.50022, 2.26576), 4326)),
+    (31, 3, '2024-07-10', 1.00, 657.00, ST_SetSRID(ST_MakePoint(-45.93318, 2.9301), 4326)),
+    (51, 1, '2024-06-11', 0.37, 656.00, ST_SetSRID(ST_MakePoint(-54.3033, 1.10906), 4326)),
+    (51, 1, '2024-06-11', 0.37, 656.00, ST_SetSRID(ST_MakePoint(-54.29591, 1.10533), 4326)),
+    (51, 1, '2024-06-11', 0.37, 656.00, ST_SetSRID(ST_MakePoint(-54.3018, 1.03227), 4326)),
+    (51, 1, '2024-06-11', 0.37, 656.00, ST_SetSRID(ST_MakePoint(-54.29452, 1.0287), 4326)),
+    (51, 1, '2024-06-07', 0.24, 655.00, ST_SetSRID(ST_MakePoint(-57.66126, 0.86954), 4326)),
+    (21, 3, '2024-06-12', 0.76, 654.00, ST_SetSRID(ST_MakePoint(-45.03719, 0.81865), 4326)),
+    (51, 1, '2024-06-22', 0.58, 654.00, ST_SetSRID(ST_MakePoint(-54.6131, -12.9475), 4326)),
+    (51, 3, '2024-06-19', 1.00, 647.00, ST_SetSRID(ST_MakePoint(-58.207, 1.6439), 4326)),
+    (14, 1, '2024-02-04', 0.85, 643.00, ST_SetSRID(ST_MakePoint(-61.7229, 0.31165), 4326)),
+    (51, 1, '2024-05-15', 0.12, 642.00, ST_SetSRID(ST_MakePoint(-52.1758, 0.16218), 4326)),
+    (51, 1, '2024-06-09', 0.28, 642.00, ST_SetSRID(ST_MakePoint(-57.7579, 0.15994), 4326)),
+    (51, 1, '2024-05-08', 0.14, 625.00, ST_SetSRID(ST_MakePoint(-52.46093, 3.56406), 4326)),
+    (50, 6, '2024-06-08', 0.75, 625.00, ST_SetSRID(ST_MakePoint(-57.37333, 3.56233), 4326)),
+    (50, 3, '2024-06-15', 1.00, 624.00, ST_SetSRID(ST_MakePoint(-52.8459, 3.21352), 4326)),
+    (51, 1, '2024-06-13', 0.38, 617.00, ST_SetSRID(ST_MakePoint(-54.2947, 2.99914), 4326)),
+    (51, 6, '2024-06-19', 1.00, 611.00, ST_SetSRID(ST_MakePoint(-57.1204, 1.42467), 4326)),
+    (51, 1, '2024-06-15', 0.93, 608.00, ST_SetSRID(ST_MakePoint(-54.3886, -7.53834), 4326)),
+    (21, 3, '2024-06-08', 0.00, 607.00, ST_SetSRID(ST_MakePoint(-43.75888, -2.75829), 4326)),
+    (51, 1, '2024-05-09', 0.45, 606.00, ST_SetSRID(ST_MakePoint(-52.468, 2.68221), 4326)),
+    (29, 3, '2024-06-23', 0.89, 602.00, ST_SetSRID(ST_MakePoint(-44.5067, 1.77543), 4326)),
+    (50, 4, '2024-06-19', NULL, 595.00, ST_SetSRID(ST_MakePoint(-53.6494, -3.72938), 4326)),
+    (14, 1, '2024-03-21', 0.96, 588.00, ST_SetSRID(ST_MakePoint(-59.57396, -1.36255), 4326)),
+    (51, 3, '2024-06-19', 1.00, 587.00, ST_SetSRID(ST_MakePoint(-58.207, -10.20508), 4326)),
+    (51, 3, '2024-07-19', 1.00, 585.00, ST_SetSRID(ST_MakePoint(-53.9208, -15.36279), 4326)),
+    (15, 1, '2024-07-15', 0.66, 584.00, ST_SetSRID(ST_MakePoint(-55.12886, -15.17656), 4326)),
+    (51, 6, '2024-01-28', 0.39, 583.00, ST_SetSRID(ST_MakePoint(-57.4267, -14.61615), 4326)),
+    (51, 6, '2024-02-09', 0.10, 578.00, ST_SetSRID(ST_MakePoint(-57.52338, -6.87898), 4326)),
+    (50, 3, '2024-06-15', 1.00, 577.00, ST_SetSRID(ST_MakePoint(-52.8242, -6.46655), 4326)),
+    (51, 1, '2024-06-15', 0.45, 569.00, ST_SetSRID(ST_MakePoint(-52.4269, -15.66923), 4326)),
+    (50, 3, '2024-06-15', 1.00, 568.00, ST_SetSRID(ST_MakePoint(-52.8459, -14.04194), 4326)),
+    (50, 3, '2024-06-11', 0.82, 567.00, ST_SetSRID(ST_MakePoint(-57.2376, -6.53215), 4326)),
+    (51, 1, '2024-06-12', 0.43, 567.00, ST_SetSRID(ST_MakePoint(-57.21732, -6.51879), 4326)),
+    (50, 6, '2024-06-25', 0.98, 567.00, ST_SetSRID(ST_MakePoint(-57.2032, -6.51639), 4326)),
+    (14, 1, '2024-04-12', 0.63, 565.00, ST_SetSRID(ST_MakePoint(-60.89792, -6.43571), 4326)),
+    (29, 2, '2024-06-25', 1.00, 564.00, ST_SetSRID(ST_MakePoint(-42.36932, -6.39713), 4326)),
+    (51, 1, '2024-05-14', 0.18, 563.00, ST_SetSRID(ST_MakePoint(-52.8205, -5.48975), 4326)),
+    (52, 3, '2024-06-15', 1.00, 561.00, ST_SetSRID(ST_MakePoint(-50.4692, -5.12822), 4326)),
+    (22, 3, '2024-06-22', 0.98, 555.00, ST_SetSRID(ST_MakePoint(-43.44049, -4.35223), 4326)),
+    (22, 3, '2024-06-22', 0.98, 555.00, ST_SetSRID(ST_MakePoint(-43.43986, -4.33343), 4326)),
+    (22, 3, '2024-06-22', 0.87, 555.00, ST_SetSRID(ST_MakePoint(-43.43464, -4.26443), 4326)),
+    (22, 3, '2024-06-22', 0.89, 555.00, ST_SetSRID(ST_MakePoint(-43.43525, -4.21087), 4326)),
+    (14, 1, '2024-02-19', 0.94, 554.00, ST_SetSRID(ST_MakePoint(-61.5635, -3.70452), 4326)),
+    (50, 3, '2024-05-31', 0.73, 546.00, ST_SetSRID(ST_MakePoint(-53.3108, -10.48036), 4326)),
+    (51, 1, '2024-06-11', 0.71, 544.00, ST_SetSRID(ST_MakePoint(-57.3766, -2.6342), 4326)),
+    (14, 1, '2024-01-28', 1.00, 541.00, ST_SetSRID(ST_MakePoint(-60.7715, -2.28267), 4326)),
+    (50, 6, '2024-01-27', 0.07, 540.00, ST_SetSRID(ST_MakePoint(-57.3538, -1.83468), 4326)),
+    (50, 3, '2024-01-05', 0.18, 539.00, ST_SetSRID(ST_MakePoint(-54.0068, -1.33929), 4326)),
+    (51, 1, '2024-06-15', 0.40, 538.00, ST_SetSRID(ST_MakePoint(-54.589, -1.33574), 4326)),
+    (31, 3, '2024-07-14', 1.00, 534.00, ST_SetSRID(ST_MakePoint(-47.84517, -9.12328), 4326)),
+    (51, 1, '2024-06-06', 0.34, 533.00, ST_SetSRID(ST_MakePoint(-54.1163, -8.85416), 4326)),
+    (51, 1, '2024-06-08', 0.53, 532.00, ST_SetSRID(ST_MakePoint(-57.3984, -8.51438), 4326)),
+    (50, 6, '2024-01-30', 0.10, 530.00, ST_SetSRID(ST_MakePoint(-56.5484, -8.16296), 4326)),
+    (29, 3, '2024-06-23', 0.89, 530.00, ST_SetSRID(ST_MakePoint(-44.5067, -8.13171), 4326)),
+    (50, 3, '2024-06-15', 1.00, 527.00, ST_SetSRID(ST_MakePoint(-52.8459, -7.76429), 4326)),
+    (50, 3, '2024-05-31', 0.73, 526.00, ST_SetSRID(ST_MakePoint(-53.3108, -7.70907), 4326)),
+    (17, 3, '2024-06-14', 0.98, 523.00, ST_SetSRID(ST_MakePoint(-49.4861, -7.54211), 4326)),
+    (50, 6, '2024-06-20', NULL, 523.00, ST_SetSRID(ST_MakePoint(-57.6263, -7.50627), 4326)),
+    (22, 3, '2024-07-17', 1.00, 523.00, ST_SetSRID(ST_MakePoint(-45.5231, -7.48905), 4326)),
+    (51, 1, '2024-07-17', 0.60, 523.00, ST_SetSRID(ST_MakePoint(-59.5405, -7.46887), 4326)),
+    (14, 1, '2024-02-19', 0.95, 520.00, ST_SetSRID(ST_MakePoint(-61.545, -7.28055), 4326)),
+    (51, 1, '2024-05-31', 0.29, 520.00, ST_SetSRID(ST_MakePoint(-54.2585, -7.27666), 4326)),
+    (51, 1, '2024-06-01', 0.17, 519.00, ST_SetSRID(ST_MakePoint(-54.8665, 3.39214), 4326)),
+    (51, 1, '2024-06-15', 0.40, 519.00, ST_SetSRID(ST_MakePoint(-54.589, 3.39153), 4326)),
+    (51, 1, '2024-06-08', 0.38, 518.00, ST_SetSRID(ST_MakePoint(-54.0957, 3.20403), 4326)),
+    (29, 3, '2024-06-12', 1.00, 518.00, ST_SetSRID(ST_MakePoint(-44.7271, 2.59836), 4326)),
+    (14, 1, '2024-02-22', 1.00, 516.00, ST_SetSRID(ST_MakePoint(-60.90051, 2.06507), 4326)),
+    (13, 1, '2024-07-19', 0.34, 515.00, ST_SetSRID(ST_MakePoint(-62.5268, 1.89524), 4326)),
+    (14, 1, '2024-02-20', 1.00, 514.00, ST_SetSRID(ST_MakePoint(-61.67022, 1.78571), 4326)),
+    (21, 3, '2024-06-21', 1.00, 514.00, ST_SetSRID(ST_MakePoint(-45.6846, 1.78564), 4326)),
+    (50, 3, '2024-06-15', 1.00, 512.00, ST_SetSRID(ST_MakePoint(-52.8242, 1.89104), 4326)),
+    (50, 3, '2024-06-15', 1.00, 509.00, ST_SetSRID(ST_MakePoint(-52.8459, -7.16898), 4326)),
+    (14, 1, '2024-02-24', 1.00, 508.00, ST_SetSRID(ST_MakePoint(-60.3539, 4.24481), 4326)),
+    (51, 1, '2024-06-19', 0.68, 507.00, ST_SetSRID(ST_MakePoint(-53.843, 3.38874), 4326)),
+    (15, 1, '2024-07-16', 0.19, 507.00, ST_SetSRID(ST_MakePoint(-55.9543, 3.38694), 4326)),
+    (50, 6, '2024-06-08', NULL, 506.00, ST_SetSRID(ST_MakePoint(-57.5448, 2.81798), 4326)),
+    (52, 3, '2024-03-01', 0.00, 503.00, ST_SetSRID(ST_MakePoint(-52.95832, -23.76174), 4326)),
+    (52, 3, '2024-04-23', 0.09, 503.00, ST_SetSRID(ST_MakePoint(-52.8903, -19.29437), 4326)),
+    (17, 3, '2024-05-11', 0.23, 503.00, ST_SetSRID(ST_MakePoint(-48.11428, -22.64796), 4326)),
+    (51, 1, '2024-05-14', 0.18, 499.00, ST_SetSRID(ST_MakePoint(-52.8205, -2.01758), 4326)),
+    (51, 1, '2024-06-11', 0.43, 499.00, ST_SetSRID(ST_MakePoint(-57.2014, -0.99212), 4326)),
+    (50, 6, '2024-06-06', 0.61, 499.00, ST_SetSRID(ST_MakePoint(-57.3824, -2.54861), 4326)),
+    (51, 3, '2024-07-04', 1.00, 499.00, ST_SetSRID(ST_MakePoint(-58.86357, -2.54528), 4326)),
+    (14, 1, '2024-01-25', 0.53, 498.00, ST_SetSRID(ST_MakePoint(-60.0461, -19.29375), 4326)),
+    (51, 3, '2024-05-28', 0.64, 497.00, ST_SetSRID(ST_MakePoint(-52.93, -22.80692), 4326)),
+    (35, 4, '2024-06-14', 1.00, 496.00, ST_SetSRID(ST_MakePoint(-48.6878, -18.63187), 4326)),
+    (51, 1, '2024-05-30', 0.14, 494.00, ST_SetSRID(ST_MakePoint(-57.4897, -22.33292), 4326)),
+    (29, 3, '2024-06-19', 1.00, 492.00, ST_SetSRID(ST_MakePoint(-43.44094, -1.75125), 4326)),
+    (51, 1, '2024-06-21', 0.59, 492.00, ST_SetSRID(ST_MakePoint(-54.2538, -1.75013), 4326)),
+    (29, 3, '2024-06-06', 1.00, 487.00, ST_SetSRID(ST_MakePoint(-44.7476, -2.13646), 4326)),
+    (51, 1, '2024-05-16', 0.31, 485.00, ST_SetSRID(ST_MakePoint(-52.4428, 1.03445), 4326)),
+    (17, 3, '2024-05-24', 0.63, 483.00, ST_SetSRID(ST_MakePoint(-49.53576, 0.8266), 4326)),
+    (50, 6, '2024-07-01', 0.96, 482.00, ST_SetSRID(ST_MakePoint(-57.5665, 0.71705), 4326)),
+    (22, 2, '2024-06-22', 0.82, 480.00, ST_SetSRID(ST_MakePoint(-42.8126, 0.3379), 4326)),
+    (50, 3, '2024-06-15', 1.00, 479.00, ST_SetSRID(ST_MakePoint(-52.8242, -1.62905), 4326)),
+    (50, 6, '2024-03-16', 0.02, 478.00, ST_SetSRID(ST_MakePoint(-55.81344, -2.7923), 4326)),
+    (51, 1, '2024-05-06', 0.08, 477.00, ST_SetSRID(ST_MakePoint(-52.1549, 3.97665), 4326)),
+    (35, 4, '2024-06-10', 1.00, 476.00, ST_SetSRID(ST_MakePoint(-51.72032, 4.55994), 4326)),
+    (17, 3, '2024-07-19', 1.00, 474.00, ST_SetSRID(ST_MakePoint(-48.79342, 4.41275), 4326)),
+    (29, 3, '2024-06-06', 1.00, 473.00, ST_SetSRID(ST_MakePoint(-44.7476, 4.24223), 4326)),
+    (51, 1, '2024-05-15', 0.11, 472.00, ST_SetSRID(ST_MakePoint(-52.1775, 3.8155), 4326)),
+    (50, 6, '2024-06-22', 1.00, 472.00, ST_SetSRID(ST_MakePoint(-56.37591, 3.81482), 4326)),
+    (14, 1, '2024-03-23', 1.00, 470.00, ST_SetSRID(ST_MakePoint(-60.2479, 2.75373), 4326)),
+    (51, 1, '2024-05-16', 0.17, 470.00, ST_SetSRID(ST_MakePoint(-52.4637, 2.75305), 4326)),
+    (51, 1, '2024-06-30', 0.73, 470.00, ST_SetSRID(ST_MakePoint(-54.0556, 2.75237), 4326)),
+    (50, 6, '2024-06-13', 0.64, 467.00, ST_SetSRID(ST_MakePoint(-57.8456, 3.45526), 4326)),
+    (51, 1, '2024-06-15', 0.40, 465.00, ST_SetSRID(ST_MakePoint(-54.589, 3.43654), 4326)),
+    (51, 1, '2024-06-15', 0.59, 462.00, ST_SetSRID(ST_MakePoint(-53.0611, 3.4315), 4326)),
+    (51, 1, '2024-06-19', 0.68, 462.00, ST_SetSRID(ST_MakePoint(-53.8618, 3.43143), 4326)),
+    (50, 6, '2024-06-23', 0.96, 462.00, ST_SetSRID(ST_MakePoint(-57.26599, 3.43086), 4326)),
+    (51, 1, '2024-05-31', 0.38, 461.00, ST_SetSRID(ST_MakePoint(-53.8125, 3.42457), 4326)),
+    (21, 3, '2024-06-26', 1.00, 461.00, ST_SetSRID(ST_MakePoint(-44.8761, 3.42393), 4326)),
+    (15, 1, '2024-07-16', 0.33, 461.00, ST_SetSRID(ST_MakePoint(-56.18721, 3.42386), 4326)),
+    (14, 1, '2024-01-27', 0.22, 460.00, ST_SetSRID(ST_MakePoint(-59.3629, -9.81397), 4326)),
+    (51, 1, '2024-05-15', 0.12, 459.00, ST_SetSRID(ST_MakePoint(-52.1758, -8.93121), 4326)),
+    (29, 2, '2024-06-26', 1.00, 456.00, ST_SetSRID(ST_MakePoint(-42.44526, -2.99591), 4326)),
+    (50, 4, '2024-05-23', 0.25, 454.00, ST_SetSRID(ST_MakePoint(-54.1319, -10.06976), 4326)),
+    (50, 6, '2024-06-07', 0.81, 454.00, ST_SetSRID(ST_MakePoint(-57.54119, -10.01908), 4326)),
+    (50, 6, '2024-06-07', 0.89, 454.00, ST_SetSRID(ST_MakePoint(-57.53725, -10.01539), 4326)),
+    (29, 3, '2024-06-05', 1.00, 454.00, ST_SetSRID(ST_MakePoint(-44.7476, -10.25502), 4326)),
+    (50, 6, '2024-01-27', 0.07, 453.00, ST_SetSRID(ST_MakePoint(-57.3745, -15.57939), 4326)),
+    (51, 1, '2024-07-17', 0.60, 452.00, ST_SetSRID(ST_MakePoint(-59.5405, -15.71344), 4326)),
+    (14, 1, '2024-02-20', 1.00, 451.00, ST_SetSRID(ST_MakePoint(-61.6055, -9.92818), 4326)),
+    (51, 1, '2024-05-28', 0.11, 450.00, ST_SetSRID(ST_MakePoint(-56.7228, -7.59799), 4326)),
+    (51, 1, '2024-05-30', 0.14, 450.00, ST_SetSRID(ST_MakePoint(-57.4897, -15.70922), 4326)),
+    (51, 1, '2024-06-22', 0.70, 450.00, ST_SetSRID(ST_MakePoint(-55.888, -15.7087), 4326)),
+    (29, 3, '2024-06-23', 0.89, 449.00, ST_SetSRID(ST_MakePoint(-44.5067, -4.74506), 4326)),
+    (50, 4, '2024-06-19', NULL, 448.00, ST_SetSRID(ST_MakePoint(-53.6494, -29.81311), 4326)),
+    (51, 1, '2024-06-21', 0.75, 448.00, ST_SetSRID(ST_MakePoint(-53.0633, -6.92551), 4326)),
+    (11, 1, '2024-07-15', 0.34, 446.00, ST_SetSRID(ST_MakePoint(-62.3995, -3.62133), 4326)),
+    (51, 1, '2024-06-21', 0.59, 445.00, ST_SetSRID(ST_MakePoint(-54.2745, -3.40002), 4326)),
+    (51, 1, '2024-06-01', 0.40, 444.00, ST_SetSRID(ST_MakePoint(-53.8142, -2.63668), 4326)),
+    (50, 6, '2024-06-08', 0.85, 443.00, ST_SetSRID(ST_MakePoint(-57.37604, 0.83005), 4326)),
+    (51, 1, '2024-06-06', 0.47, 442.00, ST_SetSRID(ST_MakePoint(-52.9212, -21.66467), 4326)),
+    (14, 1, '2024-02-21', 0.53, 440.00, ST_SetSRID(ST_MakePoint(-60.6013, -2.07718), 4326)),
+    (51, 1, '2024-05-15', 0.12, 440.00, ST_SetSRID(ST_MakePoint(-52.1758, -2.07655), 4326)),
+    (51, 1, '2024-06-19', 0.68, 440.00, ST_SetSRID(ST_MakePoint(-53.843, -1.96177), 4326)),
+    (51, 1, '2024-07-17', 0.60, 440.00, ST_SetSRID(ST_MakePoint(-59.5405, -1.59644), 4326)),
+    (13, 1, '2024-06-26', 0.08, 439.00, ST_SetSRID(ST_MakePoint(-61.41288, -3.01521), 4326)),
+    (29, 3, '2024-05-28', 1.00, 438.00, ST_SetSRID(ST_MakePoint(-44.9074, -2.97994), 4326)),
+    (21, 3, '2024-06-21', 1.00, 438.00, ST_SetSRID(ST_MakePoint(-45.6846, -2.96792), 4326)),
+    (51, 1, '2024-06-05', 0.45, 436.00, ST_SetSRID(ST_MakePoint(-57.7211, 1.11632), 4326)),
+    (51, 1, '2024-06-30', 0.73, 436.00, ST_SetSRID(ST_MakePoint(-54.0556, 1.11562), 4326)),
+    (51, 1, '2024-06-14', 0.56, 435.00, ST_SetSRID(ST_MakePoint(-52.4077, 0.96385), 4326)),
+    (13, 1, '2024-07-15', 0.07, 435.00, ST_SetSRID(ST_MakePoint(-64.45313, 0.92013), 4326)),
+    (14, 1, '2024-02-24', 0.51, 434.00, ST_SetSRID(ST_MakePoint(-60.7151, 0.82398), 4326)),
+    (52, 3, '2024-03-01', 0.00, 432.00, ST_SetSRID(ST_MakePoint(-52.9664, 4.21924), 4326)),
+    (14, 1, '2024-01-04', 0.63, 431.00, ST_SetSRID(ST_MakePoint(-61.836, 2.59665), 4326)),
+    (14, 1, '2024-03-23', 1.00, 430.00, ST_SetSRID(ST_MakePoint(-60.85111, 2.59245), 4326)),
+    (50, 3, '2024-06-15', 1.00, 430.00, ST_SetSRID(ST_MakePoint(-52.8242, 2.59228), 4326)),
+    (51, 3, '2024-05-28', 0.64, 429.00, ST_SetSRID(ST_MakePoint(-52.93, 1.6599), 4326)),
+    (29, 3, '2024-06-12', 1.00, 429.00, ST_SetSRID(ST_MakePoint(-43.4361, 0.67826), 4326)),
+    (51, 1, '2024-06-30', 0.73, 429.00, ST_SetSRID(ST_MakePoint(-54.0556, 3.90371), 4326)),
+    (51, 1, '2024-06-20', 0.68, 428.00, ST_SetSRID(ST_MakePoint(-52.5172, 4.39807), 4326)),
+    (50, 6, '2024-02-16', 0.01, 426.00, ST_SetSRID(ST_MakePoint(-57.0056, 4.30314), 4326)),
+    (50, 6, '2024-06-11', 1.00, 426.00, ST_SetSRID(ST_MakePoint(-57.5911, 4.30239), 4326)),
+    (51, 1, '2024-05-31', 0.29, 425.00, ST_SetSRID(ST_MakePoint(-54.2585, 2.59193), 4326)),
+    (51, 1, '2024-06-11', 0.37, 424.00, ST_SetSRID(ST_MakePoint(-54.30768, 2.59656), 4326)),
+    (51, 6, '2024-06-24', 0.92, 424.00, ST_SetSRID(ST_MakePoint(-57.31136, -8.49619), 4326)),
+    (51, 3, '2024-06-25', 1.00, 423.00, ST_SetSRID(ST_MakePoint(-58.1675, -3.54045), 4326)),
+    (14, 1, '2024-03-23', 1.00, 422.00, ST_SetSRID(ST_MakePoint(-61.9078, -3.23538), 4326)),
+    (15, 1, '2024-07-17', 0.24, 420.00, ST_SetSRID(ST_MakePoint(-48.6781, -3.40944), 4326)),
+    (17, 3, '2024-07-20', 0.68, 420.00, ST_SetSRID(ST_MakePoint(-47.5046, -3.06778), 4326)),
+    (17, 3, '2024-06-10', 0.82, 419.00, ST_SetSRID(ST_MakePoint(-48.15886, -2.43205), 4326)),
+    (51, 1, '2024-05-16', 0.31, 417.00, ST_SetSRID(ST_MakePoint(-52.4428, -19.35183), 4326)),
+    (50, 6, '2024-06-26', 1.00, 417.00, ST_SetSRID(ST_MakePoint(-57.1927, -3.36281), 4326)),
+    (51, 1, '2024-06-27', 0.59, 417.00, ST_SetSRID(ST_MakePoint(-58.6711, -3.03633), 4326)),
+    (52, 3, '2024-03-01', 0.00, 416.00, ST_SetSRID(ST_MakePoint(-52.9416, -3.2081), 4326)),
+    (50, 6, '2024-06-04', 1.00, 414.00, ST_SetSRID(ST_MakePoint(-57.4984, -5.82779), 4326)),
+    (21, 3, '2024-06-27', 1.00, 414.00, ST_SetSRID(ST_MakePoint(-44.88678, -5.82315), 4326)),
+    (51, 1, '2024-06-15', 0.98, 412.00, ST_SetSRID(ST_MakePoint(-54.3682, 3.44883), 4326)),
+    (11, 1, '2024-07-19', 0.44, 412.00, ST_SetSRID(ST_MakePoint(-62.3704, 3.43208), 4326)),
+    (21, 3, '2024-06-21', 1.00, 411.00, ST_SetSRID(ST_MakePoint(-45.6846, 0.82158), 4326)),
+    (51, 3, '2024-07-19', 1.00, 410.00, ST_SetSRID(ST_MakePoint(-58.6679, -7.33099), 4326)),
+    (14, 1, '2024-02-21', 0.82, 409.00, ST_SetSRID(ST_MakePoint(-60.6741, -6.47134), 4326)),
+    (35, 3, '2024-05-22', 1.00, 409.00, ST_SetSRID(ST_MakePoint(-47.84087, -6.44221), 4326)),
+    (35, 3, '2024-06-23', 1.00, 409.00, ST_SetSRID(ST_MakePoint(-51.13572, -6.44058), 4326)),
+    (14, 1, '2024-02-11', 0.44, 408.00, ST_SetSRID(ST_MakePoint(-60.35, -4.43935), 4326)),
+    (22, 2, '2024-06-24', 0.77, 408.00, ST_SetSRID(ST_MakePoint(-42.8362, -4.34525), 4326)),
+    (51, 1, '2024-05-30', 0.14, 407.00, ST_SetSRID(ST_MakePoint(-57.4897, -3.75111), 4326)),
+    (11, 1, '2024-07-19', 0.44, 406.00, ST_SetSRID(ST_MakePoint(-62.3704, -3.3383), 4326)),
+    (51, 6, '2024-06-11', 0.81, 405.00, ST_SetSRID(ST_MakePoint(-57.2209, -11.70414), 4326)),
+    (29, 2, '2024-06-24', 1.00, 405.00, ST_SetSRID(ST_MakePoint(-42.4033, -11.55841), 4326)),
+    (35, 4, '2024-07-20', 1.00, 404.00, ST_SetSRID(ST_MakePoint(-49.42301, -2.63048), 4326)),
+    (50, 6, '2024-06-23', 0.87, 402.00, ST_SetSRID(ST_MakePoint(-57.2381, -10.88457), 4326)),
+    (29, 3, '2024-06-23', 0.89, 402.00, ST_SetSRID(ST_MakePoint(-44.5067, -10.8823), 4326)),
+    (51, 1, '2024-06-08', 1.00, 401.00, ST_SetSRID(ST_MakePoint(-52.8469, -14.57094), 4326)),
+    (17, 3, '2024-06-23', 1.00, 401.00, ST_SetSRID(ST_MakePoint(-46.57451, -15.56199), 4326)),
+    (50, 6, '2024-06-06', 0.68, 400.00, ST_SetSRID(ST_MakePoint(-57.4807, -8.36887), 4326)),
+    (11, 1, '2024-07-17', 1.00, 400.00, ST_SetSRID(ST_MakePoint(-63.8786, -8.3334), 4326)),
+    (13, 1, '2024-07-19', 0.89, 398.00, ST_SetSRID(ST_MakePoint(-59.61237, -10.02727), 4326)),
+    (13, 1, '2024-07-19', 0.63, 398.00, ST_SetSRID(ST_MakePoint(-59.61873, -10.02678), 4326)),
+    (14, 1, '2024-03-21', 0.79, 396.00, ST_SetSRID(ST_MakePoint(-59.54482, -6.29747), 4326)),
+    (35, 3, '2024-04-26', 0.78, 396.00, ST_SetSRID(ST_MakePoint(-48.9672, -6.29409), 4326)),
+    (51, 1, '2024-05-31', 0.38, 396.00, ST_SetSRID(ST_MakePoint(-53.8125, -6.29094), 4326)),
+    (51, 6, '2024-06-21', 1.00, 396.00, ST_SetSRID(ST_MakePoint(-58.426, -6.25886), 4326)),
+    (51, 1, '2024-06-30', 0.74, 396.00, ST_SetSRID(ST_MakePoint(-54.0351, -6.22356), 4326)),
+    (51, 1, '2024-06-11', 0.43, 393.00, ST_SetSRID(ST_MakePoint(-57.2014, -4.08478), 4326)),
+    (51, 1, '2024-06-14', 0.45, 393.00, ST_SetSRID(ST_MakePoint(-52.4285, -4.04946), 4326)),
+    (51, 1, '2024-06-06', 0.13, 392.00, ST_SetSRID(ST_MakePoint(-56.7028, -3.86816), 4326)),
+    (50, 6, '2024-06-24', 1.00, 390.00, ST_SetSRID(ST_MakePoint(-57.1715, -3.04679), 4326)),
+    (50, 6, '2024-06-08', 0.97, 389.00, ST_SetSRID(ST_MakePoint(-57.4395, -3.29457), 4326)),
+    (51, 1, '2024-06-22', 0.58, 388.00, ST_SetSRID(ST_MakePoint(-54.6131, -1.55698), 4326)),
+    (14, 1, '2024-02-21', 0.99, 385.00, ST_SetSRID(ST_MakePoint(-61.8906, -1.03013), 4326)),
+    (51, 1, '2024-06-21', 0.59, 385.00, ST_SetSRID(ST_MakePoint(-54.2745, -1.02944), 4326)),
+    (14, 1, '2024-02-21', 0.47, 384.00, ST_SetSRID(ST_MakePoint(-59.56402, 2.06647), 4326)),
+    (14, 1, '2024-02-21', 0.47, 384.00, ST_SetSRID(ST_MakePoint(-59.56352, 2.06595), 4326)),
+    (51, 1, '2024-06-06', 0.47, 384.00, ST_SetSRID(ST_MakePoint(-52.9212, 2.06455), 4326)),
+    (15, 1, '2024-07-17', 0.24, 384.00, ST_SetSRID(ST_MakePoint(-48.6781, 2.06403), 4326)),
+    (15, 1, '2024-07-16', 0.28, 383.00, ST_SetSRID(ST_MakePoint(-54.5045, -18.04935), 4326)),
+    (50, 6, '2024-06-14', 0.77, 382.00, ST_SetSRID(ST_MakePoint(-57.4863, -7.22159), 4326)),
+    (13, 1, '2024-07-14', 0.57, 382.00, ST_SetSRID(ST_MakePoint(-66.1695, -8.16299), 4326)),
+    (21, 3, '2024-06-01', 0.41, 381.00, ST_SetSRID(ST_MakePoint(-44.1962, -3.31963), 4326)),
+    (27, 4, '2024-02-08', 1.00, 380.00, ST_SetSRID(ST_MakePoint(-36.30166, -3.76884), 4326)),
+    (51, 1, '2024-06-07', 0.36, 380.00, ST_SetSRID(ST_MakePoint(-54.0976, -3.62597), 4326)),
+    (14, 1, '2024-01-04', 0.59, 379.00, ST_SetSRID(ST_MakePoint(-61.8734, -7.16634), 4326)),
+    (51, 1, '2024-05-06', 0.08, 379.00, ST_SetSRID(ST_MakePoint(-52.1549, -7.15087), 4326)),
+    (51, 1, '2024-06-09', 0.46, 379.00, ST_SetSRID(ST_MakePoint(-57.7564, -7.14609), 4326)),
+    (50, 6, '2024-06-24', 1.00, 379.00, ST_SetSRID(ST_MakePoint(-58.0231, -7.02314), 4326)),
+    (29, 3, '2024-06-12', 1.00, 378.00, ST_SetSRID(ST_MakePoint(-44.7271, -3.97716), 4326)),
+    (50, 4, '2024-06-19', NULL, 378.00, ST_SetSRID(ST_MakePoint(-53.6494, -4.36822), 4326)),
+    (51, 1, '2024-05-16', 0.31, 376.00, ST_SetSRID(ST_MakePoint(-52.4428, -1.37036), 4326)),
+    (51, 1, '2024-05-17', 0.79, 376.00, ST_SetSRID(ST_MakePoint(-52.4407, -1.34203), 4326)),
+    (51, 1, '2024-05-08', 0.06, 375.00, ST_SetSRID(ST_MakePoint(-55.1572, -3.86358), 4326)),
+    (51, 1, '2024-06-06', 0.36, 375.00, ST_SetSRID(ST_MakePoint(-57.1814, -3.745), 4326)),
+    (29, 3, '2024-05-20', 0.40, 375.00, ST_SetSRID(ST_MakePoint(-45.22124, -3.67378), 4326)),
+    (51, 3, '2024-06-19', 1.00, 375.00, ST_SetSRID(ST_MakePoint(-58.1869, -3.67034), 4326)),
+    (50, 6, '2024-06-23', 1.00, 375.00, ST_SetSRID(ST_MakePoint(-57.2029, -17.27311), 4326)),
+    (14, 1, '2024-01-28', 1.00, 374.00, ST_SetSRID(ST_MakePoint(-60.7523, -2.11234), 4326)),
+    (50, 6, '2024-06-06', 0.51, 374.00, ST_SetSRID(ST_MakePoint(-57.72343, -2.09162), 4326)),
+    (29, 3, '2024-06-21', 1.00, 373.00, ST_SetSRID(ST_MakePoint(-45.4187, -2.1908), 4326)),
+    (51, 3, '2024-07-01', 1.00, 373.00, ST_SetSRID(ST_MakePoint(-58.8378, -3.96311), 4326)),
+    (35, 3, '2024-05-17', 1.00, 371.00, ST_SetSRID(ST_MakePoint(-48.0751, 3.63113), 4326)),
+    (31, 4, '2024-06-01', 1.00, 371.00, ST_SetSRID(ST_MakePoint(-50.8145, 3.6305), 4326)),
+    (51, 6, '2024-06-15', 0.97, 371.00, ST_SetSRID(ST_MakePoint(-57.1181, 4.08891), 4326)),
+    (14, 1, '2024-02-20', 1.00, 370.00, ST_SetSRID(ST_MakePoint(-61.5794, 3.80667), 4326)),
+    (51, 1, '2024-06-15', 0.98, 368.00, ST_SetSRID(ST_MakePoint(-54.3682, 2.58953), 4326)),
+    (15, 1, '2024-07-01', 1.00, 367.00, ST_SetSRID(ST_MakePoint(-50.52163, -3.93641), 4326)),
+    (29, 3, '2024-07-19', 1.00, 367.00, ST_SetSRID(ST_MakePoint(-44.7723, -3.78857), 4326)),
+    (14, 1, '2024-01-04', 0.63, 366.00, ST_SetSRID(ST_MakePoint(-61.836, -2.44502), 4326)),
+    (51, 1, '2024-05-09', 0.03, 366.00, ST_SetSRID(ST_MakePoint(-57.6296, -2.42069), 4326)),
+    (51, 1, '2024-06-01', 0.42, 366.00, ST_SetSRID(ST_MakePoint(-52.4605, -2.28909), 4326)),
+    (50, 6, '2024-06-13', 0.94, 366.00, ST_SetSRID(ST_MakePoint(-57.8485, -2.26436), 4326)),
+    (50, 6, '2024-06-19', 0.84, 366.00, ST_SetSRID(ST_MakePoint(-57.41355, -14.30729), 4326)),
+    (51, 3, '2024-07-19', 1.00, 366.00, ST_SetSRID(ST_MakePoint(-53.8948, -16.0048), 4326)),
+    (14, 1, '2024-02-11', 0.83, 365.00, ST_SetSRID(ST_MakePoint(-61.779, 1.03769), 4326)),
+    (51, 6, '2024-06-07', NULL, 365.00, ST_SetSRID(ST_MakePoint(-57.3601, 1.03698), 4326)),
+    (15, 1, '2024-07-16', 0.71, 364.00, ST_SetSRID(ST_MakePoint(-55.2887, 4.03639), 4326)),
+    (14, 1, '2024-02-10', 0.77, 363.00, ST_SetSRID(ST_MakePoint(-60.12659, 4.22285), 4326)),
+    (51, 1, '2024-06-06', 0.33, 363.00, ST_SetSRID(ST_MakePoint(-54.0957, 4.22102), 4326)),
+    (50, 3, '2024-06-15', 1.00, 363.00, ST_SetSRID(ST_MakePoint(-52.8242, 4.21927), 4326)),
+    (51, 1, '2024-06-15', 0.39, 363.00, ST_SetSRID(ST_MakePoint(-54.6095, 4.20751), 4326)),
+    (29, 3, '2024-06-04', 1.00, 362.00, ST_SetSRID(ST_MakePoint(-44.7476, 3.43871), 4326)),
+    (51, 1, '2024-06-01', 0.16, 362.00, ST_SetSRID(ST_MakePoint(-54.8461, 3.43812), 4326)),
+    (21, 3, '2024-07-19', 1.00, 362.00, ST_SetSRID(ST_MakePoint(-45.45027, 3.43727), 4326)),
+    (51, 6, '2024-05-16', 0.48, 361.00, ST_SetSRID(ST_MakePoint(-57.36804, 3.09931), 4326)),
+    (29, 2, '2024-06-25', 1.00, 361.00, ST_SetSRID(ST_MakePoint(-42.37893, 2.87404), 4326)),
+    (51, 1, '2024-06-08', 0.53, 360.00, ST_SetSRID(ST_MakePoint(-57.3784, 1.31948), 4326)),
+    (51, 1, '2024-06-15', 0.40, 360.00, ST_SetSRID(ST_MakePoint(-54.589, 0.67973), 4326)),
+    (51, 1, '2024-06-30', 0.73, 360.00, ST_SetSRID(ST_MakePoint(-54.0556, 0.679), 4326)),
+    (13, 1, '2024-07-16', 0.76, 360.00, ST_SetSRID(ST_MakePoint(-66.0136, 0.6761), 4326)),
+    (51, 1, '2024-06-09', 0.28, 359.00, ST_SetSRID(ST_MakePoint(-57.7579, 4.56086), 4326)),
+    (29, 3, '2024-06-15', 1.00, 359.00, ST_SetSRID(ST_MakePoint(-43.323, 4.55255), 4326)),
+    (22, 3, '2024-06-04', 0.90, 357.00, ST_SetSRID(ST_MakePoint(-43.4159, 3.40263), 4326)),
+    (17, 3, '2024-06-04', 0.55, 357.00, ST_SetSRID(ST_MakePoint(-48.0346, 3.40172), 4326)),
+    (51, 1, '2024-06-19', 0.14, 357.00, ST_SetSRID(ST_MakePoint(-61.2212, 3.40101), 4326)),
+    (50, 6, '2024-06-22', 0.87, 357.00, ST_SetSRID(ST_MakePoint(-57.7653, 3.4003), 4326)),
+    (14, 1, '2024-02-12', 0.89, 356.00, ST_SetSRID(ST_MakePoint(-61.1741, 2.58193), 4326)),
+    (51, 1, '2024-05-31', 0.39, 355.00, ST_SetSRID(ST_MakePoint(-57.7594, 2.0735), 4326)),
+    (50, 6, '2024-01-29', 0.01, 354.00, ST_SetSRID(ST_MakePoint(-57.3512, -6.7121), 4326)),
+    (17, 3, '2024-07-18', 1.00, 354.00, ST_SetSRID(ST_MakePoint(-49.2386, -6.7113), 4326)),
+    (14, 1, '2024-02-21', 1.00, 353.00, ST_SetSRID(ST_MakePoint(-61.5875, 3.42019), 4326)),
+    (50, 6, '2024-06-04', NULL, 353.00, ST_SetSRID(ST_MakePoint(-57.5191, 1.36166), 4326)),
+    (51, 3, '2024-06-19', 1.00, 352.00, ST_SetSRID(ST_MakePoint(-58.2088, -9.48554), 4326)),
+    (51, 3, '2024-06-27', 1.00, 352.00, ST_SetSRID(ST_MakePoint(-58.72, -9.48275), 4326)),
+    (51, 1, '2024-05-10', 0.03, 351.00, ST_SetSRID(ST_MakePoint(-57.6296, -10.4632), 4326)),
+    (50, 6, '2024-06-05', 1.00, 351.00, ST_SetSRID(ST_MakePoint(-57.4984, -5.82084), 4326)),
+    (51, 6, '2024-06-22', NULL, 351.00, ST_SetSRID(ST_MakePoint(-57.3261, -5.81945), 4326)),
+    (14, 1, '2024-03-23', 1.00, 350.00, ST_SetSRID(ST_MakePoint(-61.9078, 1.9748), 4326)),
+    (21, 3, '2024-06-10', 0.05, 350.00, ST_SetSRID(ST_MakePoint(-43.2412, 2.0607), 4326)),
+    (14, 1, '2024-02-21', 1.00, 349.00, ST_SetSRID(ST_MakePoint(-61.90129, -5.41255), 4326)),
+    (51, 6, '2024-06-22', 0.91, 349.00, ST_SetSRID(ST_MakePoint(-57.3284, -5.41151), 4326)),
+    (51, 1, '2024-05-14', 0.21, 348.00, ST_SetSRID(ST_MakePoint(-52.8415, -4.30603), 4326)),
+    (50, 6, '2024-05-07', 0.50, 347.00, ST_SetSRID(ST_MakePoint(-57.8465, -6.97149), 4326)),
+    (17, 3, '2024-06-26', 1.00, 347.00, ST_SetSRID(ST_MakePoint(-49.4853, -3.75255), 4326)),
+    (14, 1, '2024-02-12', 0.94, 346.00, ST_SetSRID(ST_MakePoint(-61.193, -5.81603), 4326)),
+    (14, 1, '2024-02-12', 0.80, 346.00, ST_SetSRID(ST_MakePoint(-61.8127, -5.8152), 4326)),
+    (51, 1, '2024-05-15', 0.12, 346.00, ST_SetSRID(ST_MakePoint(-52.1758, -5.81486), 4326)),
+    (51, 1, '2024-05-21', 0.13, 345.00, ST_SetSRID(ST_MakePoint(-54.3345, -19.48283), 4326)),
+    (51, 1, '2024-05-27', 0.12, 345.00, ST_SetSRID(ST_MakePoint(-56.71913, -29.8143), 4326)),
+    (50, 6, '2024-06-20', 0.77, 345.00, ST_SetSRID(ST_MakePoint(-57.56814, -19.28114), 4326)),
+    (29, 2, '2024-06-24', 1.00, 345.00, ST_SetSRID(ST_MakePoint(-42.3821, -19.28087), 4326)),
+    (13, 1, '2024-07-16', 0.51, 345.00, ST_SetSRID(ST_MakePoint(-59.245, -5.40988), 4326)),
+    (51, 1, '2024-07-16', 0.88, 345.00, ST_SetSRID(ST_MakePoint(-52.8592, -5.40902), 4326)),
+    (50, 6, '2024-06-07', 0.91, 343.00, ST_SetSRID(ST_MakePoint(-57.6237, 3.39166), 4326)),
+    (29, 2, '2024-06-25', 1.00, 343.00, ST_SetSRID(ST_MakePoint(-42.3863, 3.38949), 4326)),
+    (14, 1, '2024-03-23', 1.00, 342.00, ST_SetSRID(ST_MakePoint(-60.2479, 3.41678), 4326)),
+    (14, 1, '2024-01-08', 0.15, 341.00, ST_SetSRID(ST_MakePoint(-60.2405, 1.78127), 4326)),
+    (51, 1, '2024-06-11', 0.37, 341.00, ST_SetSRID(ST_MakePoint(-54.3151, 1.78065), 4326)),
+    (51, 1, '2024-05-14', 0.16, 340.00, ST_SetSRID(ST_MakePoint(-52.4448, 1.02857), 4326)),
+    (14, 1, '2024-02-24', 0.88, 339.00, ST_SetSRID(ST_MakePoint(-59.9503, 0.82892), 4326)),
+    (51, 1, '2024-06-11', 0.71, 339.00, ST_SetSRID(ST_MakePoint(-57.3766, 0.82847), 4326)),
+    (51, 1, '2024-05-17', 0.79, 338.00, ST_SetSRID(ST_MakePoint(-52.4407, -16.09869), 4326)),
+    (51, 1, '2024-06-08', 0.52, 338.00, ST_SetSRID(ST_MakePoint(-57.38206, -16.09505), 4326)),
+    (51, 1, '2024-06-08', 0.53, 338.00, ST_SetSRID(ST_MakePoint(-57.38733, -3.45207), 4326)),
+    (51, 1, '2024-06-08', 0.52, 338.00, ST_SetSRID(ST_MakePoint(-57.38264, -16.09365), 4326)),
+    (50, 6, '2024-06-01', 0.64, 338.00, ST_SetSRID(ST_MakePoint(-57.4232, 4.73341), 4326)),
+    (51, 1, '2024-06-20', 0.67, 338.00, ST_SetSRID(ST_MakePoint(-52.4962, -16.09291), 4326)),
+    (29, 3, '2024-06-23', 0.90, 338.00, ST_SetSRID(ST_MakePoint(-44.4835, 4.7322), 4326)),
+    (51, 1, '2024-06-25', 0.79, 338.00, ST_SetSRID(ST_MakePoint(-51.7186, -22.22036), 4326)),
+    (13, 1, '2024-07-01', 0.58, 338.00, ST_SetSRID(ST_MakePoint(-65.8032, -16.09002), 4326)),
+    (17, 3, '2024-07-19', 1.00, 338.00, ST_SetSRID(ST_MakePoint(-46.9017, 4.72874), 4326)),
+    (14, 1, '2024-02-20', 1.00, 337.00, ST_SetSRID(ST_MakePoint(-61.51731, 3.42003), 4326));
 
     COMMIT;
     `)
