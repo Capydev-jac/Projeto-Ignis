@@ -37,7 +37,7 @@ async function init() {
             geometria GEOMETRY(POINT, 4326),
             estado_id INTEGER, 
             bioma_id INTEGER, 
-            risco_fogo NUMERIC(10,2), 
+            risco_fogo NUMERIC(15,2), 
             FOREIGN KEY (estado_id) REFERENCES Estados(id_estado),
             FOREIGN KEY (bioma_id) REFERENCES Bioma(id)
     );
@@ -1084,54 +1084,7 @@ async function init() {
     ('2025-04-02  ', ST_SetSRID(ST_MakePoint(-52.29568, -11.05795), 4326), 51, 1, 0.06),
     ('2025-04-02  ', ST_SetSRID(ST_MakePoint(-50.4972, -20.17527), 4326), 35, 4, 0.4);
     
-    CREATE TABLE mes_fogo (
-        escopo TEXT,
-        tipo TEXT,
-        mes TEXT,
-        valor NUMERIC
-);
-    INSERT INTO mes_fogo (escopo, tipo, mes, valor) VALUES
-    
-    ('nacional', 'max', 'janeiro', 4657),
-    ('nacional', 'max', 'fevereiro', 3157),
-    ('nacional', 'max', 'março', 3383),
-    ('nacional', 'max', 'abril', 1702),
-    ('nacional', 'max', 'maio', 3578),
-    ('nacional', 'max', 'junho', 9179),
-    ('nacional', 'max', 'julho', 19364),
-    ('nacional', 'max', 'agosto', 63764),
-    ('nacional', 'max', 'setembro', 73141),
-    ('nacional', 'max', 'outubro', 28731),
-    ('nacional', 'max', 'novembro', 26424),
-    ('nacional', 'max', 'dezembro', 16924),
-
-    
-    ('nacional', 'media', 'janeiro', 546.5),
-    ('nacional', 'media', 'fevereiro', 344.5),
-    ('nacional', 'media', 'março', 417),
-    ('nacional', 'media', 'abril', 371.7),
-    ('nacional', 'media', 'maio', 653.8),
-    ('nacional', 'media', 'junho', 1302.8),
-    ('nacional', 'media', 'julho', 2565.7),
-    ('nacional', 'media', 'agosto', 7891.3),
-    ('nacional', 'media', 'setembro', 10793.8),
-    ('nacional', 'media', 'outubro', 6292),
-    ('nacional', 'media', 'novembro', 3661.8),
-    ('nacional', 'media', 'dezembro', 1879),
-
-    
-    ('nacional', 'min', 'janeiro', 6),
-    ('nacional', 'min', 'fevereiro', 8),
-    ('nacional', 'min', 'março', 2),
-    ('nacional', 'min', 'abril', 1),
-    ('nacional', 'min', 'maio', 3),
-    ('nacional', 'min', 'junho', 1),
-    ('nacional', 'min', 'julho', 4),
-    ('nacional', 'min', 'agosto', 7),
-    ('nacional', 'min', 'setembro', 7),
-    ('nacional', 'min', 'outubro', 5),
-    ('nacional', 'min', 'novembro', 2),
-    ('nacional', 'min', 'dezembro', 6);
+ 
     
     CREATE TABLE Foco_calor(
         id SERIAL PRIMARY KEY,
@@ -1139,7 +1092,7 @@ async function init() {
         geometria GEOMETRY(POINT, 4326),
         estado_id INTEGER,
         bioma_id INTEGER,
-        risco_fogo DECIMAL(3, 2),
+        risco_fogo DECIMAL(15, 2),
         dia_sem_chuva INTEGER,
         precipitacao DECIMAL(5, 2),
         frp DECIMAL(5, 1),
@@ -1648,7 +1601,7 @@ INSERT INTO Foco_calor (
     estado_id INT REFERENCES Estados(id_estado),   -- FK para o estado (tabela Estados)
     bioma_id INT REFERENCES Bioma(id),             -- FK para o bioma (tabela Bioma)
    data_pas DATE NOT NULL,                         -- Data do foco
-    risco DECIMAL(3,2),                            -- Índice de risco (0.00 a 1.00)
+    risco DECIMAL(15,2),                            -- Índice de risco (0.00 a 1.00)
     frp DECIMAL(7,2),                              -- Potência radiativa do fogo (0.1 a 5000)
     geom GEOMETRY(Point, 4326),                    -- Coordenadas do foco (WGS 84)
     FOREIGN KEY (estado_id) REFERENCES Estados(id_estado),
