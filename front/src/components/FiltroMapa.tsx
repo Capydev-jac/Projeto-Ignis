@@ -1,18 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import { Area_Queimada } from '../entities/area_queimada';
-
-// Tipagem da props
-interface FiltroMapaProps {
-  onFiltrar: (filtros: {
-    tipo: string;
-    estado: string;
-    bioma: string;
-    inicio: string;
-    fim: string;
-  }) => void;
-}
 
 // 🔥 Componente SliderToggle
 const SliderToggle = ({ label, active, onClick, color }: { label: string; active: boolean; onClick: () => void; color: string }) => {
@@ -26,9 +14,8 @@ const SliderToggle = ({ label, active, onClick, color }: { label: string; active
   );
 };
 
-const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
+const FiltroMapa: React.FC = () => {
   const navigate = useNavigate();
-  const [index, setIndex] = useState(0);
   const [estado, setEstado] = useState('');
   const [bioma, setBioma] = useState('');
   const [inicio, setInicio] = useState('');
@@ -38,19 +25,17 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
   const [areaDeQueimada, setAreaDeQueimada] = useState(false);
   const [riscoDeFogo, setRiscoDeFogo] = useState(false);
 
-  const tipos = ['Focos', 'Área de Calor', 'Riscos'];
-
   const aplicarFiltro = () => {
     const queryParams = new URLSearchParams();
-  
+
     // ✅ Só adiciona os filtros se estiverem definidos
     if (estado.trim() !== '') queryParams.append("estado", estado);
     if (bioma.trim() !== '') queryParams.append("bioma", bioma);
     if (inicio.trim() !== '') queryParams.append("inicio", inicio);
     if (fim.trim() !== '') queryParams.append("fim", fim);
-  
+
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
-  
+
     // ✅ Define a rota com base no tipo selecionado
     if (focoDeCalor) {
       navigate(`/foco_calor${queryString}`);
@@ -60,47 +45,43 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
       navigate(`/risco${queryString}`);
     }
   };
-  
 
   return (
     <FiltroContainer>
       <Filtros>
 
-        {/* 🔥 Botões deslizantes (sem navigate dentro) */}
+        {/* 🔥 Botões deslizantes */}
         <SliderToggle
-  label="Foco de Calor"
-  color="#FF9800"
-  active={focoDeCalor}
-  onClick={() => {
-    if (!focoDeCalor) {
-      // ✅ Ativa apenas esse toggle
-      setFocoDeCalor(true);
-      setAreaDeQueimada(false);
-      setRiscoDeFogo(false);
-    } else {
-      // ✅ Desativa e reseta rota
-      setFocoDeCalor(false);
-      navigate("/");
-    }
-  }}
-/>
+          label="Foco de Calor"
+          color="#FF9800"
+          active={focoDeCalor}
+          onClick={() => {
+            if (!focoDeCalor) {
+              setFocoDeCalor(true);
+              setAreaDeQueimada(false);
+              setRiscoDeFogo(false);
+            } else {
+              setFocoDeCalor(false);
+              navigate("/");
+            }
+          }}
+        />
 
-<SliderToggle
-  label="Área de Queimada"
-  color="#FF9800"
-  active={areaDeQueimada}
-  onClick={() => {
-    if (!areaDeQueimada) {
-      setFocoDeCalor(false);
-      setAreaDeQueimada(true);
-      setRiscoDeFogo(false);
-    } else {
-      setAreaDeQueimada(false);
-      navigate("/");
-    }
-  }}
-/>
-
+        <SliderToggle
+          label="Área de Queimada"
+          color="#FF9800"
+          active={areaDeQueimada}
+          onClick={() => {
+            if (!areaDeQueimada) {
+              setFocoDeCalor(false);
+              setAreaDeQueimada(true);
+              setRiscoDeFogo(false);
+            } else {
+              setAreaDeQueimada(false);
+              navigate("/");
+            }
+          }}
+        />
 
         <SliderToggle
           label="Risco de Fogo"
