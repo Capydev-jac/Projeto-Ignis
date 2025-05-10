@@ -4544,6 +4544,21 @@ VALUES (51, 1, '2025-04-02', 0.06, 37.60,
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom)
 VALUES (22, 2, '2025-04-02', 0.96, 15.90,
         ST_SetSRID(ST_MakePoint(-43.146970, -8.123780), 4326));
+INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom)
+VALUES (50, 3, '2025-04-03', 0.01, 82.6,
+        ST_SetSRID(ST_MakePoint(-54.6916, -18.4283), 4326));
+INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom)
+VALUES (31, 4, '2025-04-03', 0.11, 31.3,
+        ST_SetSRID(ST_MakePoint(-40.74616, -17.01128), 4326));
+INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom)
+VALUES (17, 3, '2025-04-03', 0.00, 65.3,
+        ST_SetSRID(ST_MakePoint(-48.0456, -6.2352), 4326));
+INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom)
+VALUES (26, 2, '2025-04-03', 0.99, 5.1,
+        ST_SetSRID(ST_MakePoint(-37.01394, -9.32712), 4326));
+INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom)
+VALUES (29, 2, '2025-04-03', 1.00, 6.9,
+        ST_SetSRID(ST_MakePoint(-40.57956, -9.82601), 4326));
 
     COMMIT;
     `)
