@@ -8,10 +8,11 @@ interface ResultadoQuery {
   bioma: string;
   risco_fogo: number;
   data: string;
-  dia_sem_chuva?: string;
-  precipitacao?: string;
-  frp?: string;
+  dia_sem_chuva?: number;
+  precipitacao?: number;
+  frp?: number;
 }
+
 
 class OcorrenciaController {
 
@@ -116,58 +117,61 @@ class OcorrenciaController {
     }
   }
 
-  // 🔥 FOCO DE CALOR
-  public async Filtrar_foco_calor(req: Request, res: Response): Promise<void> {
-    try {
-      const { estado, bioma, inicio, fim } = req.query;
-      let baseQuery = `
-        SELECT
-          ST_Y(f.geom) AS latitude,
-          ST_X(f.geom) AS longitude,
+ // 🔥 FOCO DE CALOR
+public async Filtrar_foco_calor(req: Request, res: Response): Promise<void> {
+  try {
+    const { estado, bioma, inicio, fim } = req.query;
+
+    let baseQuery = `
+SELECT
+          ST_Y(f.geometria) AS latitude,
+          ST_X(f.geometria) AS longitude,
           e.estado,
           b.bioma,
-          f.risco AS risco_fogo,
-          f.data_hora_t3 AS data,
-          f.diasemchuva AS dia_sem_chuva,
+          f.risco_fogo AS risco_fogo,
+          f.data AS data,
+          f.dia_sem_chuva AS dia_sem_chuva,
           f.precipitacao,
           f.frp
         FROM Foco_Calor f
         JOIN Estados e ON f.estado_id = e.id_estado
         JOIN Bioma b ON f.bioma_id = b.id
         WHERE 1=1
-      `;
+    `;
 
-      const values: (string | undefined)[] = [];
+    const values: (string | undefined)[] = [];
 
-      if (estado) {
-        baseQuery += ` AND f.estado_id = $${values.length + 1}`;
-        values.push(estado as string);
-      }
-      if (bioma) {
-        baseQuery += ` AND f.bioma_id = $${values.length + 1}`;
-        values.push(bioma as string);
-      }
-      if (inicio) {
-        baseQuery += ` AND f.data_hora_t3 >= $${values.length + 1}`;
-        values.push(inicio as string);
-      }
-      if (fim) {
-        baseQuery += ` AND f.data_hora_t3 <= $${values.length + 1}`;
-        values.push(fim as string);
-      }
+    if (estado) {
+      baseQuery += ` AND f.estado_id = $${values.length + 1}`;
+      values.push(estado as string);
+    }
+    if (bioma) {
+      baseQuery += ` AND f.bioma_id = $${values.length + 1}`;
+      values.push(bioma as string);
+    }
+    if (inicio) {
+      baseQuery += ` AND f.data >= $${values.length + 1}`;
+      values.push(inicio as string);
+    }
+    if (fim) {
+      baseQuery += ` AND f.data <= $${values.length + 1}`;
+      values.push(fim as string);
+    }
 
-      const resultado: ResultadoQuery[] = await query(baseQuery, values);
-      res.json(resultado);
+    const resultado: ResultadoQuery[] = await query(baseQuery, values);
+    res.json(resultado);
 
-    } catch (err) {
-      console.error("Erro ao buscar foco de calor:", err);
-      if (err instanceof Error) {
-        res.status(500).json({ erro: "Erro ao buscar foco de calor", detalhes: err.message });
-      } else {
-        res.status(500).json({ erro: "Erro desconhecido" });
-      }
+  } catch (err) {
+    console.error("Erro ao buscar foco de calor:", err);
+    if (err instanceof Error) {
+      res.status(500).json({ erro: "Erro ao buscar foco de calor", detalhes: err.message });
+    } else {
+      res.status(500).json({ erro: "Erro desconhecido" });
     }
   }
+}
+
+
 
 }
 
