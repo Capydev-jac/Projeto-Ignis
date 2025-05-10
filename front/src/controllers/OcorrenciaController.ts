@@ -33,31 +33,35 @@ class OcorrenciaController {
         WHERE 1=1
       `;
 
-      const values: any[] = [];
+      const values: (string | undefined)[] = [];
 
       if (estado) {
         baseQuery += ` AND r.estado_id = $${values.length + 1}`;
-        values.push(estado);
+        values.push(estado as string);
       }
       if (bioma) {
         baseQuery += ` AND r.bioma_id = $${values.length + 1}`;
-        values.push(bioma);
+        values.push(bioma as string);
       }
       if (inicio) {
         baseQuery += ` AND r.data >= $${values.length + 1}`;
-        values.push(inicio);
+        values.push(inicio as string);
       }
       if (fim) {
         baseQuery += ` AND r.data <= $${values.length + 1}`;
-        values.push(fim);
+        values.push(fim as string);
       }
 
       const resultado: ResultadoQuery[] = await query(baseQuery, values);
       res.json(resultado);
 
-    } catch (err: any) {
+    } catch (err) {
       console.error("Erro ao buscar risco de fogo:", err);
-      res.status(500).json({ erro: "Erro ao buscar risco de fogo", detalhes: err.message });
+      if (err instanceof Error) {
+        res.status(500).json({ erro: "Erro ao buscar risco de fogo", detalhes: err.message });
+      } else {
+        res.status(500).json({ erro: "Erro desconhecido" });
+      }
     }
   }
 
@@ -80,31 +84,35 @@ class OcorrenciaController {
         WHERE 1=1
       `;
 
-      const values: any[] = [];
+      const values: (string | undefined)[] = [];
 
       if (estado) {
         baseQuery += ` AND a.estado_id = $${values.length + 1}`;
-        values.push(estado);
+        values.push(estado as string);
       }
       if (bioma) {
         baseQuery += ` AND a.bioma_id = $${values.length + 1}`;
-        values.push(bioma);
+        values.push(bioma as string);
       }
       if (inicio) {
         baseQuery += ` AND a.data_pas >= $${values.length + 1}`;
-        values.push(inicio);
+        values.push(inicio as string);
       }
       if (fim) {
         baseQuery += ` AND a.data_pas <= $${values.length + 1}`;
-        values.push(fim);
+        values.push(fim as string);
       }
 
       const resultado: ResultadoQuery[] = await query(baseQuery, values);
       res.json(resultado);
 
-    } catch (err: any) {
+    } catch (err) {
       console.error("Erro ao buscar área queimada:", err);
-      res.status(500).json({ erro: "Erro ao buscar área queimada", detalhes: err.message });
+      if (err instanceof Error) {
+        res.status(500).json({ erro: "Erro ao buscar área queimada", detalhes: err.message });
+      } else {
+        res.status(500).json({ erro: "Erro desconhecido" });
+      }
     }
   }
 
@@ -129,31 +137,35 @@ class OcorrenciaController {
         WHERE 1=1
       `;
 
-      const values: any[] = [];
+      const values: (string | undefined)[] = [];
 
       if (estado) {
         baseQuery += ` AND f.estado_id = $${values.length + 1}`;
-        values.push(estado);
+        values.push(estado as string);
       }
       if (bioma) {
         baseQuery += ` AND f.bioma_id = $${values.length + 1}`;
-        values.push(bioma);
+        values.push(bioma as string);
       }
       if (inicio) {
         baseQuery += ` AND f.data_hora_t3 >= $${values.length + 1}`;
-        values.push(inicio);
+        values.push(inicio as string);
       }
       if (fim) {
         baseQuery += ` AND f.data_hora_t3 <= $${values.length + 1}`;
-        values.push(fim);
+        values.push(fim as string);
       }
 
       const resultado: ResultadoQuery[] = await query(baseQuery, values);
       res.json(resultado);
 
-    } catch (err: any) {
+    } catch (err) {
       console.error("Erro ao buscar foco de calor:", err);
-      res.status(500).json({ erro: "Erro ao buscar foco de calor", detalhes: err.message });
+      if (err instanceof Error) {
+        res.status(500).json({ erro: "Erro ao buscar foco de calor", detalhes: err.message });
+      } else {
+        res.status(500).json({ erro: "Erro desconhecido" });
+      }
     }
   }
 

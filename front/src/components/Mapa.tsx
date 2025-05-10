@@ -64,34 +64,35 @@ const Mapa: React.FC<MapaProps> = ({ tipo }) => {
   };
 
   // Sempre que os filtros mudam, busca os dados atualizados
-  useEffect(() => {
-    const fetchData = async () => {
-      const query = montarQueryParams();
-      // CORREÇÃO: escolher corretamente a URL com base no tipo
-      const url =
-        tipo === 'risco'
-          ? `/api/risco${query ? `?${query}` : ''}`
-          : tipo === 'foco_calor'
-          ? `/api/foco_calor${query ? `?${query}` : ''}`
-          : tipo === 'area_queimada'
-          ? `/api/area_queimada${query ? `?${query}` : ''}`
-          : '';
+ useEffect(() => {
+  const fetchData = async () => {
+    const query = montarQueryParams();
 
-      console.log('URL gerada:', url); // Verifique a URL gerada
+    const url =
+      tipo === 'risco'
+        ? `http://localhost:3000/api/risco?${query}`
+        : tipo === 'foco_calor'
+        ? `http://localhost:3000/api/foco_calor?${query}`
+        : tipo === 'area_queimada'
+        ? `http://localhost:3000/api/area_queimada?${query}`
+        : '';
 
-      try {
-       /* const res = await fetch(url);*/
-       const res = await fetch(`http://localhost:3000${url}`);
-        const data = await res.json();
-        console.log('Dados recebidos:', data); // Verifique os dados recebidos
-        setDados(data); // Atualiza o estado com os dados recebidos
-      } catch (error) {
-        console.error('Erro ao buscar dados filtrados:', error);
-      }
-    };
+    if (!url) return;
 
-    fetchData();
-  }, [filtros, tipo]); // 🔥 Adicionado "tipo" como dependência para buscar quando tipo mudar
+    console.log('URL gerada:', url);
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      console.log('Dados recebidos:', data);
+      setDados(data);
+    } catch (error) {
+      console.error('Erro ao buscar dados filtrados:', error);
+    }
+  };
+
+  fetchData();
+}, [filtros, tipo]); // 🔥 Adicionado "tipo" como dependência para buscar quando tipo mudar
 
   return (
     <>
