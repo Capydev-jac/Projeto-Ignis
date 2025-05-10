@@ -41,25 +41,26 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
   const tipos = ['Focos', 'Área de Calor', 'Riscos'];
 
   const aplicarFiltro = () => {
-    onFiltrar({
-      tipo: tipos[index],
-      estado,
-      bioma,
-      inicio,
-      fim,
-    });
-
-    // 🔥 Agora navega só quando clicar "Aplicar"
+    const queryParams = new URLSearchParams();
+  
+    // ✅ Só adiciona os filtros se estiverem definidos
+    if (estado.trim() !== '') queryParams.append("estado", estado);
+    if (bioma.trim() !== '') queryParams.append("bioma", bioma);
+    if (inicio.trim() !== '') queryParams.append("inicio", inicio);
+    if (fim.trim() !== '') queryParams.append("fim", fim);
+  
+    const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
+  
+    // ✅ Define a rota com base no tipo selecionado
     if (focoDeCalor) {
-      navigate("/foco_calor", { state: { tipo: tipos[index], estado, bioma, inicio, fim } });
+      navigate(`/foco_calor${queryString}`);
     } else if (areaDeQueimada) {
-      navigate("/area_queimada", { state: { tipo: tipos[index], estado, bioma, inicio, fim } });
+      navigate(`/area_queimada${queryString}`);
     } else if (riscoDeFogo) {
-      navigate("/risco", { state: { tipo: tipos[index], estado, bioma, inicio, fim } });
-    } else {
-      navigate("/");
+      navigate(`/risco${queryString}`);
     }
   };
+  
 
   return (
     <FiltroContainer>
@@ -67,37 +68,39 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
 
         {/* 🔥 Botões deslizantes (sem navigate dentro) */}
         <SliderToggle
-          label="Foco de Calor"
-          color="#FF9800"
-          active={focoDeCalor}
-          onClick={() => {
-            if (!focoDeCalor) {
-              setFocoDeCalor(true);
-              setAreaDeQueimada(false);
-              setRiscoDeFogo(false);
-            } else {
-              setFocoDeCalor(false);
-              navigate("/");
-            }
-          }}
-        />
+  label="Foco de Calor"
+  color="#FF9800"
+  active={focoDeCalor}
+  onClick={() => {
+    if (!focoDeCalor) {
+      // ✅ Ativa apenas esse toggle
+      setFocoDeCalor(true);
+      setAreaDeQueimada(false);
+      setRiscoDeFogo(false);
+    } else {
+      // ✅ Desativa e reseta rota
+      setFocoDeCalor(false);
+      navigate("/");
+    }
+  }}
+/>
 
-        <SliderToggle
-          label="Área de Queimada"
-          color="#FF9800"
-          active={areaDeQueimada}
-          onClick={() => {
-            if (!areaDeQueimada) {
-            setFocoDeCalor(false);
-            setAreaDeQueimada(true);
-            setRiscoDeFogo(false);
-          } else {
-            setAreaDeQueimada(false);
-            navigate("/");
-          }        
-          }}
-        />
-        
+<SliderToggle
+  label="Área de Queimada"
+  color="#FF9800"
+  active={areaDeQueimada}
+  onClick={() => {
+    if (!areaDeQueimada) {
+      setFocoDeCalor(false);
+      setAreaDeQueimada(true);
+      setRiscoDeFogo(false);
+    } else {
+      setAreaDeQueimada(false);
+      navigate("/");
+    }
+  }}
+/>
+
 
         <SliderToggle
           label="Risco de Fogo"

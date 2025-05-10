@@ -1,13 +1,16 @@
 // routes/ocorrencia.routes.ts
 import { Router } from "express";
-import OcorrenciaController from "../controllers/OcorrenciaController"; // Importa o controller
+import OcorrenciaController from "../controllers/OcorrenciaController";
 
 const router = Router();
 
-router.get("/risco", OcorrenciaController.Filtrar_risco_fogo); // Usa o método do controller
-router.get("/foco_calor", OcorrenciaController.Filtrar_foco_calor); // Usa o método do controller
-router.get("/area_queimada", OcorrenciaController.Filtrar_area_queimada); // Usa o método do controller
+// 🌡️ Rota para risco de fogo com filtros opcionais
+router.get("/risco", OcorrenciaController.Filtrar_risco_fogo);
 
+// 🔥 Rota para foco de calor com filtros opcionais
+router.get("/foco_calor", OcorrenciaController.Filtrar_foco_calor);
 
+// 🔥 Rota para área queimada com filtros opcionais
+router.get("/area_queimada", OcorrenciaController.Filtrar_area_queimada);
 
 export default router;

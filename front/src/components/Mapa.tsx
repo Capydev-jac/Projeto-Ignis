@@ -80,7 +80,8 @@ const Mapa: React.FC<MapaProps> = ({ tipo }) => {
       console.log('URL gerada:', url); // Verifique a URL gerada
 
       try {
-        const res = await fetch(url);
+       /* const res = await fetch(url);*/
+       const res = await fetch(`http://localhost:3000${url}`);
         const data = await res.json();
         console.log('Dados recebidos:', data); // Verifique os dados recebidos
         setDados(data); // Atualiza o estado com os dados recebidos
