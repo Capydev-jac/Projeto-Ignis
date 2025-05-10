@@ -1,0 +1,27 @@
+/* Aplique o CSS fornecido anteriormente para garantir a estilização */
+
+.abas-container {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+  width: 80%;
+  max-width: 350px;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.aba {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  background-color: #ff9595;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px 8px 0 0;
+}
+
+.aba.ativa {
+  background-color: #d32f2f;
+}
+
+/* Continue com o resto do CSS conforme o código fornecido anteriormente */
