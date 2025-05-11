@@ -2,6 +2,11 @@
   "name": "ignis-root",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "backend",
+    "frontend",
+    "mobile"
+  ],
   "scripts": {
     "dev": "concurrently \"npm --prefix frontend run dev\" \"npm --prefix backend run dev\"",
     "init-db": "ts-node --project backend/tsconfig.json backend/src/database/init.ts"
