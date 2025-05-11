@@ -2,6 +2,7 @@ import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import "leaflet/dist/leaflet.css";
 
 import App from './App'; // Agora o App vai gerenciar se mostra mapa vazio ou com risco
 import './index.css';

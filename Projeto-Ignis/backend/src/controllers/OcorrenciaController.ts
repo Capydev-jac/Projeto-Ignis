@@ -82,17 +82,18 @@ class OcorrenciaController {
       console.log("fim:", fim);
 
       let baseQuery = `
-        SELECT
-          ST_Y(a.geom) AS latitude,
-          ST_X(a.geom) AS longitude,
-          e.estado,
-          b.bioma,
-          a.risco AS risco_fogo,
-          a.data_pas AS data,
-          a.frp
-        FROM Area_Queimada a
-        JOIN Estados e ON a.estado_id = e.id_estado
-        JOIN Bioma b ON a.bioma_id = b.id
+       SELECT
+  ST_Y(a.geom) AS latitude,
+  ST_X(a.geom) AS longitude,
+  e.estado,
+  b.bioma,
+  a.risco AS risco_fogo,
+  a.data_pas AS data,
+  a.frp,
+  a.tipo -- ← já vem da tabela
+FROM Area_Queimada a
+JOIN Estados e ON a.estado_id = e.id_estado
+JOIN Bioma b ON a.bioma_id = b.id
         WHERE 1=1
       `;
 

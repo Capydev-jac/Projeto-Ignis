@@ -14,5 +14,10 @@
   "devDependencies": {
     "concurrently": "^8.0.0",
     "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@turf/turf": "^7.2.0",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^5.0.0"
   }
 }

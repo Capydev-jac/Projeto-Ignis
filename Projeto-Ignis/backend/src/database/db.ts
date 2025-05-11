@@ -1,14 +1,18 @@
 import { Pool } from "pg";
 import dotenv from "dotenv";
 
+
+console.log("PGPASSWORD:", process.env.PGPASSWORD);
+console.log("Tipo de PGPASSWORD:", typeof process.env.PGPASSWORD);
+
 dotenv.config();
 
 const pool = new Pool({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-  password: process.env.PGPASSWORD,
-  port: Number(process.env.PGPORT),
+  user: "postgres",
+  host: "localhost",
+  database:"postgres",
+  password:"123",
+  port: 5432,
 });
 
 async function query(sql: string, params?: any[]) {

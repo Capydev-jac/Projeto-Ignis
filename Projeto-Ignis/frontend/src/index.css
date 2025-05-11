@@ -1,27 +1,46 @@
-/* Aplique o CSS fornecido anteriormente para garantir a estilização */
+/* src/index.css - estilos globais inspirados na logo */
 
-.abas-container {
-  display: flex;
-  gap: 5px;
-  justify-content: flex-start;
-  width: 80%;
-  max-width: 350px;
-  margin-top: 10px;
-  margin-bottom: -5px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0A1E3F; /* Azul escuro do logo */
+  color: white;
 }
 
-.aba {
-  padding: 8px 15px;
-  border: none;
+header {
+  background-color: #0A1E3F; /* Azul escuro */
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+select, button {
+  background-color: #1C1C1C; /* Preto suave */
+  color: white;
+  border: 1px solid #E63946; /* Vermelho do logo */
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+
+select:hover, button:hover {
+  background-color: #E63946;
+  color: white;
   cursor: pointer;
-  background-color: #ff9595;
-  color: black;
-  font-weight: bold;
-  border-radius: 8px 8px 0 0;
 }
 
-.aba.ativa {
-  background-color: #d32f2f;
+.map-container {
+  border: 2px solid #E63946;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* Continue com o resto do CSS conforme o código fornecido anteriormente */
+.popup-content {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ffffff;
+}

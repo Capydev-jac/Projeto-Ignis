@@ -1,108 +1,172 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import BurnedAreaPolygonLayer from "./BurnedAreaPolygonLayer";
 
-
-// 🔥 Tipos base
-interface Risco {
+// Tipo base
+interface BaseDado {
   latitude: number;
   longitude: number;
   estado: string;
   bioma: string;
   risco_fogo: number;
   data: string;
-  frp?: number; // opcional para todos
-}
-
-interface AreaQueimada extends Risco {}
-
-interface Foco extends Risco {
+  frp?: number;
   dia_sem_chuva?: string;
   precipitacao?: number;
+  tipo: "risco" | "foco" | "area_queimada";
 }
-interface AreaQueimada extends Foco {}
 
-// 🔥 Props do componente aceitam qualquer um dos três tipos
 interface Props {
-  dados: (Risco | Foco | AreaQueimada)[];
+  dados: BaseDado[];
 }
 
-// 🔴 Função que retorna uma cor baseada no tipo de dado (risco, area queimada ou foco de calor)
-const getColor = (item: Risco | AreaQueimada | Foco): string => {
-  // Se tiver FRP, usa ele como prioridade
-  if ("frp" in item && item.frp !== undefined) {
-    const frp = item.frp;
-
-    if (frp >= 50) return "#800026";   // Vermelho escuro
-    if (frp >= 30) return "#BD0026";   // Vermelho forte
-    if (frp >= 15) return "#FC4E2A";   // Laranja forte
-    if (frp >= 2) return "#FD8D3C";    // Laranja médio
-    return "#FEB24C";                  // Amarelo
+const getColor = (item: BaseDado): string => {
+  if (item.frp !== undefined) {
+    if (item.frp >= 50) return "#800026";
+    if (item.frp >= 30) return "#BD0026";
+    if (item.frp >= 15) return "#FC4E2A";
+    if (item.frp >= 2) return "#FD8D3C";
+    return "#FEB24C";
   }
 
-  // Se não tiver FRP, usa o risco_fogo
   const valor = item.risco_fogo;
-  if (valor > 1000) return "#800026"; // Vermelho escuro
-    if (valor > 500) return "#BD0026";  // Vermelho forte
-    if (valor > 200) return "#E31A1C";  // Vermelho médio
-    if (valor > 100) return "#FC4E2A";  // Laranja forte
-    if (valor > 50) return "#FD8D3C";   // Laranja médio
-    if (valor > 20) return "#FEB24C";   // Amarelo escuro
-    if (valor > 0) return "#FED976";    // Amarelo claro
-    return "#FFEDA0";                   // Amarelo pálido
-  }
-// 🔥 Limites do mapa do Brasil
+  if (valor > 1000) return "#800026";
+  if (valor > 500) return "#BD0026";
+  if (valor > 200) return "#E31A1C";
+  if (valor > 100) return "#FC4E2A";
+  if (valor > 50) return "#FD8D3C";
+  if (valor > 20) return "#FEB24C";
+  if (valor > 0) return "#FED976";
+  return "#FFEDA0";
+};
+
 const brasilBounds: L.LatLngBoundsExpression = [
   [-34.0, -74.0],
   [5.3, -32.4],
 ];
 
-// 🔥 Componente principal
 const MapComponent: React.FC<Props> = ({ dados }) => {
-  return (
-    <MapContainer
-      center={[-15.78, -47.92]} // Centro do mapa no Brasil
-      zoom={4} // Zoom inicial
-      style={{ height: "100%", width: "100%" }} // Estilo para ocupar a tela inteira
-      maxBounds={brasilBounds} // Limita o movimento do mapa para o Brasil
-      maxBoundsViscosity={1.0} // Evita que o mapa se mova além dos limites definidos
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
+  const [modoAgrupamento, setModoAgrupamento] = useState<"estado" | "bioma">("estado");
+  const [filtroSelecionado, setFiltroSelecionado] = useState<string | null>(null);
 
-      {dados.map((item, idx) => (
-        <Marker
-          key={idx}
-          position={[item.latitude, item.longitude]}
-          // Usando divIcon para customizar os ícones com base na cor
-          icon={L.divIcon({
-            className: "custom-icon",
-            html: `<div style="background-color: ${getColor(item)}; width: 20px; height: 20px; border-radius: 50%;"></div>`,
-          })}
+  const normalizar = (str: string) => str.trim().toLowerCase();
+
+  const dadosAreaQueimada = dados.filter(d => d.tipo === "area_queimada");
+
+  const opcoes = [
+    ...new Set(
+      dadosAreaQueimada.map(d =>
+        normalizar(modoAgrupamento === "estado" ? d.estado : d.bioma)
+      )
+    ),
+  ];
+
+  const pontosFiltrados = filtroSelecionado
+    ? dadosAreaQueimada
+      .filter(d =>
+        normalizar(modoAgrupamento === "estado" ? d.estado : d.bioma) ===
+        normalizar(filtroSelecionado)
+      )
+      .map(d => ({
+        lat: d.latitude,
+        lng: d.longitude,
+        grupo: modoAgrupamento === "estado" ? d.estado : d.bioma,
+      }))
+    : [];
+
+  // ✅ Seleciona automaticamente o primeiro filtro ao carregar
+  useEffect(() => {
+    if (!filtroSelecionado && opcoes.length > 3) {
+      setFiltroSelecionado(opcoes[0]);
+      console.log("🔁 Seleção automática aplicada:", opcoes[0]);
+    }
+  }, [opcoes]);
+
+  // ✅ Logs de depuração
+  console.log("✅ Pontos filtrados FINAL:", pontosFiltrados);
+  console.log("🎯 filtroSelecionado:", filtroSelecionado);
+  console.log("📍 pontosFiltrados:", pontosFiltrados);
+  console.log("👀 Deve desenhar polígono?", filtroSelecionado && pontosFiltrados.length >= 3);
+  console.log("📦 Opções no select:", opcoes);
+
+  return (
+    <>
+      <div style={{ padding: "1rem" }}>
+        <label>Agrupar por:</label>
+        <select
+          value={modoAgrupamento}
+          onChange={(e) => {
+            setModoAgrupamento(e.target.value as "estado" | "bioma");
+            setFiltroSelecionado(null);
+          }}
+          style={{ marginLeft: "0.5rem" }}
         >
-          <Popup>
-            <strong>Data:</strong> {new Date(item.data).toLocaleDateString()}<br />
-            <strong>Estado:</strong> {item.estado}<br />
-            <strong>Bioma:</strong> {item.bioma}<br />
-            <strong>Risco de Fogo:</strong> {item.risco_fogo}<br />
-            {item.frp !== undefined && (
-              <>
-                <strong>FRP:</strong> {item.frp}<br />
-              </>
-            )}
-            {"dia_sem_chuva" in item && (
-              <>
-                <strong>Dias sem chuva:</strong> {(item as Foco|AreaQueimada).dia_sem_chuva}<br />
-                <strong>Precipitação:</strong> {(item as Foco|AreaQueimada).precipitacao}<br />
-              </>
-            )}
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+          <option value="estado">Estado</option>
+          <option value="bioma">Bioma</option>
+        </select>
+
+        <select
+          value={filtroSelecionado ?? ""}
+          onChange={(e) => setFiltroSelecionado(e.target.value || null)}
+          style={{ marginLeft: "1rem" }}
+        >
+          <option value="">Selecione um {modoAgrupamento}</option>
+          {opcoes.map(op => (
+            <option key={op} value={op}>
+              {op.charAt(0).toUpperCase() + op.slice(1)}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <MapContainer
+        center={[-15.78, -47.92]}
+        zoom={4}
+        style={{ height: "90vh", width: "100%" }}
+        maxBounds={brasilBounds}
+        maxBoundsViscosity={1.0}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; OpenStreetMap contributors'
+        />
+
+        {/* ✅ Polígono só se houver filtro e pelo menos 3 pontos */}
+        {filtroSelecionado && pontosFiltrados.length >= 3 && (
+          <BurnedAreaPolygonLayer pontosQueimadas={pontosFiltrados} />
+        )}
+
+        {/* ✅ Todos os marcadores visíveis */}
+        {dados.map((item, idx) => (
+          <Marker
+            key={idx}
+            position={[item.latitude, item.longitude]}
+            icon={L.divIcon({
+              className: "custom-icon",
+              html: `<div style="background-color: ${getColor(item)}; width: 20px; height: 20px; border-radius: 50%;"></div>`,
+            })}
+          >
+            <Popup>
+              <strong>Data:</strong> {new Date(item.data).toLocaleDateString()}<br />
+              <strong>Estado:</strong> {item.estado}<br />
+              <strong>Bioma:</strong> {item.bioma}<br />
+              <strong>Risco de Fogo:</strong> {item.risco_fogo}<br />
+              {"frp" in item && item.frp !== undefined && (
+                <><strong>FRP:</strong> {item.frp}<br /></>
+              )}
+              {"dia_sem_chuva" in item && (
+                <>
+                  <strong>Dias sem chuva:</strong> {item.dia_sem_chuva}<br />
+                  <strong>Precipitação:</strong> {item.precipitacao}<br />
+                </>
+              )}
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </>
   );
 };
 

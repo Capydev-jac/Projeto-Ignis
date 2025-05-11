@@ -21,7 +21,7 @@ const App: React.FC = () => {
     setAtivo(tipo);
   };
 
-  const [filtros, setFiltros] = useState({
+  const [, setFiltros] = useState({
     tipo: 'Focos',
     estado: '',
     bioma: '',
@@ -29,6 +29,7 @@ const App: React.FC = () => {
     fim: ''
   });
 
+  
   return (
     <AppContainer>
       <Header />
