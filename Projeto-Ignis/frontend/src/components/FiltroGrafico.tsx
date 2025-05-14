@@ -72,6 +72,9 @@ const FiltroGrafico: React.FC = () => {
 
         {/* Botão para aplicar os filtros */}
         <AplicarButton>Aplicar</AplicarButton>
+
+        {/* Botão para limpar os filtros */}
+        <LimparButton>Limpar</LimparButton>
       </Filtros>
     </FiltroContainer>
   );
@@ -222,6 +225,23 @@ const Input = styled.input`
 const AplicarButton = styled.button`
   margin-top: 10px; // Espaçamento superior
   margin-left: 250px; // Espaçamento à esquerda
+  width: 100px; // Largura do botão
+  padding: 8px; // Espaçamento interno
+  background-color: #616161; // Cor de fundo
+  color: white; // Cor do texto
+  border: none; // Remove a borda
+  border-radius: 4px; // Bordas arredondadas
+  cursor: pointer; // Cursor de ponteiro
+  font-weight: bold; // Negrito
+  &:hover {
+    background-color: #388E3C; // Cor de fundo ao passar o mouse
+  }
+`;
+
+// Estilos para o botão de limpar
+const LimparButton = styled.button`
+  margin-top: 5px; // Espaçamento superior
+  margin-left: 10px; // Espaçamento à esquerda
   width: 100px; // Largura do botão
   padding: 8px; // Espaçamento interno
   background-color: #616161; // Cor de fundo
