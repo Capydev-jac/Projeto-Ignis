@@ -47,6 +47,13 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
     }, 100);
   };
 
+  const limparFiltro = () => {
+    navigate("/");
+    setTipo("");
+    setEstado("");
+    setBioma("");
+  };
+
   return (
     <FiltroContainer>
       <Filtros>
@@ -112,6 +119,9 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
         </Datas>
 
         <AplicarButton onClick={aplicarFiltro}>Aplicar</AplicarButton>
+        
+        <LimparButton onClick={limparFiltro}>Limpar</LimparButton>
+
       </Filtros>
     </FiltroContainer>
   );
@@ -209,6 +219,23 @@ const Input = styled.input`
 
 const AplicarButton = styled.button`
   margin-top: 10px;
+  margin-left: 250px;
+  width: 100px;
+  padding: 8px;
+  background-color: #616161;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #388E3C;
+  }
+`;
+
+const LimparButton = styled.button`
+  margin-top:  10px;
   margin-left: 250px;
   width: 100px;
   padding: 8px;
