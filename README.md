@@ -1,8 +1,8 @@
 <h2 align="center">Burndown</h2>
 
 <p align="center">
-  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_grafico.PNG">
-  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_pontos.PNG">
+  <img src="">
+  <img src="">
 </p>
 
 <h2 align="center">📌1ª Sprint Backlog</h2>
@@ -22,10 +22,3 @@
 
 <h2 align="center">Sprint Retrospective</h2>
 
-<br> Cometemos o mesmo erro de pular etapas na estruturação do projeto, desenvolvendo primeiro o código ao invés de criarmos o UML de casos de uso e a modelagem do banco de dados.  Não aplicamos corretamente os combinados que foram colocados nas Daiylis. (Melhorar o acesso o que foi combinado) para evitar retornar ao mesmo problema.<br>
-
-Precismos manter mais contato com o projeto por parte de todos, outra área a ser aprimorada é a distribuição de atividades e o aproveitamento do tempo em sala de aula. Demoramos um pouco para começar a realizar as atividades do banco de dados que precisaram de algumas alterações. <br>
-
-Um ponto positivo foi termos adiantados algumas etapas da segunda sprint.  As reuniões que foram feitas, foram bem produtivas e o compartilhamento de ideias foi bem positivo para o projeto. As validações que fizemos nas etapas de figma e Casos de Uso foram bem objetiva. No final, conseguimos finalizar tudo o que foi solicitado nos requisitos das aulas e da primeira sprint. <br>
-
-Para a próxima sprint podemos ter uma maior proatividade de pedir ajudar quando precisarmos, para os colegas ou oferecer ajuda quando terminarmos as nossas tarefas. Manter os 15 minutos de Dayly e conversarmos sobre o projeto e mandar no Whatapp as tarefas da semana com os prazos. Focar mais nos prazos.<br> 
