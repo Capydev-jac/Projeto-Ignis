@@ -1,256 +1,227 @@
-import React, { useState } from 'react'; // Importa o React e o hook useState para gerenciamento de estado
-import styled from 'styled-components'; // Importa a biblioteca styled-components para estilização com CSS-in-JS
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-// Componente funcional FiltroGrafico
-const FiltroGrafico: React.FC = () => {
-  // Definindo estados para controlar os índices dos sliders
-  const [index1, setIndex1] = useState(0); // Índice para o primeiro slider
-  const [index2, setIndex2] = useState(0); // Índice para o segundo slider
+interface FiltroGraficoProps {
+  onAplicar: (filtros: { tipo: string; local: string; inicio: string; fim: string }) => void;
+}
 
-  // Listas de estados e cores para os sliders
-  const estados1 = ['Focos', 'Área de Queimadas', 'Riscos de Fogo']; // Opções para o primeiro slider
-  const cores1 = ['#FF5722', '#795548', '#FF9800']; // Cores para o primeiro slider
-  const estados2 = ['Estados', 'Biomas']; // Opções para o segundo slider
-  const cores2 = ['#1976D2', '#388E3C']; // Cores para o segundo slider
+const FiltroGrafico: React.FC<FiltroGraficoProps> = ({ onAplicar }) => {
+  const [index1, setIndex1] = useState(0);
+  const [index2, setIndex2] = useState(0);
+  const [inicio, setInicio] = useState('2025-03-20');
+  const [fim, setFim] = useState('2025-05-09');
 
-  // Função para atualizar o estado do primeiro slider
-  const atualizarEstado1 = () => (
-    <Slider1 style={{ backgroundColor: cores1[index1] }}>
-      <SliderThumb1 style={{ transform: `translateX(${index1 * 122}px)` }} />
-    </Slider1>
-  );
+  const tipos = ['Focos', 'Área de Queimadas', 'Riscos de Fogo'];
+  const locais = ['Estados', 'Biomas'];
 
-  // Função para atualizar o estado do segundo slider
-  const atualizarEstado2 = () => (
-    <Slider2 style={{ backgroundColor: cores2[index2] }}>
-      <SliderThumb2 style={{ transform: `translateX(${index2 * 75}px)` }} />
-    </Slider2>
-  );
+  const aplicarFiltro = () => {
+    onAplicar({
+      tipo: tipos[index1],
+      local: locais[index2],
+      inicio,
+      fim,
+    });
+  };
 
   return (
     <FiltroContainer>
       <Filtros>
-        {/* Rótulos do primeiro slider */}
         <ToggleLabels1>
-          <span>{estados1[0]}</span>
-          <span>{estados1[1]}</span>
-          <span>{estados1[2]}</span>
+          {tipos.map((t, i) => (
+            <span key={i}>{t}</span>
+          ))}
         </ToggleLabels1>
-
-        {/* Primeiro Slider */}
-        <SliderContainer onClick={() => setIndex1((index1 + 1) % estados1.length)}>
-          {atualizarEstado1()} {/* Atualiza o primeiro slider com base no índice */}
+        <SliderContainer onClick={() => setIndex1((index1 + 1) % tipos.length)}>
+          <Slider1>
+            <SliderThumb1 style={{ transform: `translateX(${index1 * 115}px)` }} />
+          </Slider1>
         </SliderContainer>
 
-        {/* Rótulos do segundo slider */}
         <ToggleLabels2>
-          <span>{estados2[0]}</span>
-          <span>{estados2[1]}</span>
+          {locais.map((l, i) => (
+            <span key={i}>{l}</span>
+          ))}
         </ToggleLabels2>
-
-        {/* Segundo Slider */}
-        <SliderContainer onClick={() => setIndex2((index2 + 1) % estados2.length)}>
-          {atualizarEstado2()} {/* Atualiza o segundo slider com base no índice */}
+        <SliderContainer onClick={() => setIndex2((index2 + 1) % locais.length)}>
+          <Slider2>
+            <SliderThumb2 style={{ transform: `translateX(${index2 * 75}px)` }} />
+          </Slider2>
         </SliderContainer>
 
-        {/* Seção de datas */}
         <Datas>
           <Label>Datas:</Label>
           <InputGroup>
-            {/* Input para a data de início */}
             <InputContainer>
               <Label htmlFor="inicio">Início</Label>
-              <Input type="date" id="inicio" name="inicio" min="2025-03-20" max="2025-03-27" />
+              <Input
+                type="date"
+                id="inicio"
+                name="inicio"
+                value={inicio}
+                onChange={(e) => setInicio(e.target.value)}
+                min="2025-03-20"
+                max="2025-05-09"
+              />
             </InputContainer>
-            {/* Input para a data de fim */}
             <InputContainer>
               <Label htmlFor="fim">Fim</Label>
-              <Input type="date" id="fim" name="fim" min="2025-03-20" max="2025-03-27" />
+              <Input
+                type="date"
+                id="fim"
+                name="fim"
+                value={fim}
+                onChange={(e) => setFim(e.target.value)}
+                min="2025-03-20"
+                max="2025-05-09"
+              />
             </InputContainer>
           </InputGroup>
         </Datas>
 
-        {/* Botão para aplicar os filtros */}
-        <AplicarButton>Aplicar</AplicarButton>
-
-        {/* Botão para limpar os filtros */}
-        <LimparButton>Limpar</LimparButton>
+        <AplicarButton onClick={aplicarFiltro}>Aplicar</AplicarButton>
       </Filtros>
     </FiltroContainer>
   );
 };
 
-export default FiltroGrafico; // Exporta o componente FiltroGrafico para ser usado em outros lugares
+export default FiltroGrafico;
 
-// Estilizações dos componentes com styled-components
+// Estilos
 
-// Container principal do filtro
 const FiltroContainer = styled.div`
-  font-weight: bold; // Estilo do texto dentro do filtro
-  padding: 20px; // Espaçamento interno
-  background-color: #d32f2f; // Cor de fundo
-  height: 83vh; // Altura do container
-  width: 350px; // Largura do container
-  border-radius: 0px 8px 8px 8px; // Borda arredondada no canto superior direito e inferior
-  z-index: 1; // Prioridade de sobreposição
-  margin-top: 2%; // Margem superior
-  position: fixed; // Fixa o filtro na tela
+  font-weight: bold;
+  padding: 20px;
+  background-color: #d32f2f;
+  height: 83vh;
+  width: 350px;
+  border-radius: 0px 8px 8px 8px;
+  z-index: 1;
+  margin-top: 2%;
+  position: fixed;
 `;
 
-// Contêiner interno para os filtros
 const Filtros = styled.div`
-  padding: 10px 0; // Espaçamento interno
+  padding: 10px 0;
 `;
 
-// Estilos para os rótulos do primeiro slider
 const ToggleLabels1 = styled.div`
-  display: flex; // Exibe os rótulos em linha
-  justify-content: space-between; // Espaça os itens uniformemente
-  margin-bottom: 10px; // Espaçamento inferior
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 
   span {
-    font-size: 16px; // Tamanho da fonte
-    color: #000; // Cor do texto
-    font-weight: bold; // Negrito
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
   }
 `;
 
-// Estilos para os rótulos do segundo slider
 const ToggleLabels2 = styled.div`
-  display: flex; // Exibe os rótulos em linha
-  justify-content: center;  /* Alinha os itens ao centro */
-  gap: 60px; // Espaçamento entre os rótulos
+  display: flex;
+  justify-content: center;
+  gap: 60px;
 
   span {
-    font-size: 16px; // Tamanho da fonte
-    color: #000; // Cor do texto
-    font-weight: bold; // Negrito
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
   }
 `;
 
-// Estilos para o container de sliders
 const SliderContainer = styled.div`
-  margin: 10px 0; // Espaçamento vertical entre os sliders
+  margin: 10px 0;
 `;
 
-// Estilos para o primeiro slider
 const Slider1 = styled.div`
-  position: relative; // Define a posição relativa para o thumb
-  width: 345px; // Largura do slider
-  height: 24px; // Altura do slider
-  background-color: #ddd; // Cor de fundo
-  border-radius: 12px; // Bordas arredondadas
-  border: 1px solid white; // Borda branca
-  display: flex; // Utiliza flexbox
-  align-items: center; // Alinha os itens no centro
-  padding: 2px; // Espaçamento interno
-  cursor: pointer; // Cursor de ponteiro para indicar interatividade
+  position: relative;
+  width: 345px;
+  height: 24px;
+  background-color: #ddd;
+  border-radius: 12px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
 `;
 
-// Estilos para o segundo slider
 const Slider2 = styled.div`
-  position: relative; // Define a posição relativa para o thumb
-  width: 150px; // Largura do slider
-  height: 24px; // Altura do slider
-  background-color: #ddd; // Cor de fundo
-  border-radius: 12px; // Bordas arredondadas
-  border: 1px solid white; // Borda branca
-  display: flex; // Utiliza flexbox
-  align-items: center; // Alinha os itens no centro
-  padding: 2px; // Espaçamento interno
-  cursor: pointer; // Cursor de ponteiro
-  left: 50%; // Centraliza o slider horizontalmente
-  transform: translateX(-50%); // Ajusta o deslocamento para garantir o alinhamento correto
+  position: relative;
+  width: 150px;
+  height: 24px;
+  background-color: #ddd;
+  border-radius: 12px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
-// Estilos para o "thumb" do primeiro slider
 const SliderThumb1 = styled.div`
-  position: absolute; // Posição absoluta dentro do slider
-  width: 100px; // Largura do thumb
-  height: 20px; // Altura do thumb
-  background-color: #333; // Cor do thumb
-  border-radius: 10px; // Bordas arredondadas
-  transition: transform 0.3s ease-in-out; // Transição suave ao mover o thumb
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
 `;
 
-// Estilos para o "thumb" do segundo slider
 const SliderThumb2 = styled.div`
-  position: absolute; // Posição absoluta dentro do slider
-  width: 75px; // Largura do thumb
-  height: 20px; // Altura do thumb
-  background-color: #333; // Cor do thumb
-  border-radius: 10px; // Bordas arredondadas
-  transition: transform 0.3s ease-in-out; // Transição suave ao mover o thumb
-  display: flex; // Utiliza flexbox para alinhamento
-  align-items: center; // Alinha os itens no centro
+  position: absolute;
+  width: 75px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
 `;
 
-// Estilos para a seção de datas
 const Datas = styled.div`
-  margin-top: 10px; // Espaçamento superior
+  margin-top: 10px;
 `;
 
-// Estilos para os rótulos de input
 const Label = styled.label`
-  font-weight: bold; // Negrito
-  font-size: 1rem; // Tamanho da fonte
-  display: block; // Exibe o rótulo como bloco
-  margin-bottom: 5px; // Espaçamento inferior
+  font-weight: bold;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 5px;
 `;
 
-// Estilos para o grupo de inputs
 const InputGroup = styled.div`
-  display: flex; // Exibe os inputs em linha
-  justify-content: space-between; // Espaça uniformemente os itens
-  gap: 15px; // Espaçamento entre os inputs
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
 `;
 
-// Estilos para o container de cada input
 const InputContainer = styled.div`
-  display: flex; // Exibe os itens em linha
-  flex-direction: column; // Organiza os itens na direção vertical
-  width: 48%; // Largura do container de input
+  display: flex;
+  flex-direction: column;
+  width: 48%;
 `;
 
-// Estilos para o input de data
 const Input = styled.input`
-  padding: 8px; // Espaçamento interno
-  width: 150px; // Largura do input
-  border-radius: 4px; // Bordas arredondadas
-  border: 1px solid #ccc; // Borda do input
-  margin-top: 5px; // Espaçamento superior
+  padding: 8px;
+  width: 150px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
 `;
 
-// Estilos para o botão de aplicar
 const AplicarButton = styled.button`
-  margin-top: 10px; // Espaçamento superior
-  margin-left: 250px; // Espaçamento à esquerda
-  width: 100px; // Largura do botão
-  padding: 8px; // Espaçamento interno
-  background-color: #616161; // Cor de fundo
-  color: white; // Cor do texto
-  border: none; // Remove a borda
-  border-radius: 4px; // Bordas arredondadas
-  cursor: pointer; // Cursor de ponteiro
-  font-weight: bold; // Negrito
-  &:hover {
-    background-color: #388E3C; // Cor de fundo ao passar o mouse
-  }
-`;
+  margin-top: 10px;
+  margin-left: 250px;
+  width: 100px;
+  padding: 8px;
+  background-color: #616161;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 
-// Estilos para o botão de limpar
-const LimparButton = styled.button`
-  margin-top: 5px; // Espaçamento superior
-  margin-left: 10px; // Espaçamento à esquerda
-  width: 100px; // Largura do botão
-  padding: 8px; // Espaçamento interno
-  background-color: #616161; // Cor de fundo
-  color: white; // Cor do texto
-  border: none; // Remove a borda
-  border-radius: 4px; // Bordas arredondadas
-  cursor: pointer; // Cursor de ponteiro
-  font-weight: bold; // Negrito
   &:hover {
-    background-color: #388E3C; // Cor de fundo ao passar o mouse
+    background-color: #388e3c;
   }
 `;

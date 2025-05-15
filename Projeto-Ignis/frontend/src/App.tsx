@@ -7,7 +7,7 @@ import Abas from './components/Abas';
 import FiltroMapa from './components/FiltroMapa';
 import FiltroGrafico from './components/FiltroGrafico';
 import MapaVazio from './components/MapaVazio';
-import Grafico from './components/Grafico';
+import MeusGraficos from './components/Grafico';
 import styled from 'styled-components';
 
 // Lazy loading do Mapa
@@ -17,17 +17,16 @@ const App: React.FC = () => {
   const [ativo, setAtivo] = useState('mapa');
   const location = useLocation();
 
+  const [filtros, setFiltros] = useState({
+    tipo: 'Focos',
+    local: 'Estados',
+    inicio: '2025-03-20',
+    fim: '2025-03-27'
+  });
+
   const handleClick = (tipo: string) => {
     setAtivo(tipo);
   };
-
-  const [, setFiltros] = useState({
-    tipo: 'Focos',
-    estado: '',
-    bioma: '',
-    inicio: '',
-    fim: ''
-  });
 
   return (
     <AppContainer>
@@ -38,12 +37,11 @@ const App: React.FC = () => {
           {ativo === 'mapa' ? (
             <FiltroMapa onFiltrar={setFiltros} />
           ) : (
-            <FiltroGrafico />
+            <FiltroGrafico onAplicar={setFiltros} />
           )}
         </ContentContainer>
 
-        {/* Conteúdo com lazy-loading */}
-        <Suspense fallback={<div style={{ padding: '2rem' }}>Carregando o mapa...</div>}>
+        <Suspense fallback={<div style={{ padding: '2rem' }}>Carregando...</div>}>
           {ativo === 'mapa' ? (
             location.pathname === '/risco' ? (
               <Mapa tipo="risco" />
@@ -55,7 +53,7 @@ const App: React.FC = () => {
               <MapaVazio />
             )
           ) : (
-            <Grafico />
+            <MeusGraficos filtros={filtros} />
           )}
         </Suspense>
       </MainContent>
