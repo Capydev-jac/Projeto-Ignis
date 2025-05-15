@@ -1,11 +1,11 @@
 <h2 align="center">Burndown</h2>
 
 <p align="center">
-  <img src="">
-  <img src="">
+  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_grafico_2.PNG">
+  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_pontos_2.PNG">
 </p>
 
-<h2 align="center">📌1ª Sprint Backlog</h2>
+<h2 align="center">📌2ª Sprint Backlog</h2>
 
 | ID    | Requisito                        | Descrição                                            | Prioridade | User Story                                                                                      | Critérios de Aceitação (DoD)                                                                                                                                           | Definição de Pronto (DoR)                                                                                               |
 |-------|-----------------------------------|------------------------------------------------------|------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
