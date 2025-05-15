@@ -17,7 +17,7 @@ const SliderToggle = ({ label, active, onClick, color }: { label: string; active
   <ToggleWrapper>
     <span>{label}</span>
     <Slider $ativo={active} $cor={color} onClick={onClick}>
-      <SliderThumb ativo={active} />
+      <SliderThumb $ativo={active} />
     </Slider>
   </ToggleWrapper>
 );
@@ -169,14 +169,14 @@ const Slider = styled.div<{ $ativo: boolean; $cor: string }>`
   padding: 2px;
 `;
 
-const SliderThumb = styled.div<{ ativo: boolean }>`
+const SliderThumb = styled.div<{ $ativo: boolean }>`
   position: absolute;
   width: 40px;
   height: 20px;
   background-color: #333;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ ativo }) => (ativo ? 'translateX(60px)' : 'translateX(0)')};
+  transform: ${({ $ativo }) => ($ativo ? 'translateX(60px)' : 'translateX(0)')};
 `;
 
 const Select = styled.select`
