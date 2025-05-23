@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useTransition } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import MapComponent from './MapComponent';
 import { MapaContainer } from '../assets/MapaContainer';
 import { FiltrosMapa } from '../entities/FiltroMapa';
@@ -11,20 +11,19 @@ interface MapaProps {
 
 const Mapa: React.FC<MapaProps> = ({ tipo, filtros }) => {
   const [dados, setDados] = useState<BaseDado[]>([]);
-  const [isPending, startTransition] = useTransition();
 
-  const montarQueryParams = () => {
+  const montarQueryParams = useCallback(() => {
     const params = new URLSearchParams();
     if (filtros.estado) params.append('estado', filtros.estado);
     if (filtros.bioma) params.append('bioma', filtros.bioma);
     if (filtros.inicio) params.append('inicio', filtros.inicio);
     if (filtros.fim) params.append('fim', filtros.fim);
     return params.toString();
-  };
+  }, [filtros]);
 
   useEffect(() => {
     if (tipo === '') {
-      setDados([]); // limpa o mapa se não houver tipo selecionado
+      setDados([]);
       return;
     }
 
@@ -46,9 +45,7 @@ const Mapa: React.FC<MapaProps> = ({ tipo, filtros }) => {
         const rawData = await res.json();
 
         if (Array.isArray(rawData)) {
-          startTransition(() => {
-            setDados(rawData.map(item => ({ ...item, tipo })));
-          });
+          setDados(rawData.map(item => ({ ...item, tipo })));
         } else {
           setDados([]);
         }
@@ -59,7 +56,7 @@ const Mapa: React.FC<MapaProps> = ({ tipo, filtros }) => {
     };
 
     fetchData();
-  }, [filtros, tipo]);
+  }, [filtros, tipo, montarQueryParams]);
 
   return (
     <MapaContainer>
