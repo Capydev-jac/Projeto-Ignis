@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-google-charts';
 import { FiltrosGrafico } from '../entities/FiltroGrafico';
-import { GraficoContainer, MensagemSemDados } from '../styles/Graficostyle';
+import { GraficoContainer } from '../styles/GraficoStyle';
 
 interface DadoGrafico {
   categoria: string;
@@ -12,20 +12,20 @@ interface Props {
   filtros: FiltrosGrafico;
 }
 
+const montarQueryParams = (filtros: FiltrosGrafico) => {
+  const params = new URLSearchParams();
+  if (filtros.inicio) params.append('inicio', filtros.inicio);
+  if (filtros.fim) params.append('fim', filtros.fim);
+  params.append('local', filtros.local);
+  return params.toString();
+};
+
 const Grafico: React.FC<Props> = ({ filtros }) => {
   const [dados, setDados] = useState<DadoGrafico[]>([]);
 
-  const montarQueryParams = () => {
-    const params = new URLSearchParams();
-    if (filtros.inicio) params.append('inicio', filtros.inicio);
-    if (filtros.fim) params.append('fim', filtros.fim);
-    params.append('local', filtros.local);
-    return params.toString();
-  };
-
   useEffect(() => {
     const fetchData = async () => {
-      const query = montarQueryParams();
+      const query = montarQueryParams(filtros);
       const url = `http://localhost:3000/api/grafico/${filtros.tipo}?${query}`;
 
       try {
@@ -43,7 +43,7 @@ const Grafico: React.FC<Props> = ({ filtros }) => {
     };
 
     fetchData();
-  }, [filtros]);
+  }, [filtros]); // ✅ Correto!
 
   const chartData = [
     ['Categoria', 'Total', { role: 'style' }],
@@ -74,7 +74,7 @@ const Grafico: React.FC<Props> = ({ filtros }) => {
   return (
     <GraficoContainer>
       {chartData.length <= 1 ? (
-        <MensagemSemDados>Nenhum dado disponível.</MensagemSemDados>
+        <p style={{ color: 'white' }}>Nenhum dado disponível.</p>
       ) : (
         <Chart
           chartType="BarChart"
