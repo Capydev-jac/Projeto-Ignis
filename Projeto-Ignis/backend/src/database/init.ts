@@ -171,7 +171,6 @@ ORDER BY
     ('2025-03-20  ', ST_SetSRID(ST_MakePoint(-38.60224, -11.07725), 4326), 29, 2, 1.0),
     ('2025-03-20  ', ST_SetSRID(ST_MakePoint(-40.1136, -19.19049), 4326), 32, 4, 1.0),
     ('2025-03-20  ', ST_SetSRID(ST_MakePoint(-38.50486, -11.58972), 4326), 29, 2, 1.0),
-    ('2025-03-31  ', ST_SetSRID(ST_MakePoint(-52.52063, -0.83872), 4326), 16, 1, -999.0),
     ('2025-03-20  ', ST_SetSRID(ST_MakePoint(-41.14675, -13.84279), 4326), 29, 2, 1.0),
     ('2025-03-20  ', ST_SetSRID(ST_MakePoint(-39.29832, -13.44713), 4326), 29, 4, 0.68),
     ('2025-03-20  ', ST_SetSRID(ST_MakePoint(-40.91551, -9.17826), 4326), 29, 2, 1.0),
@@ -1452,21 +1451,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
         data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
     ) VALUES (
-        '2025-03-26 16:20:00', 24, 4, 0.13, -999, 0.2, 219.6, ST_SetSRID(ST_MakePoint(-35.02938, -6.4659), 4326)
-    );
-INSERT INTO Foco_calor (
-        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-    ) VALUES (
-        '2025-03-26 16:20:00', 24, 4, 0.2, -999, 0.2, 161.8, ST_SetSRID(ST_MakePoint(-35.03734, -6.46303), 4326)
-    );
-INSERT INTO Foco_calor (
-        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-    ) VALUES (
-        '2025-03-26 16:20:00', 24, 4, 0.63, -999, 0.3, 64.3, ST_SetSRID(ST_MakePoint(-34.99821, -6.45786), 4326)
-    );
-INSERT INTO Foco_calor (
-        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-    ) VALUES (
         '2025-03-20 17:17:00', 27, 2, 1.0, 13, 0.0, 84.3, ST_SetSRID(ST_MakePoint(-36.93745, -10.04392), 4326)
     );
 INSERT INTO Foco_calor (
@@ -1608,11 +1592,6 @@ INSERT INTO Foco_calor (
         data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
     ) VALUES (
         '2025-03-20 17:17:00', 29, 2, 1.0, 11, 0.0, 78.7, ST_SetSRID(ST_MakePoint(-38.21904, -9.90321), 4326)
-    );
-INSERT INTO Foco_calor (
-        data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-    ) VALUES (
-        '2025-03-25 17:15:00', 29, 4, 0.4, -999, 0.0, 76.7, ST_SetSRID(ST_MakePoint(-38.98403, -13.27171), 4326)
     );
 INSERT INTO Foco_calor (
         data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -3350,13 +3329,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-28 23:14:00', 25, 4,
-    1.00, -999, 0.10, 188.4,
-    ST_SetSRID(ST_MakePoint(-34.96329, -6.8447), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-05-08 12:36:00', 21, 3,
     1.00, 7, 0.00, 188.3,
     ST_SetSRID(ST_MakePoint(-44.78196, -6.62343), 4326)
@@ -4498,13 +4470,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-28 23:14:00', 25, 4,
-    1.00, -999, 0.16, 157.4,
-    ST_SetSRID(ST_MakePoint(-34.95758, -6.83901), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-05-06 13:30:00', 21, 3,
     1.00, 5, 0.00, 157.4,
     ST_SetSRID(ST_MakePoint(-44.7896, -6.6208), 4326)
@@ -4578,13 +4543,6 @@ INSERT INTO Foco_calor (
     '2025-05-08 20:30:00', 21, 3,
     0.71, 7, 0.00, 155.0,
     ST_SetSRID(ST_MakePoint(-43.4908, -5.565), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
-    '2025-04-28 23:10:00', 25, 4,
-    1.00, -999, 0.06, 154.8,
-    ST_SetSRID(ST_MakePoint(-34.9614, -6.8487), 4326)
 );
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -4953,13 +4911,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-27 21:10:00', 25, 4,
-    1.00, -999, 0.00, 148.2,
-    ST_SetSRID(ST_MakePoint(-35.0391, -6.8858), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-04-14 20:20:00', 21, 3,
     0.57, 0, 0.00, 148.2,
     ST_SetSRID(ST_MakePoint(-43.6612, -6.3508), 4326)
@@ -5082,13 +5033,6 @@ INSERT INTO Foco_calor (
     '2025-05-08 12:50:00', 22, 2,
     1.00, 16, 0.00, 145.4,
     ST_SetSRID(ST_MakePoint(-42.8108, -6.9613), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
-    '2025-04-27 21:10:00', 25, 4,
-    1.00, -999, 0.00, 145.3,
-    ST_SetSRID(ST_MakePoint(-35.0366, -6.9049), 4326)
 );
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -7410,13 +7354,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-27 21:00:00', 25, 4,
-    1.00, -999, 0.00, 118.2,
-    ST_SetSRID(ST_MakePoint(-35.0391, -6.8858), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-04-30 20:30:00', 22, 2,
     0.85, 4, 0.00, 118.2,
     ST_SetSRID(ST_MakePoint(-42.7872, -6.9615), 4326)
@@ -8509,13 +8446,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-03 22:10:00', 25, 4,
-    1.00, -999, 0.00, 110.1,
-    ST_SetSRID(ST_MakePoint(-35.0164, -6.8479), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-04-14 21:40:00', 21, 3,
     0.79, 0, 0.03, 110.0,
     ST_SetSRID(ST_MakePoint(-43.6364, -6.3698), 4326)
@@ -8792,13 +8722,6 @@ INSERT INTO Foco_calor (
     '2025-05-05 12:10:00', 22, 2,
     0.98, 13, 0.00, 108.2,
     ST_SetSRID(ST_MakePoint(-42.8108, -6.9613), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
-    '2025-04-27 21:00:00', 25, 4,
-    1.00, -999, 0.00, 108.1,
-    ST_SetSRID(ST_MakePoint(-35.0366, -6.9049), 4326)
 );
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -9188,13 +9111,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-25 22:10:00', 25, 4,
-    1.00, -999, 0.00, 104.9,
-    ST_SetSRID(ST_MakePoint(-35.0391, -6.8858), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-04-14 22:10:00', 31, 3,
     0.10, 0, 0.00, 104.8,
     ST_SetSRID(ST_MakePoint(-46.5351, -20.254), 4326)
@@ -9289,13 +9205,6 @@ INSERT INTO Foco_calor (
     '2025-04-25 22:20:00', 51, 1,
     0.02, 0, 0.53, 104.3,
     ST_SetSRID(ST_MakePoint(-52.9269, -11.3965), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
-    '2025-04-03 21:50:00', 25, 4,
-    1.00, -999, 0.00, 104.2,
-    ST_SetSRID(ST_MakePoint(-35.0164, -6.8479), 4326)
 );
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -9580,13 +9489,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-05-03 00:11:00', 27, 4,
-    1.00, -999, 0.10, 101.9,
-    ST_SetSRID(ST_MakePoint(-36.42765, -10.27639), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-04-03 13:40:00', 29, 3,
     0.59, 5, 0.00, 101.9,
     ST_SetSRID(ST_MakePoint(-45.1027, -13.033), 4326)
@@ -9597,13 +9499,6 @@ INSERT INTO Foco_calor (
     '2025-04-04 12:50:00', 29, 3,
     1.00, 7, 0.00, 101.9,
     ST_SetSRID(ST_MakePoint(-45.0529, -13.0533), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
-    '2025-04-27 21:50:00', 25, 4,
-    1.00, -999, 0.00, 101.8,
-    ST_SetSRID(ST_MakePoint(-35.0243, -7.0005), 4326)
 );
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -9884,13 +9779,6 @@ INSERT INTO Foco_calor (
     '2025-05-02 20:10:00', 22, 2,
     0.92, 7, 0.00, 100.4,
     ST_SetSRID(ST_MakePoint(-42.7872, -6.9615), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
-    '2025-04-24 01:20:00', 25, 4,
-    0.74, -999, 0.20, 100.3,
-    ST_SetSRID(ST_MakePoint(-35.0391, -6.8858), 4326)
 );
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -11064,13 +10952,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-24 01:10:00', 25, 4,
-    0.74, -999, 0.20, 92.5,
-    ST_SetSRID(ST_MakePoint(-35.0391, -6.8858), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-05-03 13:00:00', 29, 3,
     0.69, 2, 0.00, 92.4,
     ST_SetSRID(ST_MakePoint(-45.1988, -13.7075), 4326)
@@ -11477,13 +11358,6 @@ INSERT INTO Foco_calor (
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
 ) VALUES (
-    '2025-04-28 23:00:00', 25, 4,
-    1.00, -999, 0.06, 89.4,
-    ST_SetSRID(ST_MakePoint(-34.9614, -6.8487), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
     '2025-04-24 22:20:00', 21, 3,
     0.85, 3, 0.50, 89.3,
     ST_SetSRID(ST_MakePoint(-43.3911, -6.2409), 4326)
@@ -11690,13 +11564,6 @@ INSERT INTO Foco_calor (
     '2025-05-02 00:10:00', 27, 4,
     1.00, 12, 2.85, 88.1,
     ST_SetSRID(ST_MakePoint(-37.071, -9.8776), 4326)
-);
-INSERT INTO Foco_calor (
-    data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
-) VALUES (
-    '2025-05-03 21:10:00', 25, 4,
-    1.00, -999, 0.00, 88.0,
-    ST_SetSRID(ST_MakePoint(-34.9967, -7.0008), 4326)
 );
 INSERT INTO Foco_calor (
     data, estado_id, bioma_id, risco_fogo, dia_sem_chuva, precipitacao, frp, geometria
@@ -12009,13 +11876,11 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 1.20, ST_SetSRID(ST_MakePoint(-41.67921, -14.12171), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.17, 1.30, ST_SetSRID(ST_MakePoint(-43.98011, -15.14516), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-04-03', 0.72, 2.40, ST_SetSRID(ST_MakePoint(-43.03557, -6.9579), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-04-03', -999.00, 0.80, ST_SetSRID(ST_MakePoint(-43.97979, -21.17888), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-04-03', 0.01, 0.90, ST_SetSRID(ST_MakePoint(-57.08358, -21.48719), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.05, 1.00, ST_SetSRID(ST_MakePoint(-48.27204, -13.73685), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.38, 0.70, ST_SetSRID(ST_MakePoint(-45.62946, -12.12038), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.28, 0.90, ST_SetSRID(ST_MakePoint(-44.40527, -10.66803), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.13, 0.80, ST_SetSRID(ST_MakePoint(-47.67104, -14.13245), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-04-03', -999.00, 1.20, ST_SetSRID(ST_MakePoint(-39.82187, -13.29305), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.46, 2.40, ST_SetSRID(ST_MakePoint(-45.0985, -13.03152), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.89, 0.60, ST_SetSRID(ST_MakePoint(-45.16458, -19.96731), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.43, 0.50, ST_SetSRID(ST_MakePoint(-45.2461, -11.02085), 4326));
@@ -12043,7 +11908,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 3, '2025-04-03', 0.34, 0.90, ST_SetSRID(ST_MakePoint(-44.02465, -8.72806), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.56, 1.10, ST_SetSRID(ST_MakePoint(-48.50268, -15.52809), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.14, 1.50, ST_SetSRID(ST_MakePoint(-44.0821, -16.61759), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', -999.00, 0.60, ST_SetSRID(ST_MakePoint(-41.86081, -11.29306), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.50, 2.70, ST_SetSRID(ST_MakePoint(-45.09196, -13.03595), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.31, 1.20, ST_SetSRID(ST_MakePoint(-43.54112, -12.29116), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.93, 1.40, ST_SetSRID(ST_MakePoint(-43.50289, -12.30382), 4326));
@@ -12051,8 +11915,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-04-03', 0.00, 3.50, ST_SetSRID(ST_MakePoint(-48.05238, -6.23215), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.73, 1.40, ST_SetSRID(ST_MakePoint(-43.50236, -12.30049), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-04-03', 0.72, 1.30, ST_SetSRID(ST_MakePoint(-43.03458, -6.95128), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', -999.00, 2.60, ST_SetSRID(ST_MakePoint(-40.9696, -9.16487), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-04-03', -999.00, 2.30, ST_SetSRID(ST_MakePoint(-43.75415, -22.90214), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.32, 2.40, ST_SetSRID(ST_MakePoint(-43.54522, -12.29395), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-04-03', 0.01, 1.10, ST_SetSRID(ST_MakePoint(-50.64591, -20.21194), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-04-03', 0.12, 1.80, ST_SetSRID(ST_MakePoint(-42.67051, -15.54388), 4326));
@@ -12064,9 +11926,7 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 0.70, ST_SetSRID(ST_MakePoint(-41.88021, -13.40614), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 3, '2025-04-03', 0.35, 0.90, ST_SetSRID(ST_MakePoint(-44.02116, -8.72861), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.14, 1.00, ST_SetSRID(ST_MakePoint(-44.07782, -16.61479), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', -999.00, 0.90, ST_SetSRID(ST_MakePoint(-44.07851, -19.53866), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.63, 0.70, ST_SetSRID(ST_MakePoint(-42.32088, -15.60428), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', -999.00, 2.80, ST_SetSRID(ST_MakePoint(-40.97075, -9.16467), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.10, 1.00, ST_SetSRID(ST_MakePoint(-42.80671, -17.77796), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.69, 1.30, ST_SetSRID(ST_MakePoint(-45.08897, -13.03983), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.11, 2.50, ST_SetSRID(ST_MakePoint(-47.69208, -14.10707), 4326));
@@ -12086,17 +11946,14 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (25, 2, '2025-04-03', 1.00, 1.30, ST_SetSRID(ST_MakePoint(-35.59336, -7.23281), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.14, 0.80, ST_SetSRID(ST_MakePoint(-47.66692, -14.13315), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-04-03', 0.01, 2.30, ST_SetSRID(ST_MakePoint(-47.3239, -20.16042), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-04-03', -999.00, 0.70, ST_SetSRID(ST_MakePoint(-49.32803, -25.1909), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.38, 0.90, ST_SetSRID(ST_MakePoint(-45.63308, -12.1198), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.15, 1.20, ST_SetSRID(ST_MakePoint(-47.66201, -14.10493), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.63, 0.70, ST_SetSRID(ST_MakePoint(-44.03376, -13.4829), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-04-03', 0.11, 1.00, ST_SetSRID(ST_MakePoint(-42.66586, -15.54097), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', -999.00, 2.80, ST_SetSRID(ST_MakePoint(-48.94485, -15.0806), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-04-03', 0.00, 4.70, ST_SetSRID(ST_MakePoint(-48.05594, -6.23156), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 1.00, 1.10, ST_SetSRID(ST_MakePoint(-43.57198, -15.80445), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-04-03', 0.07, 0.60, ST_SetSRID(ST_MakePoint(-43.84473, -19.85157), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.68, 0.60, ST_SetSRID(ST_MakePoint(-44.93829, -12.69629), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-04-03', -999.00, 0.90, ST_SetSRID(ST_MakePoint(-47.80095, -21.13208), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.31, 0.80, ST_SetSRID(ST_MakePoint(-46.54534, -18.56066), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.10, 1.00, ST_SetSRID(ST_MakePoint(-42.80727, -17.78151), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-04-03', 0.69, 1.00, ST_SetSRID(ST_MakePoint(-43.0159, -6.96774), 4326));
@@ -12113,7 +11970,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-04-03', 0.47, 2.30, ST_SetSRID(ST_MakePoint(-48.67894, -21.1304), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 1.20, ST_SetSRID(ST_MakePoint(-42.1823, -10.22534), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 1.60, ST_SetSRID(ST_MakePoint(-40.57395, -9.82721), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-04-03', -999.00, 1.10, ST_SetSRID(ST_MakePoint(-46.7685, -20.76359), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-04-03', 0.72, 2.40, ST_SetSRID(ST_MakePoint(-43.03509, -6.95459), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 1.00, 1.40, ST_SetSRID(ST_MakePoint(-45.25598, -13.56775), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.37, 0.90, ST_SetSRID(ST_MakePoint(-45.63671, -12.11922), 4326));
@@ -12191,7 +12047,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 6, '2025-04-03', 0.01, 0.70, ST_SetSRID(ST_MakePoint(-57.63884, -21.3566), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 1.40, ST_SetSRID(ST_MakePoint(-40.98341, -11.27422), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.10, 0.80, ST_SetSRID(ST_MakePoint(-42.80765, -17.78037), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-04-03', -999.00, 1.40, ST_SetSRID(ST_MakePoint(-49.32732, -25.19226), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.60, 0.40, ST_SetSRID(ST_MakePoint(-45.34073, -12.55778), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-04-03', 0.37, 1.90, ST_SetSRID(ST_MakePoint(-51.98517, -14.87032), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.60, 2.60, ST_SetSRID(ST_MakePoint(-45.09415, -13.03805), 4326));
@@ -12212,7 +12067,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.47, 1.00, ST_SetSRID(ST_MakePoint(-48.50325, -15.52558), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-04-03', 0.00, 1.70, ST_SetSRID(ST_MakePoint(-54.78514, -19.42425), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 1.00, 0.70, ST_SetSRID(ST_MakePoint(-45.24768, -13.56645), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-04-03', -999.00, 1.30, ST_SetSRID(ST_MakePoint(-47.80125, -21.13038), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.75, 0.90, ST_SetSRID(ST_MakePoint(-44.96782, -12.78454), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-04-03', 0.01, 1.10, ST_SetSRID(ST_MakePoint(-55.33804, -20.5554), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.31, 1.30, ST_SetSRID(ST_MakePoint(-43.5434, -12.28921), 4326));
@@ -12224,14 +12078,12 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-04-03', 0.00, 12.30, ST_SetSRID(ST_MakePoint(-48.05033, -6.22722), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-04-03', 0.01, 1.10, ST_SetSRID(ST_MakePoint(-55.33529, -20.55525), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (32, 4, '2025-04-03', 1.00, 0.90, ST_SetSRID(ST_MakePoint(-40.35342, -19.7176), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-04-03', -999.00, 2.40, ST_SetSRID(ST_MakePoint(-43.75106, -22.89962), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.59, 2.10, ST_SetSRID(ST_MakePoint(-45.09289, -13.03774), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.96, 11.30, ST_SetSRID(ST_MakePoint(-43.57298, -15.8059), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (15, 1, '2025-04-03', 0.00, 1.00, ST_SetSRID(ST_MakePoint(-55.31522, -7.29818), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.12, 1.80, ST_SetSRID(ST_MakePoint(-47.68557, -14.1061), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.46, 3.80, ST_SetSRID(ST_MakePoint(-45.09461, -13.03234), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 6, '2025-04-03', 0.85, 0.60, ST_SetSRID(ST_MakePoint(-58.45931, -16.02717), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', -999.00, 1.90, ST_SetSRID(ST_MakePoint(-40.97205, -9.16472), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-04-03', 0.01, 0.40, ST_SetSRID(ST_MakePoint(-57.08561, -21.48718), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.10, 2.10, ST_SetSRID(ST_MakePoint(-47.69242, -14.10103), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.62, 1.70, ST_SetSRID(ST_MakePoint(-45.08763, -13.03832), 4326));
@@ -12248,7 +12100,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.50, 2.90, ST_SetSRID(ST_MakePoint(-45.08869, -13.03594), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.37, 0.50, ST_SetSRID(ST_MakePoint(-52.35683, -18.13415), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-04-03', 0.00, 1.40, ST_SetSRID(ST_MakePoint(-47.32164, -20.15556), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-04-03', -999.00, 1.30, ST_SetSRID(ST_MakePoint(-43.46544, -21.62397), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.93, 4.10, ST_SetSRID(ST_MakePoint(-43.57209, -15.80647), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (25, 4, '2025-04-03', 0.99, 1.50, ST_SetSRID(ST_MakePoint(-34.84276, -7.47425), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.51, 4.10, ST_SetSRID(ST_MakePoint(-45.10088, -13.03103), 4326));
@@ -12284,13 +12135,11 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (11, 1, '2025-04-03', 0.10, 1.40, ST_SetSRID(ST_MakePoint(-63.79868, -12.27689), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (14, 1, '2025-04-03', 0.03, 2.00, ST_SetSRID(ST_MakePoint(-60.10985, 0.76858), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.46, 3.70, ST_SetSRID(ST_MakePoint(-45.09912, -13.03473), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-04-03', -999.00, 1.30, ST_SetSRID(ST_MakePoint(-39.92608, -18.03824), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-04-03', 0.03, 1.80, ST_SetSRID(ST_MakePoint(-47.32926, -20.15879), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.56, 2.10, ST_SetSRID(ST_MakePoint(-45.09811, -13.03717), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (28, 4, '2025-04-03', 1.00, 1.00, ST_SetSRID(ST_MakePoint(-37.40533, -10.65699), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.86, 3.00, ST_SetSRID(ST_MakePoint(-43.56481, -15.80713), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.46, 3.00, ST_SetSRID(ST_MakePoint(-45.09409, -13.03437), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (26, 4, '2025-04-03', -999.00, 1.60, ST_SetSRID(ST_MakePoint(-34.97723, -8.07182), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.56, 1.30, ST_SetSRID(ST_MakePoint(-45.33954, -12.56287), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-04-03', 0.08, 1.00, ST_SetSRID(ST_MakePoint(-56.25267, -21.22943), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-04-03', 0.39, 0.60, ST_SetSRID(ST_MakePoint(-51.98396, -14.87101), 4326));
@@ -12580,7 +12429,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.99, 4.00, ST_SetSRID(ST_MakePoint(-48.49185, -16.64582), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.44, 10.00, ST_SetSRID(ST_MakePoint(-45.09617, -16.29422), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 3, '2025-04-03', 0.57, 5.80, ST_SetSRID(ST_MakePoint(-44.23677, -8.92997), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (15, 1, '2025-04-03', -999.00, 2.80, ST_SetSRID(ST_MakePoint(-55.04774, -8.62286), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-04-03', 0.55, 0.90, ST_SetSRID(ST_MakePoint(-43.14199, -19.1553), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-04-03', 0.03, 9.30, ST_SetSRID(ST_MakePoint(-46.89547, -11.03975), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.16, 8.20, ST_SetSRID(ST_MakePoint(-47.66075, -14.1069), 4326));
@@ -12644,7 +12492,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.01, 5.50, ST_SetSRID(ST_MakePoint(-46.15887, -20.32959), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 3.80, ST_SetSRID(ST_MakePoint(-42.23948, -13.46257), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (27, 2, '2025-04-03', 1.00, 12.80, ST_SetSRID(ST_MakePoint(-37.9177, -9.23618), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-04-03', -999.00, 3.80, ST_SetSRID(ST_MakePoint(-39.6974, -17.52881), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 7.50, ST_SetSRID(ST_MakePoint(-40.69294, -12.9392), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 4.30, ST_SetSRID(ST_MakePoint(-40.69584, -12.94023), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 3, '2025-04-03', 0.16, 8.00, ST_SetSRID(ST_MakePoint(-44.71292, -9.92597), 4326));
@@ -12725,7 +12572,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 4.50, ST_SetSRID(ST_MakePoint(-39.47661, -10.74514), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 6.00, ST_SetSRID(ST_MakePoint(-38.56253, -10.35228), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-04-03', 0.53, 4.90, ST_SetSRID(ST_MakePoint(-45.25704, -6.30332), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (25, 2, '2025-04-03', -999.00, 3.30, ST_SetSRID(ST_MakePoint(-35.89865, -7.28261), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.06, 11.10, ST_SetSRID(ST_MakePoint(-47.56737, -13.50512), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (26, 2, '2025-04-03', 0.96, 8.60, ST_SetSRID(ST_MakePoint(-36.9399, -9.33996), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (26, 2, '2025-04-03', 0.54, 16.30, ST_SetSRID(ST_MakePoint(-36.84708, -9.18688), 4326));
@@ -12756,7 +12602,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-04-03', 0.72, 7.20, ST_SetSRID(ST_MakePoint(-43.03493, -6.95602), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 0.36, 29.60, ST_SetSRID(ST_MakePoint(-42.43418, -10.0109), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (28, 2, '2025-04-03', 1.00, 17.30, ST_SetSRID(ST_MakePoint(-37.91269, -10.85161), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-04-03', -999.00, 3.00, ST_SetSRID(ST_MakePoint(-38.2694, -12.68937), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-04-03', 0.51, 11.80, ST_SetSRID(ST_MakePoint(-45.26289, -6.29923), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 4.00, ST_SetSRID(ST_MakePoint(-39.82928, -10.72732), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.05, 11.10, ST_SetSRID(ST_MakePoint(-47.57224, -13.50564), 4326));
@@ -12771,7 +12616,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.36, 16.30, ST_SetSRID(ST_MakePoint(-45.09478, -16.29905), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.65, 8.70, ST_SetSRID(ST_MakePoint(-45.09691, -13.0391), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (25, 2, '2025-04-03', 0.27, 27.70, ST_SetSRID(ST_MakePoint(-35.60302, -6.98393), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', -999.00, 8.10, ST_SetSRID(ST_MakePoint(-43.47475, -13.08372), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 6.20, ST_SetSRID(ST_MakePoint(-40.21662, -11.73175), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-04-03', 0.19, 8.50, ST_SetSRID(ST_MakePoint(-46.45165, -10.57522), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-04-03', 0.21, 3.30, ST_SetSRID(ST_MakePoint(-46.82967, -10.15142), 4326));
@@ -12796,7 +12640,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-04-03', 1.00, 5.60, ST_SetSRID(ST_MakePoint(-39.81936, -15.00769), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 4.00, ST_SetSRID(ST_MakePoint(-42.62162, -12.91694), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 4.10, ST_SetSRID(ST_MakePoint(-40.59318, -9.86634), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-04-03', -999.00, 3.00, ST_SetSRID(ST_MakePoint(-43.22165, -22.62465), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-04-03', 0.86, 3.00, ST_SetSRID(ST_MakePoint(-46.79305, -13.40823), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 1.00, 5.80, ST_SetSRID(ST_MakePoint(-43.73137, -13.56693), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.62, 57.00, ST_SetSRID(ST_MakePoint(-45.96893, -15.05386), 4326));
@@ -12822,7 +12665,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 3, '2025-04-03', 0.29, 6.00, ST_SetSRID(ST_MakePoint(-44.60923, -10.31316), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-04-03', 0.72, 8.70, ST_SetSRID(ST_MakePoint(-39.27711, -17.391), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-04-03', 0.78, 18.30, ST_SetSRID(ST_MakePoint(-51.95515, -15.46218), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (15, 1, '2025-04-03', -999.00, 2.60, ST_SetSRID(ST_MakePoint(-55.0457, -8.6247), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-04-03', 0.61, 5.10, ST_SetSRID(ST_MakePoint(-45.96813, -15.04209), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-04-03', 0.96, 8.40, ST_SetSRID(ST_MakePoint(-44.69299, -17.60907), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-04-03', 0.03, 6.40, ST_SetSRID(ST_MakePoint(-49.54786, -10.99489), 4326));
@@ -12873,7 +12715,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (15, 1, '2025-04-03', 0.00, 19.10, ST_SetSRID(ST_MakePoint(-54.78376, -2.64241), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-04-03', 1.00, 28.80, ST_SetSRID(ST_MakePoint(-42.19424, -22.58476), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-04-03', 0.72, 12.70, ST_SetSRID(ST_MakePoint(-43.03524, -6.95341), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-04-03', -999.00, 2.90, ST_SetSRID(ST_MakePoint(-46.58736, -23.66298), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-04-03', 0.38, 5.50, ST_SetSRID(ST_MakePoint(-41.1531, -5.87307), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-04-03', 1.00, 15.80, ST_SetSRID(ST_MakePoint(-40.11026, -10.66392), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-04-03', 1.00, 8.80, ST_SetSRID(ST_MakePoint(-40.08894, -15.41363), 4326));
@@ -13110,7 +12951,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-08', 0.12, 2.70, ST_SetSRID(ST_MakePoint(-53.45479, -19.05836), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.95, 1.10, ST_SetSRID(ST_MakePoint(-43.65618, -13.50462), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-08', 0.46, 0.70, ST_SetSRID(ST_MakePoint(-48.7062, -11.77104), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-08', -999.00, 0.50, ST_SetSRID(ST_MakePoint(-43.75628, -22.78748), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.68, 3.40, ST_SetSRID(ST_MakePoint(-44.23619, -14.09643), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.80, 5.30, ST_SetSRID(ST_MakePoint(-44.44254, -10.98952), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-08', 0.11, 0.90, ST_SetSRID(ST_MakePoint(-42.81031, -17.77738), 4326));
@@ -13125,7 +12965,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-08', 0.07, 1.40, ST_SetSRID(ST_MakePoint(-43.25214, -3.99645), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-08', 0.45, 2.40, ST_SetSRID(ST_MakePoint(-47.96994, -12.75158), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-08', 0.14, 5.10, ST_SetSRID(ST_MakePoint(-53.71898, -13.05317), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-08', -999.00, 1.70, ST_SetSRID(ST_MakePoint(-43.88383, -16.683), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-08', 0.08, 2.80, ST_SetSRID(ST_MakePoint(-52.9504, -11.39445), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-08', 0.45, 6.00, ST_SetSRID(ST_MakePoint(-52.9747, -13.50109), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-08', 0.36, 1.00, ST_SetSRID(ST_MakePoint(-46.4683, -16.18192), 4326));
@@ -13142,7 +12981,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-08', 0.44, 1.10, ST_SetSRID(ST_MakePoint(-52.9623, -13.4863), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-08', 0.18, 1.80, ST_SetSRID(ST_MakePoint(-55.97524, -13.92928), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-05-08', 0.12, 1.70, ST_SetSRID(ST_MakePoint(-49.00258, -23.60718), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-08', -999.00, 3.00, ST_SetSRID(ST_MakePoint(-42.85387, -22.67863), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-08', 0.13, 0.90, ST_SetSRID(ST_MakePoint(-42.8111, -17.78134), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (11, 1, '2025-05-08', 0.20, 0.70, ST_SetSRID(ST_MakePoint(-61.88221, -9.48131), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-08', 0.51, 0.80, ST_SetSRID(ST_MakePoint(-54.22043, -19.84194), 4326));
@@ -13233,7 +13071,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-08', 1.00, 1.00, ST_SetSRID(ST_MakePoint(-48.8271, -20.9178), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-08', 1.00, 1.60, ST_SetSRID(ST_MakePoint(-43.99189, -17.88692), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.90, 34.40, ST_SetSRID(ST_MakePoint(-45.12182, -14.63855), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-08', -999.00, 0.70, ST_SetSRID(ST_MakePoint(-46.42154, -23.40843), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.82, 10.70, ST_SetSRID(ST_MakePoint(-45.13933, -14.64014), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.88, 23.80, ST_SetSRID(ST_MakePoint(-45.12146, -14.64156), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-08', 0.47, 0.90, ST_SetSRID(ST_MakePoint(-54.07185, -20.56178), 4326));
@@ -13258,7 +13095,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-08', 0.75, 5.60, ST_SetSRID(ST_MakePoint(-46.57732, -15.82445), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-05-08', 1.00, 3.50, ST_SetSRID(ST_MakePoint(-42.32438, -10.72406), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (23, 2, '2025-05-08', 0.84, 4.10, ST_SetSRID(ST_MakePoint(-38.11819, -4.21199), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-08', -999.00, 0.90, ST_SetSRID(ST_MakePoint(-43.98083, -21.18192), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.90, 2.90, ST_SetSRID(ST_MakePoint(-44.4482, -10.98844), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-05-08', 0.25, 5.50, ST_SetSRID(ST_MakePoint(-41.88247, -9.76111), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-08', 0.24, 2.20, ST_SetSRID(ST_MakePoint(-45.10711, -5.16315), 4326));
@@ -13276,7 +13112,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-08', 0.94, 13.40, ST_SetSRID(ST_MakePoint(-42.13836, -6.69606), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.63, 1.40, ST_SetSRID(ST_MakePoint(-45.14555, -14.64708), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (27, 2, '2025-05-08', 1.00, 3.10, ST_SetSRID(ST_MakePoint(-37.04296, -9.61101), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-08', -999.00, 1.10, ST_SetSRID(ST_MakePoint(-46.5569, -23.40384), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (14, 1, '2025-05-08', 0.00, 1.80, ST_SetSRID(ST_MakePoint(-60.53455, 1.11672), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-08', 0.92, 8.50, ST_SetSRID(ST_MakePoint(-42.13453, -6.70142), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-08', 0.09, 3.80, ST_SetSRID(ST_MakePoint(-54.26025, -13.37149), 4326));
@@ -13295,13 +13130,11 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-08', 0.46, 6.00, ST_SetSRID(ST_MakePoint(-52.97215, -13.50684), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-08', 1.00, 1.40, ST_SetSRID(ST_MakePoint(-42.78954, -6.83821), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-08', 0.37, 0.60, ST_SetSRID(ST_MakePoint(-52.75513, -21.79161), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (26, 4, '2025-05-08', -999.00, 0.80, ST_SetSRID(ST_MakePoint(-34.97582, -8.07352), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-08', 0.24, 1.60, ST_SetSRID(ST_MakePoint(-54.70851, -18.41673), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.91, 37.40, ST_SetSRID(ST_MakePoint(-45.12046, -14.63671), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-08', 0.24, 1.60, ST_SetSRID(ST_MakePoint(-54.70541, -18.41709), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-08', 0.95, 37.40, ST_SetSRID(ST_MakePoint(-45.12597, -14.63566), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-08', 0.07, 1.70, ST_SetSRID(ST_MakePoint(-43.24948, -3.99788), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-08', -999.00, 0.60, ST_SetSRID(ST_MakePoint(-44.21759, -19.97073), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-08', 1.00, 1.90, ST_SetSRID(ST_MakePoint(-42.79638, -6.97898), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-08', 0.47, 0.70, ST_SetSRID(ST_MakePoint(-54.21687, -19.84004), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-08', 1.00, 80.70, ST_SetSRID(ST_MakePoint(-42.8108, -6.9613), 4326));
@@ -14606,7 +14439,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.77, 2.60, ST_SetSRID(ST_MakePoint(-44.43314, -10.9755), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 21.70, ST_SetSRID(ST_MakePoint(-43.12601, -8.07404), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 2.70, ST_SetSRID(ST_MakePoint(-45.4705, -14.20047), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 1.50, ST_SetSRID(ST_MakePoint(-42.85846, -22.677), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 1.00, 4.60, ST_SetSRID(ST_MakePoint(-44.39202, -7.07089), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.99, 1.70, ST_SetSRID(ST_MakePoint(-44.51136, -12.31657), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 3.40, ST_SetSRID(ST_MakePoint(-45.46626, -14.20645), 4326));
@@ -14634,7 +14466,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 2.70, ST_SetSRID(ST_MakePoint(-45.46588, -14.20851), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 1.80, ST_SetSRID(ST_MakePoint(-42.78147, -6.97117), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 19.00, ST_SetSRID(ST_MakePoint(-43.12569, -8.0752), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 1.10, ST_SetSRID(ST_MakePoint(-43.43412, -22.69807), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 0.16, 1.20, ST_SetSRID(ST_MakePoint(-46.96308, -23.3343), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.69, 6.70, ST_SetSRID(ST_MakePoint(-44.37675, -10.67305), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.84, 1.10, ST_SetSRID(ST_MakePoint(-45.47649, -14.22719), 4326));
@@ -14669,7 +14500,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 65.20, ST_SetSRID(ST_MakePoint(-43.1216, -8.07), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.11, 1.50, ST_SetSRID(ST_MakePoint(-54.25757, -13.36468), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 2.30, ST_SetSRID(ST_MakePoint(-51.91476, -24.9341), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', -999.00, 0.40, ST_SetSRID(ST_MakePoint(-49.32225, -25.19819), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.18, 3.80, ST_SetSRID(ST_MakePoint(-54.24219, -12.17426), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 0.70, ST_SetSRID(ST_MakePoint(-42.78296, -6.96256), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.25, 1.00, ST_SetSRID(ST_MakePoint(-47.98723, -12.12005), 4326));
@@ -14747,7 +14577,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.27, 0.90, ST_SetSRID(ST_MakePoint(-54.93914, -11.62816), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.00, ST_SetSRID(ST_MakePoint(-53.71842, -13.05236), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.09, 0.90, ST_SetSRID(ST_MakePoint(-55.1642, -12.32864), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', -999.00, 0.50, ST_SetSRID(ST_MakePoint(-49.32612, -25.19208), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 5.40, ST_SetSRID(ST_MakePoint(-42.14204, -6.70084), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (15, 1, '2025-05-09', 0.31, 0.90, ST_SetSRID(ST_MakePoint(-56.10964, -4.00641), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-09', 0.94, 1.20, ST_SetSRID(ST_MakePoint(-54.57561, -16.38268), 4326));
@@ -14796,7 +14625,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.84, 2.30, ST_SetSRID(ST_MakePoint(-45.47431, -14.21881), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.20, 1.10, ST_SetSRID(ST_MakePoint(-54.06342, -12.64205), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.66, 3.70, ST_SetSRID(ST_MakePoint(-45.13831, -14.64672), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', -999.00, 1.20, ST_SetSRID(ST_MakePoint(-50.7396, -24.24192), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 2.00, ST_SetSRID(ST_MakePoint(-43.11763, -7.21341), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', 0.99, 1.40, ST_SetSRID(ST_MakePoint(-47.16998, -18.71789), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 1.00, 1.20, ST_SetSRID(ST_MakePoint(-48.68128, -21.17898), 4326));
@@ -14910,7 +14738,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.20, 2.20, ST_SetSRID(ST_MakePoint(-54.06709, -12.6425), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 2.60, ST_SetSRID(ST_MakePoint(-42.78083, -6.96826), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 2.20, ST_SetSRID(ST_MakePoint(-45.45966, -14.20551), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 1.60, ST_SetSRID(ST_MakePoint(-42.85477, -22.6761), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.84, 2.00, ST_SetSRID(ST_MakePoint(-45.47646, -14.22437), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.14, 1.80, ST_SetSRID(ST_MakePoint(-47.61783, -11.56276), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.18, 6.40, ST_SetSRID(ST_MakePoint(-45.10659, -5.16746), 4326));
@@ -14936,7 +14763,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.18, 3.60, ST_SetSRID(ST_MakePoint(-47.61237, -11.56578), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 1.00, 2.90, ST_SetSRID(ST_MakePoint(-44.77571, -6.6237), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 1.30, ST_SetSRID(ST_MakePoint(-42.78687, -6.97074), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (13, 1, '2025-05-09', -999.00, 0.80, ST_SetSRID(ST_MakePoint(-60.01548, -2.95613), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.43, 2.10, ST_SetSRID(ST_MakePoint(-58.26425, -11.66118), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-05-09', 0.14, 1.10, ST_SetSRID(ST_MakePoint(-48.97136, -24.09211), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.69, 15.80, ST_SetSRID(ST_MakePoint(-44.38347, -10.67086), 4326));
@@ -14982,7 +14808,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 1.00, 2.70, ST_SetSRID(ST_MakePoint(-48.68208, -21.18121), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-09', 0.32, 0.80, ST_SetSRID(ST_MakePoint(-54.65167, -14.30502), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.09, 1.60, ST_SetSRID(ST_MakePoint(-55.16257, -12.32948), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', -999.00, 0.90, ST_SetSRID(ST_MakePoint(-49.32819, -25.19451), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', 0.85, 0.60, ST_SetSRID(ST_MakePoint(-43.34774, -22.69924), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.36, 3.70, ST_SetSRID(ST_MakePoint(-53.00579, -18.26317), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.88, 2.30, ST_SetSRID(ST_MakePoint(-45.46347, -14.2001), 4326));
@@ -14993,8 +14818,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.78, 120.60, ST_SetSRID(ST_MakePoint(-44.4177, -10.9736), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 1.00, 7.10, ST_SetSRID(ST_MakePoint(-47.38991, -17.2332), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.32, 0.70, ST_SetSRID(ST_MakePoint(-53.00522, -18.25985), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', -999.00, 0.90, ST_SetSRID(ST_MakePoint(-43.4675, -21.62472), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 0.70, ST_SetSRID(ST_MakePoint(-43.75595, -22.7841), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 1.10, ST_SetSRID(ST_MakePoint(-53.72556, -13.04987), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.72, 2.20, ST_SetSRID(ST_MakePoint(-46.48178, -7.62491), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 1.00, 1.90, ST_SetSRID(ST_MakePoint(-49.36378, -20.06185), 4326));
@@ -15038,7 +14861,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.18, 0.70, ST_SetSRID(ST_MakePoint(-47.61292, -11.56934), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.84, 1.20, ST_SetSRID(ST_MakePoint(-45.46678, -14.21284), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 1.00, 2.00, ST_SetSRID(ST_MakePoint(-49.36377, -20.06187), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', -999.00, 2.90, ST_SetSRID(ST_MakePoint(-43.88412, -16.68081), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 1.00, 1.40, ST_SetSRID(ST_MakePoint(-49.36049, -20.06254), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.00, ST_SetSRID(ST_MakePoint(-53.72176, -13.0496), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.50, 1.30, ST_SetSRID(ST_MakePoint(-46.70881, -8.17885), 4326));
@@ -15067,10 +14889,8 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.33, 2.40, ST_SetSRID(ST_MakePoint(-53.00296, -18.25739), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.18, 1.20, ST_SetSRID(ST_MakePoint(-52.48949, -12.36124), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.15, 3.80, ST_SetSRID(ST_MakePoint(-54.40171, -11.91344), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (53, 3, '2025-05-09', -999.00, 0.90, ST_SetSRID(ST_MakePoint(-47.85695, -15.56909), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 1.70, ST_SetSRID(ST_MakePoint(-41.33066, -7.21235), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.84, 2.80, ST_SetSRID(ST_MakePoint(-45.47253, -14.22488), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 4, '2025-05-09', -999.00, 1.60, ST_SetSRID(ST_MakePoint(-51.79303, -20.99512), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (11, 1, '2025-05-09', 0.80, 0.90, ST_SetSRID(ST_MakePoint(-62.11313, -9.42493), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 0.90, ST_SetSRID(ST_MakePoint(-44.51064, -11.19605), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 2.10, ST_SetSRID(ST_MakePoint(-45.13043, -14.64002), 4326));
@@ -15093,7 +14913,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.64, 1.50, ST_SetSRID(ST_MakePoint(-45.14354, -14.64739), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 0.91, 9.80, ST_SetSRID(ST_MakePoint(-42.13686, -6.69777), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 7.30, ST_SetSRID(ST_MakePoint(-43.12318, -8.0709), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', -999.00, 1.50, ST_SetSRID(ST_MakePoint(-43.88188, -16.68062), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.68, 19.20, ST_SetSRID(ST_MakePoint(-44.38163, -10.66988), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.18, 10.80, ST_SetSRID(ST_MakePoint(-45.10604, -5.16367), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.23, 4.20, ST_SetSRID(ST_MakePoint(-48.20274, -11.77639), 4326));
@@ -15121,7 +14940,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.10, ST_SetSRID(ST_MakePoint(-53.72931, -13.04873), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.34, 1.60, ST_SetSRID(ST_MakePoint(-59.15257, -10.48804), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.17, 4.30, ST_SetSRID(ST_MakePoint(-45.10448, -5.16284), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', -999.00, 1.10, ST_SetSRID(ST_MakePoint(-50.47646, -21.39289), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.77, 2.00, ST_SetSRID(ST_MakePoint(-44.43046, -10.97439), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 9.00, ST_SetSRID(ST_MakePoint(-43.12882, -8.07879), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.90, ST_SetSRID(ST_MakePoint(-53.72876, -13.04767), 4326));
@@ -15165,7 +14983,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (42, 4, '2025-05-09', 0.00, 1.70, ST_SetSRID(ST_MakePoint(-50.17265, -26.09944), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 1.00, 1.60, ST_SetSRID(ST_MakePoint(-48.63974, -17.68589), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.92, 1.80, ST_SetSRID(ST_MakePoint(-45.12079, -14.63728), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', -999.00, 2.60, ST_SetSRID(ST_MakePoint(-48.94483, -15.07812), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-09', 0.08, 2.00, ST_SetSRID(ST_MakePoint(-54.88366, -13.62477), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.64, 0.50, ST_SetSRID(ST_MakePoint(-52.43325, -17.75888), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', 0.26, 0.60, ST_SetSRID(ST_MakePoint(-43.5666, -16.2969), 4326));
@@ -15185,7 +15002,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 3.20, ST_SetSRID(ST_MakePoint(-45.46616, -14.20866), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.92, 1.90, ST_SetSRID(ST_MakePoint(-52.11842, -17.52541), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-05-09', 1.00, 4.00, ST_SetSRID(ST_MakePoint(-42.42294, -10.55101), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 0.70, ST_SetSRID(ST_MakePoint(-43.43067, -22.69561), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 0.80, 2.00, ST_SetSRID(ST_MakePoint(-42.13533, -6.69434), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.08, 5.90, ST_SetSRID(ST_MakePoint(-52.94313, -11.39281), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-05-09', 0.69, 0.90, ST_SetSRID(ST_MakePoint(-49.82498, -22.66858), 4326));
@@ -15236,7 +15052,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.90, ST_SetSRID(ST_MakePoint(-53.72813, -13.04415), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', 0.85, 0.60, ST_SetSRID(ST_MakePoint(-41.67887, -15.53261), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', 0.69, 1.00, ST_SetSRID(ST_MakePoint(-46.57328, -15.82642), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-05-09', -999.00, 2.30, ST_SetSRID(ST_MakePoint(-48.81193, -22.54062), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.98, 1.10, ST_SetSRID(ST_MakePoint(-44.51087, -12.32163), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.31, 1.30, ST_SetSRID(ST_MakePoint(-45.07918, -13.03055), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.36, 1.60, ST_SetSRID(ST_MakePoint(-54.9386, -11.62486), 4326));
@@ -15299,13 +15114,11 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.06, 4.20, ST_SetSRID(ST_MakePoint(-52.94855, -11.40414), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 0.92, 4.90, ST_SetSRID(ST_MakePoint(-42.13904, -6.69371), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 0.16, 2.10, ST_SetSRID(ST_MakePoint(-46.95703, -23.32974), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', -999.00, 1.20, ST_SetSRID(ST_MakePoint(-49.32749, -25.1907), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.89, 2.60, ST_SetSRID(ST_MakePoint(-45.12166, -14.64165), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.17, 4.30, ST_SetSRID(ST_MakePoint(-45.10145, -5.16335), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.10, ST_SetSRID(ST_MakePoint(-53.72872, -13.04316), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', 0.50, 1.00, ST_SetSRID(ST_MakePoint(-45.47278, -17.47102), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.17, 1.70, ST_SetSRID(ST_MakePoint(-48.00097, -7.84663), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 2.30, ST_SetSRID(ST_MakePoint(-42.85395, -22.67608), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (42, 4, '2025-05-09', 0.00, 1.70, ST_SetSRID(ST_MakePoint(-50.1741, -26.09778), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.08, 12.00, ST_SetSRID(ST_MakePoint(-52.94678, -11.39373), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.81, 1.60, ST_SetSRID(ST_MakePoint(-43.48566, -5.77218), 4326));
@@ -15329,12 +15142,10 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.23, 2.10, ST_SetSRID(ST_MakePoint(-59.7732, -16.10669), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-09', 0.54, 0.50, ST_SetSRID(ST_MakePoint(-54.65568, -14.30993), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-09', 1.00, 1.00, ST_SetSRID(ST_MakePoint(-43.11438, -7.21406), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', -999.00, 0.70, ST_SetSRID(ST_MakePoint(-46.55543, -23.40494), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 1.00, 2.80, ST_SetSRID(ST_MakePoint(-44.37273, -7.08418), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.15, 1.10, ST_SetSRID(ST_MakePoint(-54.40212, -11.91441), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', 0.86, 1.20, ST_SetSRID(ST_MakePoint(-41.68063, -15.53288), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 4, '2025-05-09', 0.07, 1.20, ST_SetSRID(ST_MakePoint(-39.92478, -18.04052), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', -999.00, 1.00, ST_SetSRID(ST_MakePoint(-43.98202, -21.17975), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.09, 1.40, ST_SetSRID(ST_MakePoint(-54.26189, -13.37144), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.77, 1.90, ST_SetSRID(ST_MakePoint(-44.4341, -10.96913), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.21, 1.90, ST_SetSRID(ST_MakePoint(-47.40494, -12.83298), 4326));
@@ -15350,7 +15161,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.20, 1.10, ST_SetSRID(ST_MakePoint(-54.06771, -12.6461), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.90, ST_SetSRID(ST_MakePoint(-53.7247, -13.04834), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.09, 1.70, ST_SetSRID(ST_MakePoint(-54.25502, -13.37227), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', -999.00, 1.10, ST_SetSRID(ST_MakePoint(-46.77086, -20.76272), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.35, 2.00, ST_SetSRID(ST_MakePoint(-54.93921, -11.62354), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.26, 1.10, ST_SetSRID(ST_MakePoint(-47.98869, -12.11853), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.84, 2.70, ST_SetSRID(ST_MakePoint(-45.46603, -14.20311), 4326));
@@ -15377,7 +15187,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.09, 2.20, ST_SetSRID(ST_MakePoint(-55.16226, -12.33196), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.45, 1.10, ST_SetSRID(ST_MakePoint(-47.62397, -13.45585), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 1.00, 1.20, ST_SetSRID(ST_MakePoint(-44.63594, -6.06665), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', -999.00, 1.20, ST_SetSRID(ST_MakePoint(-46.76848, -20.76482), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 3.20, ST_SetSRID(ST_MakePoint(-45.46948, -14.20397), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', 0.56, 1.00, ST_SetSRID(ST_MakePoint(-45.47084, -17.47293), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.48, 1.20, ST_SetSRID(ST_MakePoint(-54.06953, -12.63097), 4326));
@@ -15408,7 +15217,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 5.30, ST_SetSRID(ST_MakePoint(-51.91562, -24.92938), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.41, 2.50, ST_SetSRID(ST_MakePoint(-55.12461, -11.35807), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-09', 0.06, 1.10, ST_SetSRID(ST_MakePoint(-55.99791, -21.0565), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', -999.00, 1.00, ST_SetSRID(ST_MakePoint(-46.55806, -23.40541), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 0.50, ST_SetSRID(ST_MakePoint(-50.71001, -25.21215), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 5.80, ST_SetSRID(ST_MakePoint(-51.92021, -24.93257), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.36, 0.70, ST_SetSRID(ST_MakePoint(-46.70826, -8.17526), 4326));
@@ -15417,11 +15225,9 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 1.00, 0.90, ST_SetSRID(ST_MakePoint(-44.50872, -12.31767), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 4.20, ST_SetSRID(ST_MakePoint(-53.72344, -13.0413), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.09, 2.60, ST_SetSRID(ST_MakePoint(-54.25146, -13.37434), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-05-09', -999.00, 2.20, ST_SetSRID(ST_MakePoint(-48.81118, -22.54116), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.92, 2.70, ST_SetSRID(ST_MakePoint(-45.46044, -14.19946), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-09', 0.70, 1.20, ST_SetSRID(ST_MakePoint(-54.22178, -19.84554), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.17, 8.00, ST_SetSRID(ST_MakePoint(-45.10305, -5.16481), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 1.90, ST_SetSRID(ST_MakePoint(-43.75171, -22.90133), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.92, 2.70, ST_SetSRID(ST_MakePoint(-52.11652, -17.52985), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (50, 3, '2025-05-09', 0.02, 0.90, ST_SetSRID(ST_MakePoint(-55.52909, -21.54143), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 1.00, 1.20, ST_SetSRID(ST_MakePoint(-49.36245, -20.06107), 4326));
@@ -15438,7 +15244,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 3, '2025-05-09', 0.14, 1.10, ST_SetSRID(ST_MakePoint(-48.96984, -24.09488), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 0.90, ST_SetSRID(ST_MakePoint(-50.74944, -25.4949), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.83, 3.80, ST_SetSRID(ST_MakePoint(-44.44392, -10.97198), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', -999.00, 0.60, ST_SetSRID(ST_MakePoint(-47.44006, -23.59472), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.31, 1.40, ST_SetSRID(ST_MakePoint(-48.27874, -8.67063), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (15, 1, '2025-05-09', 0.00, 0.90, ST_SetSRID(ST_MakePoint(-49.17552, -3.46747), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.16, 2.50, ST_SetSRID(ST_MakePoint(-53.72876, -13.04383), 4326));
@@ -15573,7 +15378,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 1.00, 95.10, ST_SetSRID(ST_MakePoint(-44.4754, -6.549), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.57, 58.10, ST_SetSRID(ST_MakePoint(-54.0848, -12.6336), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.19, 26.90, ST_SetSRID(ST_MakePoint(-52.41671, -22.97193), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (15, 1, '2025-05-09', -999.00, 5.70, ST_SetSRID(ST_MakePoint(-56.0876, -2.1599), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.22, 22.90, ST_SetSRID(ST_MakePoint(-54.24268, -12.17359), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.30, 8.20, ST_SetSRID(ST_MakePoint(-58.26257, -11.66268), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.30, 11.50, ST_SetSRID(ST_MakePoint(-57.59982, -14.32309), 4326));
@@ -15903,7 +15707,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (27, 2, '2025-05-09', 1.00, 4.60, ST_SetSRID(ST_MakePoint(-37.34765, -9.71717), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (27, 2, '2025-05-09', 1.00, 2.80, ST_SetSRID(ST_MakePoint(-37.71989, -9.13484), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (23, 2, '2025-05-09', 1.00, 3.40, ST_SetSRID(ST_MakePoint(-40.23269, -6.0135), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 6.20, ST_SetSRID(ST_MakePoint(-42.85358, -22.67598), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', 1.00, 5.60, ST_SetSRID(ST_MakePoint(-44.7977, -17.71918), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.65, 7.40, ST_SetSRID(ST_MakePoint(-49.70244, -11.81266), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.10, 4.60, ST_SetSRID(ST_MakePoint(-48.08186, -11.32501), 4326));
@@ -15936,7 +15739,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 1.00, 8.70, ST_SetSRID(ST_MakePoint(-44.37496, -7.08932), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 3, '2025-05-09', 0.41, 7.70, ST_SetSRID(ST_MakePoint(-43.47208, -16.43129), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', 0.39, 2.80, ST_SetSRID(ST_MakePoint(-42.28241, -16.08696), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 2, '2025-05-09', -999.00, 2.40, ST_SetSRID(ST_MakePoint(-41.74182, -9.64625), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.34, 11.90, ST_SetSRID(ST_MakePoint(-49.81864, -10.76967), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (26, 2, '2025-05-09', 1.00, 2.90, ST_SetSRID(ST_MakePoint(-40.68581, -8.79515), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.33, 43.40, ST_SetSRID(ST_MakePoint(-49.74743, -10.78436), 4326));
@@ -16475,7 +16277,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (31, 4, '2025-05-09', 0.96, 3.90, ST_SetSRID(ST_MakePoint(-46.03465, -21.27428), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.41, 10.40, ST_SetSRID(ST_MakePoint(-46.12272, -11.07), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (17, 3, '2025-05-09', 0.32, 5.60, ST_SetSRID(ST_MakePoint(-49.93123, -10.71271), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', -999.00, 5.60, ST_SetSRID(ST_MakePoint(-48.9094, -16.35326), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (29, 3, '2025-05-09', 0.48, 8.00, ST_SetSRID(ST_MakePoint(-46.12136, -11.07127), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (21, 3, '2025-05-09', 0.26, 6.20, ST_SetSRID(ST_MakePoint(-47.25052, -7.24506), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (52, 3, '2025-05-09', 0.55, 3.60, ST_SetSRID(ST_MakePoint(-47.44926, -13.84166), 4326));
@@ -16667,7 +16468,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 0.09, 27.60, ST_SetSRID(ST_MakePoint(-46.4338, -23.04283), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 0.17, 4.00, ST_SetSRID(ST_MakePoint(-47.13341, -24.20842), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 5.20, ST_SetSRID(ST_MakePoint(-50.78425, -26.02217), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (33, 4, '2025-05-09', -999.00, 1.80, ST_SetSRID(ST_MakePoint(-43.28849, -22.14704), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 0.95, 2.80, ST_SetSRID(ST_MakePoint(-47.23045, -23.43614), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (42, 4, '2025-05-09', 0.37, 3.60, ST_SetSRID(ST_MakePoint(-48.73431, -26.5809), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (42, 4, '2025-05-09', 0.00, 74.40, ST_SetSRID(ST_MakePoint(-50.5832, -26.69362), 4326));
@@ -16706,7 +16506,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.13, 4.60, ST_SetSRID(ST_MakePoint(-49.60063, -25.5303), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', 0.12, 2.90, ST_SetSRID(ST_MakePoint(-47.32612, -23.86257), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 4.00, ST_SetSRID(ST_MakePoint(-51.03123, -25.9806), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (35, 4, '2025-05-09', -999.00, 3.10, ST_SetSRID(ST_MakePoint(-48.10989, -24.73157), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (41, 4, '2025-05-09', 0.00, 3.40, ST_SetSRID(ST_MakePoint(-51.56228, -24.37312), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (42, 4, '2025-05-09', 0.00, 74.40, ST_SetSRID(ST_MakePoint(-50.58387, -26.69027), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (42, 4, '2025-05-09', 0.02, 12.90, ST_SetSRID(ST_MakePoint(-49.54469, -26.29716), 4326));
@@ -17525,7 +17324,6 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-09', 0.36, 11.10, ST_SetSRID(ST_MakePoint(-58.18412, -14.14206), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-09', 0.19, 188.30, ST_SetSRID(ST_MakePoint(-58.1345, -12.68627), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 3, '2025-05-09', 0.36, 28.90, ST_SetSRID(ST_MakePoint(-58.20222, -14.14472), 4326));
-INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (13, 1, '2025-05-09', -999.00, 13.30, ST_SetSRID(ST_MakePoint(-66.89803, -4.87273), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.29, 10.10, ST_SetSRID(ST_MakePoint(-57.21604, -13.00995), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 3, '2025-05-09', 1.00, 126.10, ST_SetSRID(ST_MakePoint(-43.0483, -6.9398), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (51, 1, '2025-05-09', 0.14, 26.90, ST_SetSRID(ST_MakePoint(-54.24234, -12.17492), 4326));
@@ -17773,6 +17571,7 @@ INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALU
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-10', 109.4, 1.0, ST_SetSRID(ST_MakePoint(-6.9403, -43.0012), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-10', 378.4, 1.0, ST_SetSRID(ST_MakePoint(-6.9589, -43.023), 4326));
 INSERT INTO Area_Queimada (estado_id, bioma_id, data_pas, risco, frp, geom) VALUES (22, 2, '2025-05-10', 226.7, 1.0, ST_SetSRID(ST_MakePoint(-6.9401, -43.0247), 4326));
+
 
 
     COMMIT;

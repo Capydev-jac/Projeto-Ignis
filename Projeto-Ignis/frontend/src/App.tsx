@@ -1,61 +1,109 @@
-// App.tsx
+import React, { Suspense, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
-import React, { useState, Suspense } from 'react';
-import { useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Abas from './components/Abas';
 import FiltroMapa from './components/FiltroMapa';
 import FiltroGrafico from './components/FiltroGrafico';
 import MapaVazio from './components/MapaVazio';
-import MeusGraficos from './components/Grafico';
-import styled from 'styled-components';
+import Grafico from './components/Grafico';
 
-// Lazy loading do Mapa
+import { FiltrosMapa } from './entities/FiltroMapa';
+import { FiltrosGrafico } from './entities/FiltroGrafico';
+
+// Lazy load do componente de mapa
 const Mapa = React.lazy(() => import('./components/Mapa'));
 
 const App: React.FC = () => {
-  const [ativo, setAtivo] = useState('mapa');
-  const location = useLocation();
+  const navigate = useNavigate();
 
-  const [filtros, setFiltros] = useState({
-    tipo: 'Focos',
-    local: 'Estados',
-    inicio: '2025-03-20',
-    fim: '2025-03-27'
+  const [filtrosMapa, setFiltrosMapa] = useState<FiltrosMapa>({
+    tipo: '',
+    estado: '',
+    bioma: '',
+    inicio: '',
+    fim: '',
   });
 
-  const handleClick = (tipo: string) => {
-    setAtivo(tipo);
+  const [filtrosGrafico, setFiltrosGrafico] = useState<FiltrosGrafico>({
+    tipo: 'risco',
+    local: 'estado',
+    inicio: '',
+    fim: '',
+  });
+
+  const handleFiltrarMapa = (filtros: FiltrosMapa) => {
+    setFiltrosMapa(filtros);
+  };
+
+  const handleAplicarGrafico = (filtros: FiltrosGrafico) => {
+    setFiltrosGrafico(filtros);
   };
 
   return (
     <AppContainer>
       <Header />
       <MainContent>
-        <ContentContainer>
-          <Abas onClick={handleClick} ativo={ativo} />
-          {ativo === 'mapa' ? (
-            <FiltroMapa onFiltrar={setFiltros} />
-          ) : (
-            <FiltroGrafico onAplicar={setFiltros} />
-          )}
-        </ContentContainer>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Abas ativo="mapa" onClick={(rota) => navigate(rota === 'mapa' ? '/' : '/grafico')} />
+                <FiltroMapa onFiltrar={handleFiltrarMapa} />
+                <MapaVazio />
+              </>
+            }
+          />
+          <Route
+            path="/risco"
+            element={
+              <>
+                <Abas ativo="mapa" onClick={(rota) => navigate(rota === 'mapa' ? '/risco' : '/grafico')} />
+                <FiltroMapa onFiltrar={handleFiltrarMapa} />
+                <Suspense fallback={<div>Carregando mapa...</div>}>
+                  <Mapa tipo="risco" filtros={filtrosMapa} />
+                </Suspense>
+              </>
+            }
+          />
+          <Route
+            path="/foco_calor"
+            element={
+              <>
+                <Abas ativo="mapa" onClick={(rota) => navigate(rota === 'mapa' ? '/foco_calor' : '/grafico')} />
+                <FiltroMapa onFiltrar={handleFiltrarMapa} />
+                <Suspense fallback={<div>Carregando mapa...</div>}>
+                  <Mapa tipo="foco_calor" filtros={filtrosMapa} />
+                </Suspense>
+              </>
+            }
+          />
+          <Route
+            path="/area_queimada"
+            element={
+              <>
+                <Abas ativo="mapa" onClick={(rota) => navigate(rota === 'mapa' ? '/area_queimada' : '/grafico')} />
+                <FiltroMapa onFiltrar={handleFiltrarMapa} />
+                <Suspense fallback={<div>Carregando mapa...</div>}>
+                  <Mapa tipo="area_queimada" filtros={filtrosMapa} />
+                </Suspense>
+              </>
+            }
+          />
+          <Route
+  path="/grafico"
+  element={
+    <>
+      <Abas ativo="grafico" onClick={(rota) => navigate(rota === 'grafico' ? '/grafico' : '/')} />
+      <FiltroGrafico onAplicar={handleAplicarGrafico} />
+      <Grafico filtros={filtrosGrafico} />
+    </>
+  }
+/>
 
-        <Suspense fallback={<div style={{ padding: '2rem' }}>Carregando...</div>}>
-          {ativo === 'mapa' ? (
-            location.pathname === '/risco' ? (
-              <Mapa tipo="risco" />
-            ) : location.pathname === '/foco_calor' ? (
-              <Mapa tipo="foco_calor" />
-            ) : location.pathname === '/area_queimada' ? (
-              <Mapa tipo="area_queimada" />
-            ) : (
-              <MapaVazio />
-            )
-          ) : (
-            <MeusGraficos filtros={filtros} />
-          )}
-        </Suspense>
+        </Routes>
       </MainContent>
     </AppContainer>
   );
@@ -63,26 +111,16 @@ const App: React.FC = () => {
 
 export default App;
 
-// Estilos
+// 🎨 Estilos
 const AppContainer = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 `;
 
 const MainContent = styled.div`
   display: flex;
   flex-grow: 1;
   overflow: hidden;
-`;
-
-const ContentContainer = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
 `;

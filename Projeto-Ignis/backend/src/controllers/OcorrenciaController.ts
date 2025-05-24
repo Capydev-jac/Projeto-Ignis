@@ -18,52 +18,53 @@ class OcorrenciaController {
   public async Filtrar_risco_fogo(req: Request, res: Response): Promise<void> {
     try {
       const { estado, bioma, inicio, fim } = req.query;
-
+  
       console.log("Filtros recebidos:");
       console.log("estado:", estado);
       console.log("bioma:", bioma);
       console.log("inicio:", inicio);
       console.log("fim:", fim);
-
+  
       let baseQuery = `
         SELECT
           ST_Y(r.geometria) AS latitude,
           ST_X(r.geometria) AS longitude,
           e.estado,
           b.bioma,
-          r.risco_fogo,
-          r.data
+          CAST(r.risco_fogo AS FLOAT) AS risco_fogo,
+          r.data,
+          'risco' AS tipo
         FROM Risco r
         JOIN Estados e ON r.estado_id = e.id_estado
         JOIN Bioma b ON r.bioma_id = b.id
         WHERE 1=1
       `;
-
+  
       const values: any[] = [];
-
+  
       if (estado) {
         baseQuery += ` AND r.estado_id = $${values.length + 1}`;
         values.push(Number(estado));
       }
-
+  
       if (bioma) {
         baseQuery += ` AND r.bioma_id = $${values.length + 1}`;
         values.push(Number(bioma));
       }
-
+  
       if (inicio) {
         baseQuery += ` AND r.data >= $${values.length + 1}`;
         values.push(inicio);
       }
-
+  
       if (fim) {
         baseQuery += ` AND r.data <= $${values.length + 1}`;
         values.push(fim);
       }
-
+  
       const resultado: ResultadoQuery[] = await query(baseQuery, values);
       res.json(resultado);
-
+  
     } catch (err: any) {
       console.error("Erro ao buscar risco de fogo:", err);
       res.status(500).json({ erro: "Erro ao buscar risco de fogo", detalhes: err.message });
@@ -186,6 +187,144 @@ JOIN Bioma b ON a.bioma_id = b.id
       res.status(500).json({ erro: "Erro ao buscar foco de calor", detalhes: err.message });
     }
   }
-}
+  
+   
+  // 📊 GRÁFICO DE ÁREA QUEIMADA
+public async GraficoAreaQueimada(req: Request, res: Response): Promise<void> {
+    try {
+      const { estado, bioma, inicio, fim, local } = req.query;
+  
+      let queryStr = `
+        SELECT 
+          ${local === 'bioma' ? 'b.bioma' : local === 'estado' ? 'e.estado' : "CONCAT(e.estado, ' - ', b.bioma)"} AS categoria,
+          COUNT(*) AS total
+        FROM Area_Queimada a
+        JOIN Estados e ON a.estado_id = e.id_estado
+        JOIN Bioma b ON a.bioma_id = b.id
+        WHERE 1=1
+      `;
+  
+      const values: any[] = [];
+  
+      if (estado) {
+        queryStr += ` AND a.estado_id = $${values.length + 1}`;
+        values.push(Number(estado));
+      }
+  
+      if (bioma) {
+        queryStr += ` AND a.bioma_id = $${values.length + 1}`;
+        values.push(Number(bioma));
+      }
+  
+      if (inicio) {
+        queryStr += ` AND a.data_pas >= $${values.length + 1}`;
+        values.push(inicio);
+      }
+  
+      if (fim) {
+        queryStr += ` AND a.data_pas <= $${values.length + 1}`;
+        values.push(fim);
+      }
+  
+      queryStr += ` GROUP BY categoria ORDER BY total DESC`;
+  
+      const resultado = await query(queryStr, values);
+      res.json(resultado);
+    } catch (err: any) {
+      res.status(500).json({ erro: "Erro ao gerar gráfico de área queimada", detalhes: err.message });
+    }
+  }
+  
+public async GraficoRiscoFogo(req: Request, res: Response): Promise<void> {
+    try {
+      const { estado, bioma, inicio, fim, local } = req.query;
+  
+      let queryStr = `
+        SELECT 
+          ${local === 'bioma' ? 'b.bioma' : local === 'estado' ? 'e.estado' : "CONCAT(e.estado, ' - ', b.bioma)"} AS categoria,
+          ROUND(AVG(r.risco_fogo), 2) AS total
+        FROM Risco r
+        JOIN Estados e ON r.estado_id = e.id_estado
+        JOIN Bioma b ON r.bioma_id = b.id
+        WHERE 1=1
+      `;
+  
+      const values: any[] = [];
+  
+      if (estado) {
+        queryStr += ` AND r.estado_id = $${values.length + 1}`;
+        values.push(Number(estado));
+      }
+  
+      if (bioma) {
+        queryStr += ` AND r.bioma_id = $${values.length + 1}`;
+        values.push(Number(bioma));
+      }
+  
+      if (inicio) {
+        queryStr += ` AND r.data >= $${values.length + 1}`;
+        values.push(inicio);
+      }
+  
+      if (fim) {
+        queryStr += ` AND r.data <= $${values.length + 1}`;
+        values.push(fim);
+      }
+  
+      queryStr += ` GROUP BY categoria ORDER BY total DESC`;
+  
+      const resultado = await query(queryStr, values);
+      res.json(resultado);
+    } catch (err: any) {
+      res.status(500).json({ erro: "Erro ao gerar gráfico de risco de fogo", detalhes: err.message });
+    }
+  }
 
+  public async GraficoFocoCalor(req: Request, res: Response): Promise<void> {
+    try {
+      const { estado, bioma, inicio, fim, local } = req.query;
+  
+      let queryStr = `
+        SELECT 
+          ${local === 'bioma' ? 'b.bioma' : local === 'estado' ? 'e.estado' : "CONCAT(e.estado, ' - ', b.bioma)"} AS categoria,
+          ROUND(AVG(f.frp), 1) AS total
+        FROM Foco_Calor f
+        JOIN Estados e ON f.estado_id = e.id_estado
+        JOIN Bioma b ON f.bioma_id = b.id
+        WHERE 1=1
+      `;
+  
+      const values: any[] = [];
+  
+      if (estado) {
+        queryStr += ` AND f.estado_id = $${values.length + 1}`;
+        values.push(Number(estado));
+      }
+  
+      if (bioma) {
+        queryStr += ` AND f.bioma_id = $${values.length + 1}`;
+        values.push(Number(bioma));
+      }
+  
+      if (inicio) {
+        queryStr += ` AND f.data_hora_t3 >= $${values.length + 1}`;
+        values.push(inicio);
+      }
+  
+      if (fim) {
+        queryStr += ` AND f.data_hora_t3 <= $${values.length + 1}`;
+        values.push(fim);
+      }
+  
+      queryStr += ` GROUP BY categoria ORDER BY total DESC`;
+  
+      const resultado = await query(queryStr, values);
+      res.json(resultado);
+    } catch (err: any) {
+      res.status(500).json({ erro: "Erro ao gerar gráfico de foco de calor", detalhes: err.message });
+    }
+  }
+
+
+}
 export default new OcorrenciaController();
