@@ -1,11 +1,11 @@
 <h2 align="center">Burndown</h2>
 
 <p align="center">
-  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_grafico_2.PNG">
-  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_pontos_2.PNG">
+  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_grafico_3.PNG">
+  <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/burndown_pontos_3.PNG">
 </p>
 
-<h2 align="center">📌2ª Sprint Backlog</h2>
+<h2 align="center">📌3ª Sprint Backlog</h2>
 
 | ID    | Requisito                        | Descrição                                            | Prioridade | User Story                                                                                      | Critérios de Aceitação (DoD)                                                                                                                                           | Definição de Pronto (DoR)                                                                                               |
 |-------|-----------------------------------|------------------------------------------------------|------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -22,15 +22,4 @@
 
 <h2 align="center">Sprint Retrospective</h2>
 
-<br>A equipe passou por uma evolução significativa ao longo de suas sprints, transformando-se de uma aplicação acadêmica inicial em uma solução robusta, modular, integrada e alinhada com padrões profissionais de desenvolvimento de sistemas full stack. Esta evolução foi marcada por melhorias técnicas e organizacionais que impactaram diretamente na qualidade, desempenho, escalabilidade e usabilidade do sistema.<br>
-
-Inicialmente, a aplicação possuía uma estrutura simples e monolítica, com códigos concentrados em poucos arquivos, dificultando a manutenção, evolução e colaboração entre os membros da equipe. Com o avanço para a versão consolidada da equipe a arquitetura foi totalmente reestruturada de maneira modular e profissional, separando claramente frontend, backend, serviços, rotas, controllers e banco de dados. Essa organização facilitou tanto a manutenção quanto a escalabilidade, adotando padrões consagrados de arquitetura de software. <br>
-
-Outra evolução importante foi a implementação de um backend real com Node.js e Express, substituindo os dados mockados por uma API completa com rotas RESTful, integradas a um banco PostgreSQL com extensão PostGIS. Isso permitiu consultas dinâmicas, seguras e estruturadas, viabilizando a manipulação de dados reais com confiabilidade e robustez, além de possibilitar consultas geoespaciais avançadas como áreas queimadas e focos de calor. <br>
-
-No frontend, foi realizada a integração total com o backend, permitindo que os filtros aplicados na interface gerassem requisições reais para a API, retornando dados dinâmicos e relevantes de acordo com as seleções do usuário. Essa evolução eliminou a rigidez dos dados estáticos e trouxe mais dinamismo, eficiência e alinhamento com padrões modernos de consumo de APIs. <br>
-
-Visualmente, o projeto evoluiu para uma interface mais moderna, intuitiva e responsiva, utilizando tecnologias como React, React Leaflet para mapas interativos e Google Charts para gráficos dinâmicos, além de uma preocupação maior com a experiência do usuário e a identidade visual do sistema.<br>
-
-Em relação à performance, foram aplicadas práticas modernas de otimização como uso de hooks avançados (useMemo, useCallback), lazy loading de componentes pesados e eliminação de re-renders desnecessários. O uso de TypeScript foi fortalecido, trazendo segurança, previsibilidade e manutenção facilitada ao código.<br>
 
