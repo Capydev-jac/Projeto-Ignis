@@ -113,7 +113,7 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
 
   const limparFiltro = () => {
     navigate('/');
-    setTipo('risco');
+    setTipo('');
     setEstado('');
     setBioma('');
     setInicio('');
