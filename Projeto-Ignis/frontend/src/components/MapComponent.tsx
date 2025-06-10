@@ -132,10 +132,7 @@ const MapComponent: React.FC<Props> = ({ dados }) => {
     <div style={{ display: 'flex' }}>
       {/* Mapa */}
       <div style={{ flex: 1 }}>
-        <MapContainer
-          center={[-15.78, -47.92]}
-          zoom={4}
-          style={{ height: '100vh', width: '100%' }}
+        <<MapContainer center={[-15.78, -47.92]} zoom={4} minZoom={4} style={{ height: '89%', width: '78%', marginLeft: '400px', marginTop: '80px', borderRadius: '10px' }}
           maxBounds={brasilBounds}
           maxBoundsViscosity={1.0}
         >
