@@ -6,11 +6,10 @@ import Header from './components/Header';
 import Abas from './components/Abas';
 import FiltroMapa from './components/FiltroMapa';
 import FiltroGrafico from './components/FiltroGrafico';
-import MapaVazio from './components/MapaVazio';
 import Grafico from './components/Grafico';
 
-import { FiltrosMapa } from './entities/FiltroMapa';
-import { FiltrosGrafico } from './entities/FiltroGrafico';
+import { FiltrosMapa as TipoFiltroMapa } from './entities/FiltrosMapa';
+import { FiltrosGrafico as TipoFiltroGrafico } from './entities/FiltrosGrafico';
 
 // Lazy load do componente de mapa
 const Mapa = React.lazy(() => import('./components/Mapa'));
@@ -18,7 +17,7 @@ const Mapa = React.lazy(() => import('./components/Mapa'));
 const App: React.FC = () => {
   const navigate = useNavigate();
 
-  const [filtrosMapa, setFiltrosMapa] = useState<FiltrosMapa>({
+  const [filtrosMapa, setFiltrosMapa] = useState<TipoFiltroMapa>({
     tipo: '',
     estado: '',
     bioma: '',
@@ -26,18 +25,20 @@ const App: React.FC = () => {
     fim: '',
   });
 
-  const [filtrosGrafico, setFiltrosGrafico] = useState<FiltrosGrafico>({
-    tipo: 'risco',
-    local: 'estado',
-    inicio: '',
-    fim: '',
-  });
+ const [filtrosGrafico, setFiltrosGrafico] = useState<TipoFiltroGrafico>({
+  tipo: 'risco',           // ✅ agora está completo
+  local: 'estado',
+  estado: '',
+  bioma: '',
+  inicio: '',
+  fim: '',
+});
 
-  const handleFiltrarMapa = (filtros: FiltrosMapa) => {
+  const handleFiltrarMapa = (filtros: TipoFiltroMapa) => {
     setFiltrosMapa(filtros);
   };
 
-  const handleAplicarGrafico = (filtros: FiltrosGrafico) => {
+  const handleAplicarGrafico = (filtros: TipoFiltroGrafico) => {
     setFiltrosGrafico(filtros);
   };
 
@@ -52,7 +53,9 @@ const App: React.FC = () => {
               <>
                 <Abas ativo="mapa" onClick={(rota) => navigate(rota === 'mapa' ? '/' : '/grafico')} />
                 <FiltroMapa onFiltrar={handleFiltrarMapa} />
-                <MapaVazio />
+                <Suspense fallback={<div>Carregando mapa...</div>}>
+                <Mapa tipo={filtrosMapa.tipo} filtros={filtrosMapa} />
+                </Suspense>
               </>
             }
           />
@@ -93,16 +96,15 @@ const App: React.FC = () => {
             }
           />
           <Route
-  path="/grafico"
-  element={
-    <>
-      <Abas ativo="grafico" onClick={(rota) => navigate(rota === 'grafico' ? '/grafico' : '/')} />
-      <FiltroGrafico onAplicar={handleAplicarGrafico} />
-      <Grafico filtros={filtrosGrafico} />
-    </>
-  }
-/>
-
+            path="/grafico"
+            element={
+              <>
+                <Abas ativo="grafico" onClick={(rota) => navigate(rota === 'grafico' ? '/grafico' : '/')} />
+                <FiltroGrafico onAplicar={handleAplicarGrafico} />
+                <Grafico filtros={filtrosGrafico} />
+              </>
+            }
+          />
         </Routes>
       </MainContent>
     </AppContainer>

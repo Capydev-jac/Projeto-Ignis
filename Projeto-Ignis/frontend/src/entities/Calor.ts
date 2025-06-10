@@ -1,7 +1,9 @@
+import { Polygon } from "leaflet";
+
 export class Foco_calor {
     id: number;
     data: Date;
-    geometria: any; // geometry(point, 4326)
+    geometria: Polygon; // geometry(point, 4326)
     estado_id: number;
     bioma_id: number;
     risco_fogo: number;
@@ -12,7 +14,7 @@ export class Foco_calor {
     constructor(
       id: number,
       data: Date,
-      geometria: any,
+      geometria: Polygon,
       estado_id: number,
       bioma_id: number,
       risco_fogo: number,

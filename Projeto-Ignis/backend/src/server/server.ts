@@ -1,21 +1,20 @@
-import express from "express";
-import cors from "cors";
-import ocorrenciaRoutes from "../routes/OcorrenciaRoutes";
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import ocorrenciaRoutes from '../routes/OcorrenciaRoutes';
 
-const server = express();
+//configura middlewares e rotas
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-// Habilita CORS para todas as origens
-server.use(cors());
+// 🔽 Adicione essa linha para servir arquivos estáticos GeoJSON
+app.use(express.static(path.join(__dirname, '../../public')));
 
-// Permite o uso de JSON no corpo das requisições
-server.use(express.json());
-
-// Rotas da API
-server.use("/api", ocorrenciaRoutes);
-
-// Rota de teste simples
-server.get("/", (_, res) => {
-  res.send("API do Projeto Ignis está ativa!");
+app.use('/api/brasil', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../public/geojson/brasil.geojson'));
 });
 
-export { server };
+app.use('/api', ocorrenciaRoutes);
+
+export default app;

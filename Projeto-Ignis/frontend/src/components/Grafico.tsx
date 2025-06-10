@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-google-charts';
-import { FiltrosGrafico } from '../entities/FiltroGrafico';
+import { FiltrosGrafico } from '../entities/FiltrosGrafico';
 import { GraficoContainer } from '../styles/GraficoStyle';
 
 interface DadoGrafico {

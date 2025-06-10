@@ -1,4 +1,3 @@
-// MapComponent.tsx
 import * as L from 'leaflet';
 import React, { useEffect, useMemo, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
@@ -21,27 +20,26 @@ interface Props {
   dados: BaseDado[];
   filtros: {
     bioma: string;
+    inicio?: string;
+    fim?: string;
   };
   tipo: '' | 'risco' | 'foco_calor' | 'area_queimada';
 }
 
-// Limites do Brasil para impedir que o usuário mova o mapa para fora
 const brasilBounds: L.LatLngBoundsExpression = [
   [-34.0, -74.0],
   [5.3, -32.4],
 ];
 
-// Define a cor baseada no valor do risco de fogo
 const getColor = (valor: number): string => {
-  if (valor >= 0.8) return '#800026'; //vermelho escuro
-  if (valor >= 0.6) return '#BD0026'; //vermelho forte
-  if (valor >= 0.4) return '#FC4E2A'; //laranja avermelhado
-  if (valor >= 0.2) return '#FD8D3C'; //laranja medio
-  if (valor > 0) return '#FED976'; // amarelo
+  if (valor >= 0.8) return '#800026';
+  if (valor >= 0.6) return '#BD0026';
+  if (valor >= 0.4) return '#FC4E2A';
+  if (valor >= 0.2) return '#FD8D3C';
+  if (valor > 0) return '#FED976';
   return '#FFEDA0';
 };
 
-// Coordenadas aproximadas dos centros dos estados brasileiros
 const centroEstados: Record<string, { lat: number; lon: number }> = {
   'Acre': { lat: -9.02, lon: -70.81 },
   'Alagoas': { lat: -9.57, lon: -36.78 },
@@ -77,21 +75,44 @@ const normalizar = (str: string) =>
 
 const MapComponent: React.FC<Props> = ({ dados, filtros, tipo }) => {
   const [geojsonBiomas, setGeojsonBiomas] = useState<FeatureCollection | null>(null);
+  const [geojsonAreaQueimada, setGeojsonAreaQueimada] = useState<FeatureCollection | null>(null);
+  const [geojsonBrasil, setGeojsonBrasil] = useState<FeatureCollection | null>(null);
 
-  // Carrega o arquivo GeoJSON dos biomas
   useEffect(() => {
     fetch('/biomas.geojson')
       .then(res => res.json())
-      .then(data => setGeojsonBiomas(data))
+      .then(setGeojsonBiomas)
       .catch(err => console.error('Erro ao carregar biomas:', err));
   }, []);
 
-  // Mapeia ID numérico para nome de biomas
+  useEffect(() => {
+    if (tipo === 'area_queimada' && filtros.inicio && !filtros.fim) {
+      fetch(`/geojson/area_queimada/${filtros.inicio}.geojson`)
+        .then(res => {
+          if (!res.ok) throw new Error('GeoJSON não encontrado');
+          return res.json();
+        })
+        .then(setGeojsonAreaQueimada)
+        .catch(err => {
+          console.error('Erro ao carregar área queimada por mês:', err);
+          setGeojsonAreaQueimada(null);
+        });
+    } else {
+      setGeojsonAreaQueimada(null);
+    }
+  }, [tipo, filtros.inicio, filtros.fim]);
+
+  useEffect(() => {
+    fetch('/api/brasil')
+      .then(res => res.json())
+      .then(setGeojsonBrasil)
+      .catch(err => console.error('Erro ao carregar brasil.geojson:', err));
+  }, []);
+
   const biomaIdToNome: Record<number, string> = {
     1: 'Amazônia', 2: 'Caatinga', 3: 'Cerrado', 4: 'Mata Atlântica', 5: 'Pampa', 6: 'Pantanal'
   };
 
-  // Filtra o contorno do bioma selecionado para exibir no mapa
   const contornoFiltrado = useMemo(() => {
     if (!geojsonBiomas || !filtros.bioma) return null;
     const nomeBioma = biomaIdToNome[Number(filtros.bioma)];
@@ -103,7 +124,6 @@ const MapComponent: React.FC<Props> = ({ dados, filtros, tipo }) => {
     return { ...geojsonBiomas, features: filtrados };
   }, [geojsonBiomas, filtros.bioma]);
 
-  // Agrupa os dados de risco por estado e calcula a média
   const dadosRiscoPorEstado = useMemo(() => {
     if (tipo !== 'risco') return [];
     const agrupado = dados.reduce<Record<string, { total: number; count: number }>>((acc, item) => {
@@ -125,7 +145,12 @@ const MapComponent: React.FC<Props> = ({ dados, filtros, tipo }) => {
     <MapContainer center={[-15.78, -47.92]} zoom={4} style={{ height: '100vh', width: '100%' }} maxBounds={brasilBounds} maxBoundsViscosity={1.0}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
 
-      {/* Exibe ícones de risco de fogo por estado */}
+      {/* GeoJSON do Brasil sempre visível */}
+      {geojsonBrasil && (
+        <GeoJSON data={geojsonBrasil} style={{ color: 'black', weight: 3, fillOpacity: 0 }} />
+      )}
+
+      {/* Média por estado - risco */}
       {tipo === 'risco' && dadosRiscoPorEstado.map((item, idx) => (
         <Marker
           key={idx}
@@ -142,8 +167,8 @@ const MapComponent: React.FC<Props> = ({ dados, filtros, tipo }) => {
         </Marker>
       ))}
 
-      {/* Marcadores individuais para foco de calor e área queimada */}
-      {(tipo === 'foco_calor' || tipo === 'area_queimada') && dados.map((item, idx) => (
+      {/* Pontos de foco de calor ou área queimada com intervalo */}
+      {(tipo === 'foco_calor' || (tipo === 'area_queimada' && filtros.fim)) && dados.map((item, idx) => (
         <Marker
           key={idx}
           position={[item.latitude, item.longitude]}
@@ -168,7 +193,19 @@ const MapComponent: React.FC<Props> = ({ dados, filtros, tipo }) => {
         </Marker>
       ))}
 
-      {/* Exibe o contorno do bioma selecionado */}
+      {/* GeoJSON de área queimada por mês (estático) */}
+      {geojsonAreaQueimada && tipo === 'area_queimada' && !filtros.fim && (
+        <GeoJSON
+          data={geojsonAreaQueimada}
+          style={() => ({
+            color: 'red',
+            weight: 2,
+            fillOpacity: 0.3
+          })}
+        />
+      )}
+
+      {/* Contorno do bioma selecionado */}
       {contornoFiltrado && (
         <GeoJSON
           key={filtros.bioma}

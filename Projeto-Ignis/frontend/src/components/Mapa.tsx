@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import MapComponent from './MapComponent';
 import { MapaContainer } from '../styles/MapaContainer';
-import { FiltrosMapa } from '../entities/FiltroMapa';
+import { FiltrosMapa } from '../entities/FiltrosMapa';
 import { BaseDado } from '../entities/BaseDado';
 
 interface MapaProps {
@@ -10,7 +10,7 @@ interface MapaProps {
 }
 
 const Mapa: React.FC<MapaProps> = ({ tipo, filtros }) => {
-  const [dados, setDados] = useState<BaseDado[]>([]); // 🔥 Sempre inicializa como array vazio
+  const [dados, setDados] = useState<BaseDado[]>([]);
 
   const montarQueryParams = useCallback(() => {
     const params = new URLSearchParams();
@@ -23,12 +23,19 @@ const Mapa: React.FC<MapaProps> = ({ tipo, filtros }) => {
 
   useEffect(() => {
     if (tipo === '') {
-      setDados([]); // 🔥 Limpa dados quando não há tipo selecionado
+      setDados([]); // 🔥 Limpa se nenhum tipo está selecionado
       return;
     }
 
     const fetchData = async () => {
+      // Se for área queimada por mês (apenas "inicio" sem "fim"), evita a chamada à API
+      if (tipo === 'area_queimada' && filtros.inicio && !filtros.fim) {
+        setDados([]); // Limpa os dados para que só o GeoJSON estático seja usado
+        return;
+      }
+
       const query = montarQueryParams();
+
       const url =
         tipo === 'risco' ? `/api/risco?${query}` :
         tipo === 'foco_calor' ? `/api/foco_calor?${query}` :

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { FiltrosMapa } from '../entities/FiltroMapa';
+import type { FiltrosMapa } from '../entities/FiltrosMapa';
 import {
   FiltroContainer,
   FiltrosContainer,
@@ -15,15 +15,30 @@ import {
   LimparButton
 } from '../styles/FiltroMapa';
 
+const nomesMeses: Record<string, string> = {
+  "01": "Janeiro",
+  "02": "Fevereiro",
+  "03": "Março",
+  "04": "Abril",
+  "05": "Maio",
+  "06": "Junho",
+  "07": "Julho",
+  "08": "Agosto",
+  "09": "Setembro",
+  "10": "Outubro",
+  "11": "Novembro",
+  "12": "Dezembro",
+};
+
 interface FiltroMapaProps {
   onFiltrar: (filtros: FiltrosMapa) => void;
 }
 
 const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
   const formatarParaDiaMesAno = (dataISO: string): string => {
-  const [ano, mes, dia] = dataISO.split("-");
-  return `${dia}/${mes}/${ano.slice(2)}`;
-};
+    const [ano, mes, dia] = dataISO.split("-");
+    return `${dia}/${mes}/${ano.slice(2)}`;
+  };
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,53 +58,62 @@ const FiltroMapa: React.FC<FiltroMapaProps> = ({ onFiltrar }) => {
     else setTipo('');
   }, [location.pathname]);
 
-  useEffect(() => {
+ useEffect(() => {
   const buscarDatas = async () => {
     if (!tipo) return;
     try {
       const res = await fetch(`/api/datas_disponiveis?tipo=${tipo}`);
       const data = await res.json();
 
-      // Formata as datas como 'YYYY-MM-DD'
-      const datasFormatadas = data.datas_disponiveis.map((d: string) =>
-        new Date(d).toISOString().split('T')[0].trim()
-      );
+      const datasFormatadas = data.datas_disponiveis
+        .filter((d: string | null) => d !== null)
+        .map((d: string) =>
+          tipo === 'area_queimada'
+            ? d.padStart(2, '0')
+            : new Date(d).toISOString().split('T')[0].trim()
+        );
 
-      // Remove duplicadas
-      const datasUnicas: string[] = Array.from(new Set<string>(datasFormatadas)).sort();
+      const datasUnicas = Array.from(new Set<string>(datasFormatadas)).sort();
       setDatasDisponiveis(datasUnicas);
-    
     } catch (error) {
       console.error('Erro ao buscar datas disponíveis:', error);
     }
   };
 
   buscarDatas();
+  setInicio('');
+  setFim('');
 }, [tipo]);
 
-const datasFimDisponiveis = useMemo(() => {
-  if (!inicio) return [];
+  const datasFimDisponiveis = useMemo(() => {
+    if (!inicio || tipo === 'area_queimada') return [];
 
-  const inicioDate = new Date(inicio);
-  const datas: string[] = [];
+    const inicioDate = new Date(inicio);
+    const datas: string[] = [];
 
-  for (let i = 0; i < 7; i++) {
-    const novaData = new Date(inicioDate);
-    novaData.setDate(inicioDate.getDate() + i);
-    datas.push(novaData.toISOString().split('T')[0]);
-  }
+    for (let i = 0; i < 15; i++) {
+      const novaData = new Date(inicioDate);
+      novaData.setDate(inicioDate.getDate() + i);
+      datas.push(novaData.toISOString().split('T')[0]);
+    }
 
-  return datas;
-}, [inicio]);
+    return datas;
+  }, [inicio, tipo]);
 
-const aplicarFiltro = () => {
-  if (!inicio || !fim) {
-    alert('⚠️ Selecione um intervalo de datas antes de aplicar.');
-    return;
-  }
+  const aplicarFiltro = () => {
+    if (tipo === 'area_queimada') {
+      if (!inicio) {
+        alert('⚠️ Selecione o mês desejado para área queimada.');
+        return;
+      }
+    } else {
+      if (!inicio || !fim) {
+        alert('⚠️ Selecione um intervalo de datas antes de aplicar.');
+        return;
+      }
+    }
 
-
-const rota = tipo ? `/${tipo}` : '/';
+    const rota = tipo ? `/${tipo}` : '/';
     navigate(rota);
     onFiltrar({
       tipo,
@@ -99,28 +123,27 @@ const rota = tipo ? `/${tipo}` : '/';
       fim,
     });
   };
- 
 
-const limparFiltro = () => {
-  navigate('/');
-  setTipo('risco');
-  setEstado('');
-  setBioma('');
-  setInicio('');
-  setFim('');
-  onFiltrar({
-    tipo: '',
-    estado: '',
-    bioma: '',
-    inicio: '',
-    fim: '',
-  });
-};
-
+  const limparFiltro = () => {
+    navigate('/');
+    setTipo('');
+    setEstado('');
+    setBioma('');
+    setInicio('');
+    setFim('');
+    onFiltrar({
+      tipo: '',
+      estado: '',
+      bioma: '',
+      inicio: '',
+      fim: '',
+    });
+  };
 
   return (
     <FiltroContainer>
       <FiltrosContainer>
+        {/* Toggles de tipo */}
         <ToggleWrapper>
           <span>Foco de Calor</span>
           <Slider $ativo={tipo === 'foco_calor'} $cor="#FF9800" onClick={() => setTipo('foco_calor')}>
@@ -142,7 +165,8 @@ const limparFiltro = () => {
           </Slider>
         </ToggleWrapper>
 
-        <Label>Estado</Label>
+        {/* Estado e Bioma */}
+         <Label>Estado</Label>
         <Select value={estado} onChange={(e) => setEstado(e.target.value === '' ? '' : parseInt(e.target.value))}>
           <option value="">Selecione um estado</option>
           <option value="12">Acre</option>
@@ -185,42 +209,47 @@ const limparFiltro = () => {
           <option value="1">Amazônia</option>
         </Select>
 
+        {/* Datas */}
         <Datas>
-          <Label>Data Início</Label>
-          <Select value={inicio} onChange={(e) => { setInicio(e.target.value); setFim(''); }}>
-            <option value="">Selecione uma data</option>
-            {datasDisponiveis.map((data) => (
-              <option key={data} value={data}>
-                {formatarParaDiaMesAno(data)}
-              </option>
-            ))}
-          </Select>
+  <Label>{tipo === 'area_queimada' ? 'Mês' : 'Data Início'}</Label>
+  <Select value={inicio} onChange={(e) => { setInicio(e.target.value); setFim(''); }}>
+    <option value="">Selecione</option>
+    {datasDisponiveis.map((data) => (
+      <option key={data} value={data}>
+        {tipo === 'area_queimada'
+          ? nomesMeses[data] || `Mês ${data}`
+          : formatarParaDiaMesAno(data)}
+      </option>
+    ))}
+  </Select>
 
-          <Label>Data Fim</Label>
-          <Select value={fim} onChange={(e) => setFim(e.target.value)} disabled={!inicio}>
-            <option value="">Selecione uma data</option>
-            {datasFimDisponiveis.map((data) => (
-              <option key={data} value={data}>
-                {formatarParaDiaMesAno(data)}
-              </option>
-            ))}
-          </Select>
-        </Datas>
+  {tipo !== 'area_queimada' && (
+    <>
+      <Label>Data Fim</Label>
+      <Select value={fim} onChange={(e) => setFim(e.target.value)} disabled={!inicio}>
+        <option value="">Selecione</option>
+        {datasFimDisponiveis.map((data) => (
+          <option key={data} value={data}>
+            {formatarParaDiaMesAno(data)}
+          </option>
+        ))}
+      </Select>
+    </>
+  )}
+</Datas>
 
-
-        {(!inicio || !fim) && (
+        {((tipo !== 'area_queimada' && (!inicio || !fim)) || (tipo === 'area_queimada' && !inicio)) && (
           <p style={{ color: 'White', fontSize: '0.9rem' }}>
-            ⚠️ Selecione um intervalo de datas válido.
+            ⚠️ Selecione {tipo === 'area_queimada' ? 'o mês' : 'um intervalo de datas'} válido.
           </p>
         )}
-        
+
+        {/* Botões */}
         <ButtonGroup>
-          <AplicarButton onClick={aplicarFiltro} disabled={!inicio || !fim}>
+          <AplicarButton onClick={aplicarFiltro} disabled={tipo !== 'area_queimada' ? (!inicio || !fim) : !inicio}>
             Aplicar
           </AplicarButton>
-          <LimparButton onClick={limparFiltro}>
-            Limpar
-          </LimparButton>
+          <LimparButton onClick={limparFiltro}>Limpar</LimparButton>
         </ButtonGroup>
       </FiltrosContainer>
     </FiltroContainer>

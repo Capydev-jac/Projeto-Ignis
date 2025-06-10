@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiltrosGrafico } from '../entities/FiltroGrafico';
+import type { FiltrosGrafico } from '../entities/FiltrosGrafico';
 
 import {
   FiltroContainer,

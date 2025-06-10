@@ -1,7 +1,9 @@
+import { Polygon } from "leaflet";
+
 export class Area_Queimada {
     id: number;
     data: Date;
-    geometria: any; // geometry(point, 4326)
+    geometria: Polygon; // geometry(point, 4326)
     estado_id: number;
     bioma_id: number;
     frp: number;
@@ -9,7 +11,7 @@ export class Area_Queimada {
     constructor(
       id: number,
       data: Date,
-      geometria: any,
+      geometria: Polygon,
       estado_id: number,
       bioma_id: number,
       frp: number
