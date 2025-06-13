@@ -165,6 +165,74 @@ class OcorrenciaController {
     }
   }
 
+  //Produce Foco inserir_foco_calor
+
+  public async InserirFocoCalor(req: Request, res: Response): Promise<void> {
+  try {
+    const {
+      estado_id,
+      bioma_id,
+      data,
+      risco_fogo,
+      dia_sem_chuva,
+      precipitacao,
+      frp,
+      latitude,
+      longitude
+    } = req.body;
+
+    const sql = `
+      CALL inserir_foco_calor(
+        $1, $2, $3, $4, $5, $6, $7, $8, $9
+      )
+    `;
+
+    await query(sql, [
+      estado_id,
+      bioma_id,
+      data,
+      risco_fogo,
+      dia_sem_chuva,
+      precipitacao,
+      frp,
+      latitude,
+      longitude
+    ]);
+
+    res.status(200).json({ mensagem: '✅ Foco de calor inserido com sucesso via procedure.' });
+  } catch (err: any) {
+    res.status(500).json({
+      erro: '❌ Erro ao inserir foco de calor via procedure',
+      detalhes: err.message
+    });
+  }
+}
+
+  // Procedure gerar_relatorio_focos_estado
+
+  public async GerarRelatorioFocos(req: Request, res: Response): Promise<void> {
+  try {
+    const { inicio, fim } = req.query;
+
+    if (!inicio || !fim) {
+      res.status(400).json({ erro: "Informe data inicial e final." });
+      return;
+    }
+
+    const sql = `CALL gerar_relatorio_focos_estado($1, $2)`;
+    await query(sql, [inicio, fim]);
+
+    const resultado = await query('SELECT * FROM relatorio_focos_estado ORDER BY total_focos DESC');
+    res.json(resultado);
+  } catch (err: any) {
+    res.status(500).json({
+      erro: 'Erro ao gerar relatório',
+      detalhes: err.message
+    });
+  }
+}
+
+
 
   // 📊 GRÁFICO DE ÁREA QUEIMADA
   public async GraficoAreaQueimada(req: Request, res: Response): Promise<void> {
