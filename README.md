@@ -50,7 +50,7 @@ Com o IGNIS, gestores ambientais, pesquisadores, bombeiros e a população em ge
 <h3 align="center">Diagrama de classe</h3>
 
 <p align="center">
-   <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/diagrama_de_classe.png">
+   <img src="https://github.com/Capydev-jac/Projeto-Ignis/blob/main/images/Diagrama_de_classe.png">
 </p>
 
 <h2>Ferramentas Utilizadas</h2>
