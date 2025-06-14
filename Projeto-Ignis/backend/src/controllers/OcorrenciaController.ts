@@ -340,7 +340,7 @@ class OcorrenciaController {
       let queryStr = `
         SELECT 
           ${agrupamento} AS categoria,
-          ROUND(AVG(f.frp), 1) AS total
+          ROUND(COUNT(DISTINCT geometria), 1) AS total
         FROM Foco_Calor f
         JOIN Estados e ON f.estado_id = e.id_estado
         JOIN Bioma b ON f.bioma_id = b.id
