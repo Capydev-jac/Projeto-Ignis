@@ -22,4 +22,10 @@
 
 <h2 align="center">Sprint Retrospective</h2>
 
+Entrega final realizada com sucesso: Finalizamos todas as funcionalidades essenciais conforme planejado, entregando um produto funcional e estável. Integração entre membros da equipe: A comunicação nesta última sprint foi eficiente, com todos colaborando bem para os ajustes finais. Resolução de bugs e testes: Conseguimos identificar e resolver os principais bugs antes da entrega, e os testes finais mostraram que o sistema está funcionando como esperado. Documentação completa: Finalizamos a documentação técnica e o manual de uso a tempo, o que agregou valor à entrega final.
+
+Gerenciamento de tempo: No início da sprint, subestimamos o tempo necessário para alguns ajustes e correções. Isso levou a momentos de correria próximos ao prazo final. Automatização dos testes: Poderíamos ter incluído testes automatizados mais cedo no projeto, o que teria facilitado a fase de verificação final. Revisão de código: A revisão de código foi feita às pressas nos últimos dias. Um processo contínuo ao longo da sprint teria sido mais eficiente.
+
+Planejamento realista é essencial: Priorizamos bem as tarefas, mas aprendemos que sempre é importante deixar margem para imprevistos técnicos. Feedback contínuo ajuda a manter o alinhamento: As reuniões de acompanhamento e as trocas frequentes entre os membros evitaram retrabalho. Finalizar partes menores com antecedência ajuda na entrega geral: As partes do projeto que foram concluídas antes permitiram testar e validar funcionalidades com mais calma.
+
 
