@@ -9,7 +9,10 @@ A CapyDev é uma equipe de desenvolvedores criada em 2024 por um grupo de estuda
  
 O **IGNIS** é uma plataforma web desenvolvida para facilitar o acesso a informações sobre queimadas e incêndios florestais. O sistema utiliza dados públicos do **Programa Queimadas – INPE** para fornecer informações detalhadas sobre **focos de calor, risco de fogo e áreas queimadas** em diferentes regiões do Brasil.
  
-Com o IGNIS, gestores ambientais, pesquisadores, bombeiros e a população em geral podem visualizar **mapas interativos, gráficos dinâmicos e análises estatísticas**, auxiliando na **prevenção, combate e monitoramento de incêndios florestais**.
+Com o IGNIS, gestores ambientais, pesquisadores, bombeiros e a população em geral podem visualizar **mapas interativos, gráficos dinâmicos e análises estatísticas**, auxiliando na **prevenção, combate e monitoramento de incêndios florestais
+
+Segue as orientações para rodar o projeto: Baixar o arquivo que está em ZIP com os geoJSON e colocar a pasta "geojson" dentro da pasta "public" no Backend" 
+https://drive.google.com/file/d/1aaU-HVV3m_ZC_IFiuD4QgXNaSa4RWcYB/view?usp=sharing  **.
  
 ---
 
