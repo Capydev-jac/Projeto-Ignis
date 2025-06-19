@@ -12,7 +12,7 @@ O **IGNIS** é uma plataforma web desenvolvida para facilitar o acesso a informa
 Com o IGNIS, gestores ambientais, pesquisadores, bombeiros e a população em geral podem visualizar **mapas interativos, gráficos dinâmicos e análises estatísticas**, auxiliando na **prevenção, combate e monitoramento de incêndios florestais
 
 Segue as orientações para rodar o projeto: Baixar o arquivo que está em ZIP com os geoJSON e colocar a pasta "geojson" dentro da pasta "public" no Backend" 
-https://drive.google.com/file/d/1aaU-HVV3m_ZC_IFiuD4QgXNaSa4RWcYB/view?usp=sharing  **.
+https://drive.google.com/drive/folders/1ZAOQazAtdnAO4YUGYuTMFZRdUNXo4SOz?usp=sharing  **.
  
 ---
 
