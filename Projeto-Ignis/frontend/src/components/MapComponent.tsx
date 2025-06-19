@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
 import type { FeatureCollection } from 'geojson';
 import { BaseDado } from '../entities/BaseDado';
+import MarkerClusterGroup from 'react-leaflet-cluster';
 
 interface Props {
   dados: BaseDado[];
@@ -21,45 +22,13 @@ const brasilBounds: L.LatLngBoundsExpression = [
   [5.3, -32.4],
 ];
 
-const getColor = (valor: number): string => {
-  if (valor >= 0.8) return '#800026';
-  if (valor >= 0.6) return '#BD0026';
-  if (valor >= 0.4) return '#FC4E2A';
-  if (valor >= 0.2) return '#FD8D3C';
-  if (valor > 0) return '#FED976';
-  return '#FFEDA0';
-};
-
 const estadosPorId: Record<string, string> = {
-  '11': 'RO',
-  '12': 'AC',
-  '13': 'AM',
-  '14': 'RR',
-  '15': 'PA',
-  '16': 'AP',
-  '17': 'TO',
-  '21': 'MA',
-  '22': 'PI',
-  '23': 'CE',
-  '24': 'RN',
-  '25': 'PB',
-  '26': 'PE',
-  '27': 'AL',
-  '28': 'SE',
-  '29': 'BA',
-  '31': 'MG',
-  '32': 'ES',
-  '33': 'RJ',
-  '35': 'SP',
-  '41': 'PR',
-  '42': 'SC',
-  '43': 'RS',
-  '50': 'MS',
-  '51': 'MT',
-  '52': 'GO',
-  '53': 'DF'
+  '11': 'RO', '12': 'AC', '13': 'AM', '14': 'RR', '15': 'PA', '16': 'AP', '17': 'TO',
+  '21': 'MA', '22': 'PI', '23': 'CE', '24': 'RN', '25': 'PB', '26': 'PE', '27': 'AL', '28': 'SE', '29': 'BA',
+  '31': 'MG', '32': 'ES', '33': 'RJ', '35': 'SP',
+  '41': 'PR', '42': 'SC', '43': 'RS',
+  '50': 'MS', '51': 'MT', '52': 'GO', '53': 'DF'
 };
-
 
 const centroEstadosPorId: Record<string, { lat: number; lon: number }> = {
   '11': { lat: -10.9, lon: -62.8 },
@@ -92,53 +61,72 @@ const centroEstadosPorId: Record<string, { lat: number; lon: number }> = {
 };
 
 const centroBiomasPorId: Record<string, { lat: number; lon: number }> = {
-  '1': { lat: -3, lon: -60 },   // Amazônia
-  '2': { lat: -9, lon: -40 },   // Caatinga
-  '3': { lat: -12, lon: -47 },  // Cerrado
-  '4': { lat: -20, lon: -43 },  // Mata Atlântica
-  '5': { lat: -30, lon: -53 },  // Pampa
-  '6': { lat: -17, lon: -57 }   // Pantanal
+  '1': { lat: -3, lon: -60 },
+  '2': { lat: -9, lon: -40 },
+  '3': { lat: -12, lon: -47 },
+  '4': { lat: -20, lon: -43 },
+  '5': { lat: -30, lon: -53 },
+  '6': { lat: -17, lon: -57 }
+};
+
+const getColor = (valor: number): string => {
+  if (valor >= 0.9) return '#FF0000';      // Vermelho (risco extremo)
+  if (valor >= 0.8) return '#FF4500';      // Laranja escuro
+  if (valor >= 0.7) return '#FFA500';      // Laranja claro
+  if (valor >= 0.6) return '#FFFF00';      // Amarelo
+  if (valor >= 0.5) return '#ADFF2F';      // Verde-limão
+  return '#D3D3D3';                        // Fora da faixa (apagado)
+};
+
+
+const getColorF = (valor: number): string => {
+  if (valor >= 0.8) return '#800026';
+  if (valor >= 0.6) return '#E31A1C';
+  if (valor >= 0.4) return '#FC4E2A';
+  if (valor >= 0.2) return '#FD8D3C';
+  if (valor > 0) return '#FED976';
+  return '#FFEDA0';
 };
 
 const MapComponent: React.FC<Props> = ({ dados, filtros, tipo }) => {
   const mapRef = useRef<L.Map | null>(null);
+
   const [geojsonBiomas, setGeojsonBiomas] = useState<FeatureCollection | null>(null);
-  const [geojsonAreaQueimada, setGeojsonAreaQueimada] = useState<FeatureCollection | null>(null);
-  const [geojsonBrasil, setGeojsonBrasil] = useState<FeatureCollection | null>(null);
   const [geojsonEstados, setGeojsonEstados] = useState<FeatureCollection | null>(null);
+  const [geojsonBrasil, setGeojsonBrasil] = useState<FeatureCollection | null>(null);
+  const [geojsonAreaQueimada, setGeojsonAreaQueimada] = useState<FeatureCollection | null>(null);
+  const [geojsonRiscoEstado, setGeojsonRiscoEstado] = useState<L.GeoJSON | null>(null);
 
-  // 🔥 Carrega GeoJSON
-  useEffect(() => {
+ useEffect(() => {
+  fetch('http://localhost:3000/geojson/brasil.geojson')
+    .then(r => r.json())
+    .then(setGeojsonBrasil)
+    .catch(() => setGeojsonBrasil(null));
+
+  fetch('http://localhost:3000/geojson/estados.geojson')
+    .then(r => r.json())
+    .then(setGeojsonEstados)
+    .catch(() => setGeojsonEstados(null));
+
   fetch('http://localhost:3000/geojson/biomas.geojson')
-    .then(res => res.json())
+    .then(r => r.json())
     .then(setGeojsonBiomas)
-    .catch(err => console.error('Erro ao carregar biomas:', err));
+    .catch(() => setGeojsonBiomas(null));
+}, []);
 
-    fetch('http://localhost:3000/geojson/estados.geojson')
-  .then(res => res.json())
-  .then(setGeojsonEstados);
-
-fetch('http://localhost:3000/geojson/brasil.geojson')
-  .then(res => res.json())
-  .then(setGeojsonBrasil);
-  }, []);
-
-  // 🔥 Carrega Área Queimada (por mês)
+  // 🔥 Carrega Área Queimada (modo por mês)
   useEffect(() => {
-  if (tipo === 'area_queimada' && filtros.inicio && !filtros.fim) {
-    fetch(`http://localhost:3000/geojson/area_queimada/${filtros.inicio}.geojson`)
-      .then(res => {
-        if (!res.ok) throw new Error('GeoJSON não encontrado');
-        return res.json();
-      })
-      .then(setGeojsonAreaQueimada)
-      .catch(() => setGeojsonAreaQueimada(null));
-  } else {
-    setGeojsonAreaQueimada(null);
-  }
-}, [tipo, filtros.inicio, filtros.fim]);
+    if (tipo === 'area_queimada' && filtros.inicio && !filtros.fim) {
+      fetch(`/geojson/area_queimada/${filtros.inicio}.geojson`)
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(setGeojsonAreaQueimada)
+        .catch(() => setGeojsonAreaQueimada(null));
+    } else {
+      setGeojsonAreaQueimada(null);
+    }
+  }, [tipo, filtros.inicio, filtros.fim]);
 
-  // 🔥 Zoom nos estados
+  // 🔥 Zoom nos Estados
   useEffect(() => {
     if (!mapRef.current) return;
     const centro = centroEstadosPorId[filtros.estado ?? ''];
@@ -149,65 +137,145 @@ fetch('http://localhost:3000/geojson/brasil.geojson')
     }
   }, [filtros.estado]);
 
+  // 🔥 Carrega os pontos agrupados do estado via GeoJSON
+  useEffect(() => {
+  if (tipo !== 'risco' || !filtros.estado) {
+    if (geojsonRiscoEstado && mapRef.current) {
+      mapRef.current.removeLayer(geojsonRiscoEstado);
+    }
+    setGeojsonRiscoEstado(null);
+    return;
+  }
+
+  if (!mapRef.current) {
+    console.warn('🛑 O mapa não está pronto ainda');
+    return;
+  }
+
+  const siglaEstado = estadosPorId[filtros.estado] ?? '';
+  console.log('Sigla Estado:', siglaEstado);
+  if (!siglaEstado) {
+    console.error('❌ Sigla não encontrada para:', filtros.estado);
+    return;
+  }
+
+  const url = `/geojson/estados/risco_${siglaEstado}.geojson`;
+  console.log('🔍 Buscando GeoJSON:', url);
+
+  fetch(url)
+    .then(res => {
+      if (!res.ok) throw new Error(`❌ Arquivo não encontrado: ${url}`);
+      return res.json();
+    })
+    .then(data => {
+      if (!mapRef.current) {
+        console.warn('🛑 O mapa não está pronto na hora do layer');
+        return;
+      }
+
+      if (geojsonRiscoEstado) {
+        mapRef.current.removeLayer(geojsonRiscoEstado);
+      }
+
+      const layer = L.geoJSON(data, {
+        pointToLayer: (feature, latlng) => {
+          const risco = feature.properties.rf ?? 0;
+          return L.circleMarker(latlng, {
+            radius: 5,
+            fillColor: getColor(risco),
+            color: '#000',
+            weight: 0.5,
+            opacity: 1,
+            fillOpacity: 0.7
+          });
+        },
+        onEachFeature: (feature, layer) => {
+          layer.bindPopup(`
+            <strong>Risco:</strong> ${feature.properties.rf}<br/>
+            <strong>Estado:</strong> ${feature.properties.id}
+          `);
+        }
+      });
+
+      layer.addTo(mapRef.current);
+      setGeojsonRiscoEstado(layer);
+
+      mapRef.current.fitBounds(layer.getBounds());
+    })
+    .catch(err => console.error('❌ Erro ao carregar GeoJSON do estado:', err));
+}, [filtros.estado, tipo]);
+
   return (
     <MapContainer
-      center={[-15.78, -47.92]}
-      zoom={4}
-      minZoom={5}
-      style={{ height: '90vh', width: '78%', marginLeft: '21%', marginTop: '85px', borderRadius: '10px' }}
-      maxBounds={brasilBounds}
-      maxBoundsViscosity={1.0}
-      whenReady={() => {
-        if (mapRef.current === null && typeof window !== 'undefined') {
-          // @ts-ignore
-          const leafletMap = (document.querySelector('.leaflet-container') as any)?._leaflet_map;
-          if (leafletMap) mapRef.current = leafletMap;
-        }
-      }}
-    >
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
+  center={[-15.78, -47.92]}
+  zoom={4}
+  minZoom={4}
+  style={{ height: '90vh', width: '100%', marginTop: '85px', borderRadius: '10px' }}
+  maxBounds={brasilBounds}
+  maxBoundsViscosity={1.0}
+  whenReady={(map) => {
+    mapRef.current = map.target;
+  }}
+>
+      <TileLayer
+        attribution="&copy; OpenStreetMap contributors"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
 
-      {geojsonBrasil && (
-        <GeoJSON data={geojsonBrasil} style={{ color: 'black', weight: 3, fillOpacity: 0 }} />
-      )}
+      {/* 🔥 Desenho do Brasil */}
+     {geojsonBrasil && (
+  <GeoJSON
+    data={geojsonBrasil}
+    style={{
+      color: 'black',        // Preto
+      weight: 2,
+      fillOpacity: 0
+    }}
+  />
+)}
 
+      {/* 🔥 Desenho dos Estados */}
       {geojsonEstados && filtros.estado && (
-        <GeoJSON
-          key={filtros.estado}
-          data={{
-            ...geojsonEstados,
-            features: geojsonEstados.features.filter(
-              (f) => String(f.properties?.id_estado) === filtros.estado
-            )
-          } as FeatureCollection}
-          style={{ color: '#0066FF', weight: 2, fillOpacity: 0.05 }}
-        />
-      )}
+  <GeoJSON
+    key={filtros.estado}
+    data={{
+      ...geojsonEstados,
+      features: geojsonEstados.features.filter(
+        (f) => String(f.properties?.id_estado) === filtros.estado
+      )
+    }}
+    style={() => ({
+      color: '#0066FF',       // Azul
+      weight: 2,              // Espessura
+      fillOpacity: 0,         // Sem preenchimento
+      fillColor: 'transparent'
+    })}
+  />
+)}
 
+      {/* 🔥 Desenho dos Biomas */}
       {geojsonBiomas && filtros.bioma && (
   <GeoJSON
     key={filtros.bioma}
     data={{
-      ...(geojsonBiomas as FeatureCollection),
-      features: (geojsonBiomas as FeatureCollection).features.filter(
+      ...geojsonBiomas,
+      features: geojsonBiomas.features.filter(
         (f) => String(f.properties?.id) === filtros.bioma
       )
     }}
-    style={{ color: 'green', weight: 2, fillOpacity: 0.05 }}
+    style={{
+      color: 'green',        // Verde pro bioma
+      weight: 2,
+      fillOpacity: 0.05
+    }}
   />
 )}
 
+      {/* 🔥 Cluster das médias */}
       {tipo === 'risco' && dados.map((item, idx) => {
         const agrupamento = filtros.local === 'bioma' ? 'bioma' : 'estado';
-
-        const id = agrupamento === 'bioma'
-          ? item.bioma?.toString()
-          : item.estado?.toString();
-
-        const centro = agrupamento === 'bioma'
-          ? centroBiomasPorId[id ?? '']
-          : centroEstadosPorId[id ?? ''];
-
+        const id = agrupamento === 'bioma' ? item.bioma?.toString() : item.estado?.toString();
+        const centro = agrupamento === 'bioma' ? centroBiomasPorId[id ?? ''] : centroEstadosPorId[id ?? ''];
         const pos = centro ?? { lat: -15.78, lon: -47.92 };
 
         return (
@@ -230,35 +298,33 @@ fetch('http://localhost:3000/geojson/brasil.geojson')
           </Marker>
         );
       })}
-
+      
       {(tipo === 'foco_calor' || (tipo === 'area_queimada' && filtros.fim)) && dados.map((item, idx) => (
-        <Marker
-          key={idx}
-          position={[
-            item.latitude ?? -15.78,
-            item.longitude ?? -47.92
-          ]}
-          icon={L.divIcon({
-            className: 'custom-icon',
-            html: `<div style="background-color: ${getColor(item.risco_fogo ?? 0)}; width: 20px; height: 20px; border-radius: 50%;"></div>`
-          })}
-        >
-          <Popup>
-            <strong>Data:</strong> {new Date(item.data).toLocaleDateString()}<br />
-            <strong>Estado:</strong> {item.estado}<br />
-            <strong>Bioma:</strong> {item.bioma}<br />
-            <strong>Risco de Fogo:</strong> {item.risco_fogo ?? 0}<br />
-            {item.frp !== undefined && <><strong>FRP:</strong> {item.frp}<br /></>}
-            {item.dia_sem_chuva && (
-              <>
-                <strong>Dias sem chuva:</strong> {item.dia_sem_chuva}<br />
-                <strong>Precipitação:</strong> {item.precipitacao}<br />
-              </>
-            )}
-          </Popup>
-        </Marker>
-      ))}
+  <Marker
+    key={idx}
+    position={[item.latitude ?? -15.78, item.longitude ?? -47.92]}
+    icon={L.divIcon({
+      className: 'custom-icon',
+      html: `<div style="background-color: ${getColorF(item.risco_fogo ?? 0)}; width: 20px; height: 20px; border-radius: 50%;"></div>`
+    })}
+  >
+    <Popup>
+      <strong>Data:</strong> {new Date(item.data).toLocaleDateString()}<br />
+      <strong>Estado:</strong> {item.estado}<br />
+      <strong>Bioma:</strong> {item.bioma}<br />
+      <strong>Risco de Fogo:</strong> {item.risco_fogo ?? 0}<br />
+      {item.frp !== undefined && <><strong>FRP:</strong> {item.frp}<br /></>}
+      {item.dia_sem_chuva && (
+        <>
+          <strong>Dias sem chuva:</strong> {item.dia_sem_chuva}<br />
+          <strong>Precipitação:</strong> {item.precipitacao}<br />
+        </>
+      )}
+    </Popup>
+  </Marker>
+))}
 
+      {/* 🔥 Área Queimada (modo por mês) */}
       {geojsonAreaQueimada && tipo === 'area_queimada' && !filtros.fim && (
         <GeoJSON
           data={geojsonAreaQueimada}
